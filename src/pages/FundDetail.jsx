@@ -14,6 +14,7 @@ const FundDetail = () => {
   const [activeTab, setActiveTab] = useState('Yorumlar');
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
+  const [isLoadingComments, setIsLoadingComments] = useState(true);
   const [isSubmittingComment, setIsSubmittingComment] = useState(false);
   const [likedMap, setLikedMap] = useState({});
   const [replyingToId, setReplyingToId] = useState(null);
@@ -23,7 +24,10 @@ const FundDetail = () => {
   // Bu fona ait gerçek yorumları çek
   useEffect(() => {
     if (fund?.code) {
-      fetchFundComments(fund.code).then(data => setComments(data || []));
+      setIsLoadingComments(true);
+      fetchFundComments(fund.code)
+        .then(data => setComments(data || []))
+        .finally(() => setIsLoadingComments(false));
     }
   }, [fund?.code]);
 
@@ -272,7 +276,20 @@ const FundDetail = () => {
           </div>
 
           <div className="comments-list">
-            {rootComments.length > 0 ? (
+            {isLoadingComments ? (
+              [1, 2, 3].map((n) => (
+                <div className="comment-thread" key={n} style={{ opacity: 0.9 }}>
+                  <div className="comment-item" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                    <div className="skeleton-shimmer skeleton-circle" />
+                    <div className="comment-content" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <div className="skeleton-shimmer skeleton-line" style={{ width: '120px', height: '14px' }} />
+                      <div className="skeleton-shimmer skeleton-line body" style={{ width: n === 1 ? '90%' : n === 2 ? '72%' : '84%', height: '14px' }} />
+                      <div className="skeleton-shimmer skeleton-line short" style={{ width: '80px', height: '10px' }} />
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : rootComments.length > 0 ? (
               rootComments.map((comment) => (
                 <div className="comment-thread" key={comment.id}>
                   {/* Ana Yorum */}

@@ -5,7 +5,7 @@ import { fetchMarketSummary, formatPrice, formatReturn, formatDateTr } from '../
 import './Home.css';
 
 const Home = () => {
-  const { funds, discussions } = useFunds();
+  const { funds, discussions, loading: isLoadingDiscussions } = useFunds();
   const navigate = useNavigate();
 
   // Gerçek TEFAS Piyasa Özeti ve Hero Verisi
@@ -311,7 +311,21 @@ const Home = () => {
             <div className="forum-content-area">
               <h2 className="section-title-modern">Gündemdeki Tartışmalar</h2>
               <div className="forum-main-column">
-                {discussions.length > 0 ? (
+                {isLoadingDiscussions ? (
+                  <div className="discussion-list">
+                    {[1, 2, 3].map((n) => (
+                      <div className="discussion-row" key={n} style={{ opacity: 0.9 }}>
+                        <div className="discussion-content" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                          <div className="skeleton-shimmer skeleton-line title" style={{ width: n === 1 ? '70%' : n === 2 ? '52%' : '64%' }} />
+                          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                            <div className="skeleton-shimmer skeleton-line" style={{ width: '52px', height: '18px', borderRadius: '4px' }} />
+                            <div className="skeleton-shimmer skeleton-line short" style={{ width: '130px' }} />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : discussions.length > 0 ? (
                   <div className="discussion-list">
                     {discussions.slice(0, 5).map((disc, i) => {
                       const badgeColors = ['badge-blue', 'badge-green', 'badge-terracotta', 'badge-brown', 'badge-blue'];

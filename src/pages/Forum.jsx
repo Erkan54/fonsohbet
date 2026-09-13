@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import './Forum.css';
 
 const Forum = () => {
-  const { funds, discussions, addNewDiscussion } = useFunds();
+  const { funds, discussions, addNewDiscussion, loading: isLoadingDiscussions } = useFunds();
   const { isAuthenticated, user, profile, loginWithGoogle } = useAuth();
   const [activeTab, setActiveTab] = useState('Yeni');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -138,7 +138,23 @@ const Forum = () => {
       </div>
 
       <div className="forum-list">
-        {displayedDiscussions.length > 0 ? (
+        {isLoadingDiscussions ? (
+          [1, 2, 3, 4].map((n) => (
+            <div className="forum-list-item" key={n} style={{ opacity: 0.9 }}>
+              <div className="forum-item-main" style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div className="skeleton-shimmer skeleton-line title" style={{ width: n === 1 ? '65%' : n === 2 ? '80%' : '55%' }} />
+                <div className="skeleton-shimmer skeleton-line body" style={{ width: '85%' }} />
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <div className="skeleton-shimmer skeleton-line" style={{ width: '50px', height: '18px', borderRadius: '4px' }} />
+                  <div className="skeleton-shimmer skeleton-line short" style={{ width: '140px' }} />
+                </div>
+              </div>
+              <div className="forum-item-stats">
+                <div className="skeleton-shimmer" style={{ width: '48px', height: '48px', borderRadius: '8px' }} />
+              </div>
+            </div>
+          ))
+        ) : displayedDiscussions.length > 0 ? (
           displayedDiscussions.map(disc => (
             <div className="forum-list-item" key={disc.id}>
               <div className="forum-item-main">

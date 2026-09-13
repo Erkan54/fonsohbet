@@ -382,6 +382,63 @@ button {
   font-size: var(--font-size-sm);
 }
 
+/* ===================================================================
+   SKELETON LOADING SYSTEM
+   =================================================================== */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #EDF1F5 25%, #F8FAFC 50%, #EDF1F5 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite linear;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-row {
+  padding: 16px 20px;
+  background-color: var(--color-bg-surface);
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  border: 1px solid var(--color-border-card);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 4px;
+}
+
+.skeleton-line.title {
+  height: 18px;
+  width: 65%;
+}
+
+.skeleton-line.short {
+  width: 35%;
+  height: 12px;
+}
+
+.skeleton-line.body {
+  width: 90%;
+  height: 13px;
+}
+
+.skeleton-circle {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   * {
