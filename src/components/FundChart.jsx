@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { fetchFundHistory, formatPrice, formatReturn, formatDateTr } from '../services/marketService';
 import './FundChart.css';
 
@@ -12,85 +12,135 @@ const PERIODS = [
 
 const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
   const [period, setPeriod] = useState(defaultPeriod);
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isFading, setIsFading] = useState(false);
+  const [cache, setCache] = useState({});
+  const [isFetching, setIsFetching] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const [hoveredPointIndex, setHoveredPointIndex] = useState(null);
+  
+  const containerRef = useRef(null);
+  const controlsRef = useRef(null);
+  const [gliderStyle, setGliderStyle] = useState({ left: 0, width: 0 });
 
-  // Veri getirme
+  // Update gliding underline position
+  useEffect(() => {
+    if (!controlsRef.current) return;
+    const activeBtn = controlsRef.current.querySelector('.period-btn.active');
+    if (activeBtn) {
+      setGliderStyle({
+        left: activeBtn.offsetLeft,
+        width: activeBtn.offsetWidth,
+      });
+    }
+  }, [period]);
+
+  // Data fetching and caching
   useEffect(() => {
     let isMounted = true;
     
     async function loadData() {
-      setIsFading(true);
-      if (!data) setIsLoading(true);
+      if (cache[period]) {
+        // Cached instant switch
+        return;
+      }
       
+      setIsFetching(true);
       try {
         const result = await fetchFundHistory(fundCode, period);
         if (isMounted && result) {
-          setData(result);
+          setCache(prev => ({ ...prev, [period]: result }));
         }
       } catch (err) {
         console.error('Grafik verisi yüklenemedi:', err);
       } finally {
         if (isMounted) {
-          setIsLoading(false);
-          setIsFading(false);
+          setIsFetching(false);
+          if (isInitialLoad) setIsInitialLoad(false);
         }
       }
     }
 
     loadData();
     setHoveredPointIndex(null);
-
     return () => { isMounted = false; };
-  }, [fundCode, period]);
+  }, [fundCode, period, cache, isInitialLoad]);
 
-  // Koordinatları hesaplama
-  const chartCoordinates = useMemo(() => {
-    const points = data?.points;
-    if (!points || points.length === 0) return [];
+  const currentData = cache[period];
+  
+  // Calculate SVG Coordinates and metadata
+  const { coords, minPoint, maxPoint, firstPoint, lastPoint, xTicks, yTicks } = useMemo(() => {
+    const points = currentData?.points;
+    if (!points || points.length === 0) return { coords: [], xTicks: [], yTicks: [] };
 
     const prices = points.map(p => p.price);
     const minPrice = Math.min(...prices);
     const maxPrice = Math.max(...prices);
     
-    // Y-axis padding for visual breathing room
-    const padding = (maxPrice - minPrice) * 0.1;
+    // Y-axis padding (give room for min/max labels and final point)
+    const padding = (maxPrice - minPrice) * 0.15;
     const adjustedMin = minPrice - padding;
     const adjustedMax = maxPrice + padding;
     const range = adjustedMax - adjustedMin > 0 ? adjustedMax - adjustedMin : 1;
 
-    return points.map((pt, i) => {
+    let minPt = null, maxPt = null;
+    let minDiff = Infinity, maxDiff = -Infinity;
+
+    const computedCoords = points.map((pt, i) => {
       const prevPrice = i > 0 ? points[i - 1].price : pt.price;
       const dailyChange = prevPrice > 0 ? ((pt.price / prevPrice) - 1) * 100 : 0;
       
-      const x = (i / Math.max(1, points.length - 1)) * 400; // SVG width is 400
-      const y = 110 - ((pt.price - adjustedMin) / range) * 100; // SVG height is 120 (10 to 110 bounds)
+      const x = (i / Math.max(1, points.length - 1)) * 400; // SVG viewBox width 400
+      const y = 140 - ((pt.price - adjustedMin) / range) * 120; // SVG viewBox height 160 (20 to 140 bounds)
       
-      return {
-        ...pt,
-        x,
-        y,
-        dailyChange,
-      };
+      const pObj = { ...pt, x, y, dailyChange };
+      
+      if (pt.price < minDiff) { minDiff = pt.price; minPt = pObj; }
+      if (pt.price > maxDiff) { maxDiff = pt.price; maxPt = pObj; }
+      
+      return pObj;
     });
-  }, [data?.points]);
 
-  // SVG Çizgilerini (Path) Üretme (Yumuşak Bezier Eğrisi)
-  const { linePath, areaPath } = useMemo(() => {
-    if (chartCoordinates.length === 0) return { linePath: '', areaPath: '' };
-    if (chartCoordinates.length === 1) {
-      const p = chartCoordinates[0];
-      return { linePath: `M ${p.x} ${p.y}`, areaPath: '' };
+    // Generate responsive X-axis ticks (3-5 labels)
+    const tickCount = window.innerWidth < 480 ? 3 : 5;
+    const xTicksArray = [];
+    if (computedCoords.length > 1) {
+      const step = Math.floor((computedCoords.length - 1) / (tickCount - 1));
+      for (let i = 0; i < tickCount; i++) {
+        const idx = Math.min(i * step, computedCoords.length - 1);
+        xTicksArray.push(computedCoords[idx]);
+      }
     }
 
-    let d = `M ${chartCoordinates[0].x.toFixed(2)} ${chartCoordinates[0].y.toFixed(2)}`;
-    for (let i = 0; i < chartCoordinates.length - 1; i++) {
-      const p0 = chartCoordinates[i === 0 ? i : i - 1];
-      const p1 = chartCoordinates[i];
-      const p2 = chartCoordinates[i + 1];
-      const p3 = chartCoordinates[i + 2 < chartCoordinates.length ? i + 2 : i + 1];
+    // Generate Y-axis ticks (3 levels)
+    const yTicksArray = [];
+    const priceStep = range / 3;
+    for (let i = 1; i <= 2; i++) {
+      const val = adjustedMin + priceStep * i;
+      const y = 140 - ((val - adjustedMin) / range) * 120;
+      yTicksArray.push({ price: val, y });
+    }
+
+    return {
+      coords: computedCoords,
+      minPoint: minPt,
+      maxPoint: maxPt,
+      firstPoint: computedCoords[0],
+      lastPoint: computedCoords[computedCoords.length - 1],
+      xTicks: xTicksArray,
+      yTicks: yTicksArray
+    };
+  }, [currentData]);
+
+  // SVG Paths
+  const { linePath, areaPath } = useMemo(() => {
+    if (coords.length === 0) return { linePath: '', areaPath: '' };
+    if (coords.length === 1) return { linePath: `M ${coords[0].x} ${coords[0].y}`, areaPath: '' };
+
+    let d = `M ${coords[0].x.toFixed(2)} ${coords[0].y.toFixed(2)}`;
+    for (let i = 0; i < coords.length - 1; i++) {
+      const p0 = coords[i === 0 ? i : i - 1];
+      const p1 = coords[i];
+      const p2 = coords[i + 1];
+      const p3 = coords[i + 2 < coords.length ? i + 2 : i + 1];
 
       const cp1x = p1.x + (p2.x - p0.x) / 6;
       const cp1y = p1.y + (p2.y - p0.y) / 6;
@@ -100,31 +150,24 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
       d += ` C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)}, ${cp2x.toFixed(2)} ${cp2y.toFixed(2)}, ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
     }
 
-    const firstX = chartCoordinates[0].x;
-    const lastX = chartCoordinates[chartCoordinates.length - 1].x;
-    const a = `${d} L ${lastX.toFixed(2)} 120 L ${firstX.toFixed(2)} 120 Z`;
+    const firstX = coords[0].x;
+    const lastX = coords[coords.length - 1].x;
+    const a = `${d} L ${lastX.toFixed(2)} 160 L ${firstX.toFixed(2)} 160 Z`;
 
     return { linePath: d, areaPath: a };
-  }, [chartCoordinates]);
+  }, [coords]);
 
-  const activePoint = useMemo(() => {
-    if (chartCoordinates.length === 0) return null;
-    if (hoveredPointIndex !== null && chartCoordinates[hoveredPointIndex]) {
-      return chartCoordinates[hoveredPointIndex];
-    }
-    return chartCoordinates[chartCoordinates.length - 1];
-  }, [chartCoordinates, hoveredPointIndex]);
-
-  const handleMouseMove = useCallback((e) => {
-    if (chartCoordinates.length === 0) return;
+  const handlePointerMove = useCallback((e) => {
+    if (coords.length === 0) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const mouseX = clientX - rect.left;
     const ratio = Math.max(0, Math.min(1, mouseX / rect.width));
     const targetX = ratio * 400;
 
     let closestIdx = 0;
     let minDiff = Infinity;
-    chartCoordinates.forEach((pt, idx) => {
+    coords.forEach((pt, idx) => {
       const diff = Math.abs(pt.x - targetX);
       if (diff < minDiff) {
         minDiff = diff;
@@ -132,99 +175,207 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
       }
     });
     setHoveredPointIndex(closestIdx);
-  }, [chartCoordinates]);
+  }, [coords]);
 
-  const handleMouseLeave = () => {
+  const handlePointerLeave = () => {
     setHoveredPointIndex(null);
   };
 
+  const activePoint = hoveredPointIndex !== null ? coords[hoveredPointIndex] : null;
+  const isFetchingAndCached = isFetching && !!currentData;
   const periodLabel = PERIODS.find(p => p.id === period)?.label || '1A';
 
+  // Format short dates (e.g. 11 Eyl)
+  const formatShortDate = (dStr) => {
+    const d = new Date(dStr + 'T00:00:00');
+    if(isNaN(d)) return dStr;
+    return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
+  };
+
   return (
-    <div className="fund-chart-container">
+    <div className="fund-chart-container" ref={containerRef}>
+      
+      {/* HEADER */}
       <div className="fund-chart-header">
-        <div className="fund-chart-title">
-          <span>Fon Fiyatı</span>
-          <span className="fund-chart-period-return">
-            {periodLabel} {data && data.periodReturn != null ? <span className={data.periodReturn >= 0 ? 'text-positive' : 'text-negative'}>{formatReturn(data.periodReturn)}</span> : null}
-          </span>
-        </div>
-        <div className="fund-chart-controls">
-          {PERIODS.map(p => (
-            <button
-              key={p.id}
-              className={`period-btn ${period === p.id ? 'active' : ''}`}
-              onClick={() => setPeriod(p.id)}
+        <div className="fund-chart-title-group">
+          <div className="fund-chart-title-top">
+            <span className="fund-chart-title-label">Fon Fiyatı</span>
+            <span className="fund-chart-info-icon" title="Fon fiyatları TEFAS tarafından günlük olarak yayımlanan son verilerdir.">
+              ⓘ
+            </span>
+          </div>
+          
+          <div className="fund-chart-period-return-wrapper">
+            <span className="fund-chart-period-label">{periodLabel}</span>
+            <span 
+              className={`fund-chart-period-return ${
+                currentData?.periodReturn > 0 ? 'text-positive' : 
+                currentData?.periodReturn < 0 ? 'text-negative' : 'text-neutral'
+              }`}
             >
-              {p.label}
-            </button>
-          ))}
+              {currentData?.periodReturn != null ? formatReturn(currentData.periodReturn) : '—'}
+            </span>
+          </div>
+          
+          {lastPoint && (
+            <div className="fund-chart-meta-line">
+              TEFAS · {formatShortDate(lastPoint.date)} {new Date(lastPoint.date).getFullYear()}
+            </div>
+          )}
+        </div>
+
+        <div className="fund-chart-controls-wrapper" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+          <div className="fund-chart-controls" ref={controlsRef} role="tablist">
+            {PERIODS.map(p => (
+              <button
+                key={p.id}
+                role="tab"
+                aria-selected={period === p.id}
+                className={`period-btn ${period === p.id ? 'active' : ''}`}
+                onClick={() => setPeriod(p.id)}
+              >
+                {p.label}
+              </button>
+            ))}
+            <div className="period-glider" style={gliderStyle} />
+          </div>
+          {isFetchingAndCached && (
+            <div className="chart-loading-overlay">
+              <div className="loading-spinner"></div> Yükleniyor...
+            </div>
+          )}
         </div>
       </div>
 
+      {/* BODY */}
       <div 
         className="fund-chart-body"
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{ opacity: isFading && !isLoading ? 0.7 : 1, transition: 'opacity 0.2s ease' }}
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
+        onPointerDown={handlePointerMove}
+        style={{ opacity: isFetchingAndCached ? 0.55 : 1 }}
       >
-        {isLoading ? (
-          <div className="chart-skeleton"></div>
-        ) : chartCoordinates.length > 1 ? (
+        {isInitialLoad ? (
+          <div className="chart-skeleton-container">
+            <div className="skeleton-shimmer" style={{height: '40px', width: '30%'}}></div>
+            <div className="skeleton-shimmer" style={{flex: 1, width: '100%'}}></div>
+          </div>
+        ) : coords.length > 1 ? (
           <>
-            <svg viewBox="0 0 400 120" preserveAspectRatio="none" className="fund-chart-svg">
+            <svg 
+              viewBox="0 0 400 160" 
+              preserveAspectRatio="none" 
+              className="fund-chart-svg"
+              aria-label={`${fundCode} fonunun ${periodLabel} dönemi fiyat grafiği. Dönem getirisi: ${currentData?.periodReturn}%`}
+            >
               <defs>
                 <linearGradient id="fundChartGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#315D68" stopOpacity="0.12" />
+                  <stop offset="10%" stopColor="#315D68" stopOpacity="0.10" />
+                  <stop offset="60%" stopColor="#315D68" stopOpacity="0.035" />
                   <stop offset="100%" stopColor="#315D68" stopOpacity="0.0" />
                 </linearGradient>
               </defs>
               
-              {/* Subtle Grid line at middle */}
-              <line x1="0" y1="60" x2="400" y2="60" className="chart-grid-line" strokeDasharray="4 4" />
+              {/* Horizontal Reference Lines (Y-Axis & Grid) */}
+              {yTicks.map((tick, i) => (
+                <g key={i}>
+                  <line x1="0" y1={tick.y} x2="400" y2={tick.y} className="axis-line" />
+                  <text x="395" y={tick.y - 4} className="axis-label" textAnchor="end">
+                    {tick.price.toFixed(4)}
+                  </text>
+                </g>
+              ))}
+
+              {/* Start Reference Line */}
+              {firstPoint && (
+                <line x1="0" y1={firstPoint.y} x2="400" y2={firstPoint.y} className="start-ref-line" />
+              )}
               
-              {areaPath && <path d={areaPath} fill="url(#fundChartGradient)" className="fund-chart-svg-area" />}
+              {/* Vertical X-Axis Ticks */}
+              {xTicks.map((tick, i) => (
+                <text key={i} x={tick.x} y="155" className="axis-label" textAnchor={i === 0 ? 'start' : i === xTicks.length - 1 ? 'end' : 'middle'}>
+                  {formatShortDate(tick.date)}
+                </text>
+              ))}
+              
+              {/* Area & Line */}
+              {areaPath && <path d={areaPath} fill="url(#fundChartGradient)" className="fund-chart-svg-area chart-entry-area" />}
               {linePath && (
                 <path
                   d={linePath}
                   fill="none"
                   stroke="#315D68"
-                  strokeWidth="2.5"
+                  strokeWidth={window.innerWidth < 480 ? "2.2" : "2.8"}
                   vectorEffect="non-scaling-stroke"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="fund-chart-svg-line"
+                  className="fund-chart-svg-line chart-entry-line"
                 />
+              )}
+
+              {/* Min / Max Markers */}
+              {minPoint && maxPoint && (
+                <g className="minmax-marker-group">
+                  <circle cx={minPoint.x} cy={minPoint.y} r="3" className="minmax-circle" />
+                  <text x={minPoint.x} y={minPoint.y + 12} className="minmax-text" textAnchor="middle">Düşük</text>
+                  
+                  <circle cx={maxPoint.x} cy={maxPoint.y} r="3" className="minmax-circle" />
+                  <text x={maxPoint.x} y={maxPoint.y - 8} className="minmax-text" textAnchor="middle">Yüksek</text>
+                </g>
+              )}
+
+              {/* Permanent Latest Point Indicator */}
+              {lastPoint && (
+                <g className="latest-point-group">
+                  <circle cx={lastPoint.x} cy={lastPoint.y} r="10" className="latest-point-ring" />
+                  <circle cx={lastPoint.x} cy={lastPoint.y} r="4.5" className="latest-point-circle" />
+                  <text x={lastPoint.x - 14} y={lastPoint.y + 4} className="latest-point-text" textAnchor="end">
+                    {formatPrice(lastPoint.price, 4).replace(' ₺', '')} ₺
+                  </text>
+                </g>
               )}
             </svg>
 
-            {activePoint && hoveredPointIndex !== null && (
+            {/* Crosshair Line */}
+            {activePoint && (
               <div 
                 className="chart-hover-line"
                 style={{ left: `${((activePoint.x / 400) * 100).toFixed(2)}%` }}
               />
             )}
 
+            {/* Hover Dot */}
+            <div 
+              className={`chart-hover-marker ${activePoint ? 'visible' : ''}`}
+              style={{
+                left: activePoint ? `${((activePoint.x / 400) * 100).toFixed(2)}%` : '-10%',
+                top: activePoint ? `${((activePoint.y / 160) * 100).toFixed(2)}%` : '50%'
+              }}
+            />
+
+            {/* Tooltip */}
             {activePoint && (
               <div
                 className="fund-chart-tooltip"
                 style={{
                   left: `${((activePoint.x / 400) * 100).toFixed(2)}%`,
-                  top: `${((activePoint.y / 120) * 100).toFixed(2)}%`,
-                  opacity: hoveredPointIndex !== null ? 1 : 0,
-                  transition: 'opacity 0.15s ease'
+                  top: `${((activePoint.y / 160) * 100).toFixed(2)}%`,
+                  opacity: hoveredPointIndex !== null ? 1 : 0
                 }}
               >
                 <div className="tooltip-date">{formatDateTr(activePoint.date)}</div>
                 <div className="tooltip-price">{formatPrice(activePoint.price)}</div>
-                <div className={`tooltip-diff ${activePoint.dailyChange >= 0 ? 'text-positive' : 'text-negative'}`}>
-                  {formatReturn(activePoint.dailyChange)}
+                <div className="tooltip-diff-row">
+                  <span className="tooltip-diff-label">Günlük</span>
+                  <span className={`tooltip-diff ${activePoint.dailyChange >= 0 ? 'text-positive' : 'text-negative'}`}>
+                    {formatReturn(activePoint.dailyChange)}
+                  </span>
                 </div>
               </div>
             )}
           </>
         ) : (
-          <div className="chart-error-state">
+          <div className="chart-error-state" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-muted)' }}>
             Bu dönem için yeterli fiyat verisi bulunmuyor.
           </div>
         )}

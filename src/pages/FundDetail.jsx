@@ -171,6 +171,8 @@ const FundDetail = () => {
         
         <FundChart fundCode={fund.code} defaultPeriod="1m" />
         
+        <div style={{ height: '1px', backgroundColor: 'rgba(49,93,104,0.09)', margin: '32px 0 24px 0', width: '100%' }} />
+
         <div className="fund-metrics">
           <div className="metric-box">
             <span className="metric-label">Son Fiyat</span>
