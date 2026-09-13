@@ -122,6 +122,18 @@ body::before {
   opacity: 0.3;
   z-index: -1;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) calc(100% - 32px),
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) calc(100% - 32px),
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 a {
