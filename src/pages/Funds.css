@@ -1,0 +1,201 @@
+.funds-page {
+  padding: 40px 16px 80px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--color-text-main);
+}
+
+.page-subtitle {
+  color: var(--color-text-muted);
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+/* Detaylı Filtre Paneli */
+.filter-dashboard {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-input,
+.filter-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.filter-input {
+  cursor: text;
+}
+
+/* Risk Buttons */
+.risk-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.risk-btn {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-main);
+  transition: all 0.2s;
+}
+
+.risk-btn:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.risk-btn.active {
+  background-color: var(--color-text-main);
+  color: #fff;
+  border-color: var(--color-text-main);
+}
+
+.risk-btn.risk-dusuk.active { background-color: #176B4D; border-color: #176B4D; }
+.risk-btn.risk-orta.active { background-color: #D97706; border-color: #D97706; }
+.risk-btn.risk-yuksek.active { background-color: #B91C1C; border-color: #B91C1C; }
+
+/* Sort Group */
+.sort-group {
+  display: flex;
+  gap: 8px;
+}
+
+.sort-select {
+  flex: 1;
+}
+
+.sort-dir-btn {
+  padding: 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
+}
+
+.sort-dir-btn:hover {
+  background-color: var(--color-border-light);
+}
+
+/* Actions */
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.results-count {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.results-count b {
+  color: var(--color-text-main);
+}
+
+.clear-btn {
+  font-size: 13px;
+  padding: 6px 12px;
+}
+
+/* Tablo Ekstraları */
+.table-responsive {
+  overflow-x: auto;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.fund-table-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+.fund-category-text {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.risk-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.risk-bar {
+  width: 24px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #E2E8F0;
+}
+
+.bg-risk-1, .bg-risk-2 { background-color: #176B4D; }
+.bg-risk-3, .bg-risk-4 { background-color: #D97706; }
+.bg-risk-5, .bg-risk-6, .bg-risk-7 { background-color: #B91C1C; }
+
+.empty-state {
+  text-align: center;
+  padding: 48px;
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .filter-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

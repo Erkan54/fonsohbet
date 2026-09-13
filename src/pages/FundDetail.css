@@ -1,0 +1,163 @@
+.fund-detail-page {
+  padding: 40px 16px;
+}
+
+/* Header Info */
+.fund-header {
+  margin-bottom: 32px;
+}
+
+.fund-code {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin-bottom: 4px;
+}
+
+.fund-name {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.fund-metrics {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+
+
+/* Comments Section */
+.comments-section {
+  max-width: 800px;
+}
+
+.comment-form {
+  margin-bottom: 32px;
+}
+
+.comment-input {
+  width: 100%;
+  min-height: 100px;
+  padding: 16px;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  resize: vertical;
+  margin-bottom: 12px;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-main);
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: var(--color-text-muted);
+}
+
+.comment-form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-item {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  gap: 16px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-author {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-main);
+}
+
+.comment-date {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.comment-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.reply-btn, .like-btn {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.reply-btn:hover, .like-btn:hover {
+  color: var(--color-brand);
+}
+
+.replies-list {
+  margin-top: 24px;
+  margin-left: 20px;
+  padding-left: 24px;
+  border-left: 2px solid var(--color-border-warm);
+}
+
+.placeholder-content {
+  padding: 40px 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+  .fund-metrics {
+    gap: 16px;
+  }
+}

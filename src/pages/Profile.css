@@ -1,0 +1,145 @@
+.profile-page {
+  padding: 40px 16px;
+  max-width: 800px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 50%; /* Profil resmi yuvarlak olabilir istisna olarak */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.profile-username {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.profile-bio {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-main);
+  margin-bottom: 12px;
+}
+
+.profile-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.profile-stats strong {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+
+
+.profile-content {
+  min-height: 300px;
+}
+
+.profile-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-list-item {
+  padding: 24px 16px;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color 0.2s;
+  margin: 0 -16px;
+}
+
+.profile-list-item:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.profile-item-title {
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.profile-item-title:hover {
+  text-decoration: underline;
+}
+
+.profile-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.profile-comment-context {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.profile-comment-text {
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  font-style: italic;
+  color: var(--color-text-main);
+}
+
+.profile-funds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.followed-fund-card {
+  padding: 20px;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  background-color: var(--color-bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.followed-fund-card:hover {
+  background-color: var(--color-bg-hover-light);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border);
+}
+
+.ff-code {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ff-name {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.empty-state {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  padding: 40px 0;
+}
