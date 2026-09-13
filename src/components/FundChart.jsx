@@ -278,11 +278,8 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
               
               {/* Horizontal Reference Lines (Y-Axis & Grid) */}
               {yTicks.map((tick, i) => (
-                <g key={i}>
+                <g key={`yline-${i}`}>
                   <line x1="0" y1={tick.y} x2="400" y2={tick.y} className="axis-line" />
-                  <text x="395" y={tick.y - 4} className="axis-label" textAnchor="end">
-                    {tick.price.toFixed(4)}
-                  </text>
                 </g>
               ))}
 
@@ -290,13 +287,6 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
               {firstPoint && (
                 <line x1="0" y1={firstPoint.y} x2="400" y2={firstPoint.y} className="start-ref-line" />
               )}
-              
-              {/* Vertical X-Axis Ticks */}
-              {xTicks.map((tick, i) => (
-                <text key={i} x={tick.x} y="155" className="axis-label" textAnchor={i === 0 ? 'start' : i === xTicks.length - 1 ? 'end' : 'middle'}>
-                  {formatShortDate(tick.date)}
-                </text>
-              ))}
               
               {/* Area & Line */}
               {areaPath && <path d={areaPath} fill="url(#fundChartGradient)" className="fund-chart-svg-area chart-entry-area" />}
@@ -313,28 +303,65 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
                 />
               )}
 
-              {/* Min / Max Markers */}
+              {/* Min / Max Markers (Circles Only) */}
               {minPoint && maxPoint && (
                 <g className="minmax-marker-group">
                   <circle cx={minPoint.x} cy={minPoint.y} r="3" className="minmax-circle" />
-                  <text x={minPoint.x} y={minPoint.y + 12} className="minmax-text" textAnchor="middle">Düşük</text>
                   
                   <circle cx={maxPoint.x} cy={maxPoint.y} r="3" className="minmax-circle" />
-                  <text x={maxPoint.x} y={maxPoint.y - 8} className="minmax-text" textAnchor="middle">Yüksek</text>
                 </g>
               )}
 
-              {/* Permanent Latest Point Indicator */}
+              {/* Permanent Latest Point Indicator (Circles Only) */}
               {lastPoint && (
                 <g className="latest-point-group">
                   <circle cx={lastPoint.x} cy={lastPoint.y} r="10" className="latest-point-ring" />
                   <circle cx={lastPoint.x} cy={lastPoint.y} r="4.5" className="latest-point-circle" />
-                  <text x={lastPoint.x - 14} y={lastPoint.y + 4} className="latest-point-text" textAnchor="end">
-                    {formatPrice(lastPoint.price, 4).replace(' ₺', '')} ₺
-                  </text>
                 </g>
               )}
             </svg>
+
+            {/* HTML Overlays for Text (Prevents SVG stretching) */}
+            <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+              {/* Y-Axis Labels */}
+              {yTicks.map((tick, i) => (
+                <div key={`ylabel-${i}`} className="axis-label-html" style={{ position: 'absolute', right: '4px', top: `${(tick.y / 160) * 100}%`, transform: 'translateY(-100%)' }}>
+                  {tick.price.toFixed(4)}
+                </div>
+              ))}
+
+              {/* X-Axis Labels */}
+              {xTicks.map((tick, i) => {
+                let transform = 'translateX(-50%)';
+                let left = `${(tick.x / 400) * 100}%`;
+                if (i === 0) { transform = 'none'; left = '0%'; }
+                else if (i === xTicks.length - 1) { transform = 'translateX(-100%)'; left = '100%'; }
+                return (
+                  <div key={`xlabel-${i}`} className="axis-label-html" style={{ position: 'absolute', left, bottom: '2px', transform }}>
+                    {formatShortDate(tick.date)}
+                  </div>
+                );
+              })}
+
+              {/* Min / Max Text Overlay */}
+              {minPoint && maxPoint && (
+                <div className="minmax-marker-group-html">
+                  <div className="minmax-text-html" style={{ position: 'absolute', left: `${(minPoint.x / 400) * 100}%`, top: `${(minPoint.y / 160) * 100}%`, transform: 'translate(-50%, 8px)' }}>
+                    Düşük
+                  </div>
+                  <div className="minmax-text-html" style={{ position: 'absolute', left: `${(maxPoint.x / 400) * 100}%`, top: `${(maxPoint.y / 160) * 100}%`, transform: 'translate(-50%, -20px)' }}>
+                    Yüksek
+                  </div>
+                </div>
+              )}
+
+              {/* Latest Point Text Overlay */}
+              {lastPoint && (
+                <div className="latest-point-text-html" style={{ position: 'absolute', left: `${(lastPoint.x / 400) * 100}%`, top: `${(lastPoint.y / 160) * 100}%`, transform: 'translate(calc(-100% - 16px), -50%)' }}>
+                  {formatPrice(lastPoint.price, 4).replace(' ₺', '')} ₺
+                </div>
+              )}
+            </div>
 
             {/* Crosshair Line */}
             {activePoint && (

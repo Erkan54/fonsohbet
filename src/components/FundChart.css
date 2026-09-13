@@ -273,11 +273,12 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* Axis Labels */
-.axis-label {
-  font-size: 10px;
-  fill: var(--color-text-muted, #94A3B8);
+/* HTML Overlay Labels */
+.axis-label-html {
+  font-size: 11px;
+  color: var(--color-text-muted, #94A3B8);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .axis-line {
@@ -292,12 +293,13 @@
 }
 
 /* Min/Max Markers */
-.minmax-marker-group {
+.minmax-marker-group, .minmax-marker-group-html {
   opacity: 0;
   transition: opacity 180ms var(--chart-ease);
   pointer-events: none;
 }
-.fund-chart-svg:hover .minmax-marker-group {
+.fund-chart-body:hover .minmax-marker-group,
+.fund-chart-body:hover .minmax-marker-group-html {
   opacity: 1;
 }
 
@@ -307,10 +309,11 @@
   stroke-width: 1.5;
 }
 
-.minmax-text {
-  font-size: 9px;
-  fill: var(--color-text-muted, #94A3B8);
+.minmax-text-html {
+  font-size: 10px;
+  color: var(--color-text-muted, #94A3B8);
   font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Latest Point Marker (Permanent) */
@@ -325,10 +328,11 @@
   stroke: #315D68;
   stroke-width: 2.5;
 }
-.latest-point-text {
-  font-size: 11px;
-  fill: var(--color-text-secondary, #64748B);
+.latest-point-text-html {
+  font-size: 12px;
+  color: var(--color-text-secondary, #64748B);
   font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Animations */
@@ -360,7 +364,7 @@
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .fund-chart-body { height: 320px; }
-  .latest-point-text { display: none; }
+  .latest-point-text-html { display: none; }
 }
 
 @media (max-width: 480px) {
