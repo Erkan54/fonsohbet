@@ -15,6 +15,9 @@ const FundDetail = () => {
   const [comments, setComments] = useState([]);
   const [isSubmittingComment, setIsSubmittingComment] = useState(false);
   const [likedMap, setLikedMap] = useState({});
+  const [replyingToId, setReplyingToId] = useState(null);
+  const [replyText, setReplyText] = useState('');
+  const [isSubmittingReply, setIsSubmittingReply] = useState(false);
 
   // Bu fona ait gerçek yorumları çek
   useEffect(() => {
@@ -60,6 +63,58 @@ const FundDetail = () => {
     setLikedMap(prev => ({ ...prev, [commentId]: true }));
     setComments(prev => prev.map(c => c.id === commentId ? { ...c, likes_count: (c.likes_count || 0) + 1 } : c));
     await likeComment(commentId);
+  };
+
+  // Yanıtlama başlatma
+  const handleStartReply = (comment) => {
+    if (!isAuthenticated) {
+      loginWithGoogle();
+      return;
+    }
+    if (replyingToId === comment.id) {
+      setReplyingToId(null);
+      setReplyText('');
+    } else {
+      setReplyingToId(comment.id);
+      setReplyText(`@${comment.author} `);
+    }
+  };
+
+  // Yanıt gönderme
+  const handleSendReply = async (parentComment) => {
+    if (!replyText.trim()) return;
+
+    try {
+      setIsSubmittingReply(true);
+      const newComment = await addFundComment({
+        fundCode: fund.code,
+        content: replyText.trim(),
+      });
+      if (newComment) {
+        setComments(prev => [newComment, ...prev]);
+        refreshDiscussions();
+      }
+      setReplyText('');
+      setReplyingToId(null);
+    } catch (err) {
+      alert('Yanıt gönderilirken bir hata oluştu: ' + err.message);
+    } finally {
+      setIsSubmittingReply(false);
+    }
+  };
+
+  // Yorum içeriğini yanıt etiketiyle ayrıştırıcı
+  const renderCommentContent = (content) => {
+    const match = content.match(/^@([^\s:]+)\s*(.*)/s) || content.match(/^@([^:]+):\s*(.*)/s);
+    if (match && match[1]) {
+      return (
+        <div className="comment-text-with-reply">
+          <span className="reply-target-badge">↳ @{match[1]}</span>
+          <span className="reply-body-text">{match[2]}</span>
+        </div>
+      );
+    }
+    return <div className="comment-text">{content}</div>;
   };
 
   // Bu fona ait tartışmalar
@@ -197,15 +252,54 @@ const FundDetail = () => {
                         {comment.formattedDate || (comment.created_at ? formatRelativeTime(comment.created_at) : 'Az önce')}
                       </span>
                     </div>
-                    <div className="comment-text">{comment.content}</div>
+                    {renderCommentContent(comment.content)}
                     <div className="comment-actions">
                       <button 
                         className={`like-btn ${likedMap[comment.id] ? 'liked' : ''}`}
                         onClick={() => handleLike(comment.id)}
                       >
-                        👍 Beğen ({comment.likes_count || 0})
+                        Beğen ({comment.likes_count || 0})
+                      </button>
+                      <button 
+                        className="reply-btn"
+                        onClick={() => handleStartReply(comment)}
+                      >
+                        {replyingToId === comment.id ? 'Vazgeç' : 'Yanıtla'}
                       </button>
                     </div>
+
+                    {replyingToId === comment.id && (
+                      <div className="inline-reply-box animate-fade-in">
+                        <div className="inline-reply-header">
+                          <span><strong>@{comment.author}</strong> adlı kullanıcıya yanıt veriyorsunuz</span>
+                        </div>
+                        <textarea 
+                          className="inline-reply-input"
+                          rows="2"
+                          placeholder="Yanıtınızı yazın..."
+                          value={replyText}
+                          onChange={(e) => setReplyText(e.target.value)}
+                          autoFocus
+                        />
+                        <div className="inline-reply-actions">
+                          <button 
+                            type="button" 
+                            className="btn btn-sm btn-outline" 
+                            onClick={() => { setReplyingToId(null); setReplyText(''); }}
+                          >
+                            Vazgeç
+                          </button>
+                          <button 
+                            type="button" 
+                            className="btn btn-sm btn-primary" 
+                            onClick={() => handleSendReply(comment)}
+                            disabled={isSubmittingReply || !replyText.trim()}
+                          >
+                            {isSubmittingReply ? 'Gönderiliyor...' : 'Yanıtla'}
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))

@@ -137,10 +137,86 @@
   cursor: pointer;
   padding: 0;
   transition: color 0.2s;
+  font-weight: 500;
 }
 
 .reply-btn:hover, .like-btn:hover {
   color: var(--color-brand);
+}
+
+.like-btn.liked {
+  color: var(--color-brand);
+  font-weight: 600;
+}
+
+/* Yanıt Rozeti */
+.comment-text-with-reply {
+  font-size: var(--font-size-base);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.reply-target-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(49, 93, 104, 0.08);
+  color: var(--color-brand);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.reply-body-text {
+  color: var(--color-text-main);
+}
+
+/* Satır İçi Yanıt Formu */
+.inline-reply-box {
+  margin-top: 12px;
+  padding: 14px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-left: 3px solid var(--color-brand);
+  border-radius: 8px;
+}
+
+.inline-reply-header {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-bottom: 8px;
+}
+
+.inline-reply-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  background: #FFFFFF;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 56px;
+  box-sizing: border-box;
+}
+
+.inline-reply-input:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 2px rgba(49, 93, 104, 0.15);
+}
+
+.inline-reply-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn-sm {
+  padding: 6px 14px !important;
+  font-size: 12px !important;
 }
 
 .replies-list {
