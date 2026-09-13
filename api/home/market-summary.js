@@ -129,11 +129,16 @@ export default async function handler(req, res) {
     const zbpPrices = allPrices.filter(p => p.fund_code === 'ZBP').sort((a, b) => a.date.localeCompare(b.date));
     const blhPrices = allPrices.filter(p => p.fund_code === 'BLH').sort((a, b) => a.date.localeCompare(b.date));
 
-    // Son ~1 aylık (25 işlem günü) noktalar
-    const mapPoints = (prices) => prices.slice(-25).map(p => ({
-      date: p.date,
-      price: Number(Number(p.price).toFixed(6)),
-    }));
+    // Son 1 aylık (takvim gününe göre) noktalar
+    const mapPoints = (prices) => {
+      if (!prices || prices.length === 0) return [];
+      const latest = prices[prices.length - 1].date;
+      const targetDate = subtractOneMonth(latest);
+      return prices.filter(p => p.date >= targetDate).map(p => ({
+        date: p.date,
+        price: Number(Number(p.price).toFixed(6)),
+      }));
+    };
 
     const thfPoints1M = mapPoints(thfPrices);
     const zbpPoints1M = mapPoints(zbpPrices);

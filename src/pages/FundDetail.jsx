@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
 import { useAuth } from '../context/AuthContext';
 import { fetchFundComments, addFundComment, likeComment, formatRelativeTime } from '../services/fundService';
+import FundChart from '../components/FundChart';
 import './FundDetail.css';
 
 const FundDetail = () => {
@@ -167,6 +168,8 @@ const FundDetail = () => {
       <section className="fund-header">
         <h1 className="fund-code">{fund.code}</h1>
         <h2 className="fund-name">{fund.name}</h2>
+        
+        <FundChart fundCode={fund.code} defaultPeriod="1m" />
         
         <div className="fund-metrics">
           <div className="metric-box">

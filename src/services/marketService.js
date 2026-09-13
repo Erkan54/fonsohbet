@@ -48,3 +48,17 @@ export const fetchMarketSummary = async () => {
     return null;
   }
 };
+
+export const fetchFundHistory = async (fundCode, period = '1m') => {
+  try {
+    const res = await fetch(`/api/funds/history?code=${fundCode}&period=${period}`);
+    if (!res.ok) {
+      throw new Error(`Tarihsel veri API hatası: ${res.status}`);
+    }
+    return await res.json();
+  } catch (err) {
+    console.error('fetchFundHistory hatası:', err);
+    return null;
+  }
+};
+
