@@ -1,10 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   return (
-    <footer className="footer-section">
+    <footer className={`footer-section ${isHome ? 'footer-home' : ''}`}>
       <div className="container footer-container">
         <div className="footer-top">
           <div className="footer-brand">

@@ -6,6 +6,10 @@
   margin-top: 50px; /* İçerik bittikten tam 50px sonra başlar */
 }
 
+.footer-section.footer-home {
+  margin-top: 0;
+}
+
 .footer-container {
   display: flex;
   flex-direction: column;

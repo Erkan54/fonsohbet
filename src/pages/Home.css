@@ -6,54 +6,42 @@
 .hero-section {
   padding: 40px 0 52px;
   /* Alt boşluk 20px uzatıldı (32px -> 52px) */
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: none;
   background-color: #F8FAFC;
+  background-image: url('/hero-bg2.png');
+  background-size: cover;
+  background-position: center calc(50% - 20px);
+  background-repeat: no-repeat;
   /* Soğuk premium gri-beyaz alt ton */
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 48px -12px rgba(30, 41, 59, 0.05);
+  box-shadow: none;
 }
 
 .hero-section::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: auto;
+  bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  height: 100%;
-  /* Daha güçlü ışık/gölge (gradient glow) efekti aydınlık temada */
-  background:
-    radial-gradient(circle at 10% 20%, rgba(49, 93, 104, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(23, 107, 77, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 50% 100%, rgba(154, 81, 72, 0.05) 0%, transparent 60%);
+  height: 272px;
+  background: linear-gradient(
+    to top,
+    #F1F3F6 0%,
+    #F1F3F6 8px,
+    rgba(241, 243, 246, 0.85) 20%,
+    rgba(241, 243, 246, 0.45) 50%,
+    rgba(241, 243, 246, 0.12) 75%,
+    transparent 100%
+  );
   z-index: 0;
   pointer-events: none;
-}
-
-@keyframes moveGrid {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 32px 32px;
-  }
 }
 
 .hero-section::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    linear-gradient(rgba(49, 93, 104, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(49, 93, 104, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  z-index: 0;
-  pointer-events: none;
-  animation: moveGrid 3s linear infinite;
+  display: none;
 }
 
 .hero-container {
@@ -100,7 +88,8 @@
 
 .hero-subtitle {
   font-size: var(--font-size-lg);
-  color: var(--color-text-muted);
+  color: #E2E8F0;
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.35);
   margin-bottom: 32px;
   max-width: 480px;
 }
@@ -418,7 +407,7 @@
 }
 
 .section-title-modern {
-  font-size: 26px;
+  font-size: 28.5px;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: var(--color-text-main);
@@ -610,17 +599,228 @@
   }
 }
 
-@media (max-width: 640px) {
-  .hero-section {
-    padding: 28px 0 36px;
+/* ==========================================================================
+   Mobile Hero & Floating Layer Transition Refinements (<= 768px)
+   ========================================================================== */
+
+@keyframes heroFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
   }
-  
-  .hero-title {
-    font-size: clamp(26px, 8vw, 36px);
-    overflow-wrap: anywhere;
-    word-break: normal;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  /* 1. Hero Dikey Yerleşimi & Arka Plan Görseli */
+  .hero-section {
+    background-color: #0B1924;
+    background-image: url('/hero-mobile-bg.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-top: clamp(54px, 8vw, 74px);
+    padding-bottom: clamp(88px, 12vw, 104px);
+    margin-bottom: -40px;
+    border-bottom: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
   }
 
+  .hero-section::before {
+    display: none;
+  }
+
+  /* Hero altı: Beyaza doğru pürüzsüz gradient geçişi (Güçlendirilmiş +%10) */
+  .hero-section::after {
+    content: '';
+    display: block !important;
+    position: absolute;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 150px !important;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.25) 15%,
+      rgba(255, 255, 255, 0.6) 40%,
+      rgba(255, 255, 255, 0.95) 65%,
+      #FFFFFF 80%,
+      #FFFFFF 100%
+    ) !important;
+    pointer-events: none;
+    z-index: 1;
+    animation: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  /* Başlık Tipografisi */
+  .hero-title {
+    color: #FFFFFF;
+    font-size: clamp(28px, 6.8vw, 38px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(16px, 3.5vw, 22px);
+    overflow-wrap: break-word;
+    word-break: normal;
+    animation: heroFadeInUp 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .highlight-text {
+    color: var(--color-brand);
+  }
+
+  .highlight-text::after {
+    bottom: 1px;
+    height: 3px;
+    background-color: var(--color-brand);
+    opacity: 0.2;
+  }
+
+  /* Açıklama / Subtitle */
+  .hero-subtitle {
+    color: #E2E8F0;
+    text-shadow: 0 1px 2px rgba(15, 23, 42, 0.35);
+    font-size: clamp(14px, 3.6vw, 16px);
+    line-height: 1.5;
+    margin-bottom: clamp(32px, 5vw, 42px);
+    max-width: 100%;
+    animation: heroFadeInUp 560ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+  }
+
+  /* 6. CTA Butonları */
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .hero-actions .hero-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 12px 24px !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-md) !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, border-color 0.18s ease !important;
+    touch-action: manipulation;
+  }
+
+  .hero-actions .hero-btn:active {
+    transform: scale(0.985);
+  }
+
+  .hero-actions .btn-primary.hero-btn {
+    background-color: var(--color-brand);
+    color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: heroFadeInUp 560ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+  }
+
+  .hero-actions .btn-primary.hero-btn:active {
+    background-color: #264a53;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-actions .btn-outline.hero-btn {
+    background-color: rgba(255, 255, 255, 0.94);
+    color: #0F172A;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    animation: heroFadeInUp 560ms cubic-bezier(0.16, 1, 0.3, 1) 220ms both;
+  }
+
+  .hero-actions .btn-outline.hero-btn:active {
+    background-color: #FFFFFF;
+  }
+
+  .home-page {
+    padding-bottom: 0;
+  }
+
+  /* Gündemdeki Tartışmalar (Hero Olmayan Bölüm) Arka Planı */
+  .forum-feed-section {
+    background-color: #0B1924;
+    background-image: url('/content-mobile-bg.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 36px 0 72px;
+    position: relative;
+  }
+
+  /* Forum başı: Beyazdan yumuşakça alt görsele açılan gradient */
+  .forum-feed-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(
+      to bottom,
+      #FFFFFF 0%,
+      rgba(255, 255, 255, 0.7) 40%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .forum-feed-section .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* Küçük Mobil Ekranlar için Ekstra Tipografi Ayarı (<= 480px) */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: clamp(30px, 8vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Reduced Motion Desteği */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title,
+  .hero-subtitle,
+  .hero-actions .hero-btn {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-section::before,
+  .hero-section::after {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 640px) {
   .mock-chart-card {
     padding: 16px 16px 14px;
     min-height: auto;
@@ -658,17 +858,6 @@
   }
 
   .section-title-modern {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 440px) {
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .hero-actions .hero-btn {
-    width: 100%;
+    font-size: 24.5px;
   }
 }
