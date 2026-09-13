@@ -66,7 +66,7 @@ const FundDetail = () => {
   };
 
   // Yanıtlama başlatma
-  const handleStartReply = (comment) => {
+  const handleStartReply = (comment, replyTargetUser = null) => {
     if (!isAuthenticated) {
       loginWithGoogle();
       return;
@@ -76,7 +76,7 @@ const FundDetail = () => {
       setReplyText('');
     } else {
       setReplyingToId(comment.id);
-      setReplyText(`@${comment.author} `);
+      setReplyText(replyTargetUser ? `@${replyTargetUser} ` : '');
     }
   };
 
@@ -89,9 +89,10 @@ const FundDetail = () => {
       const newComment = await addFundComment({
         fundCode: fund.code,
         content: replyText.trim(),
+        parentId: parentComment.id,
       });
       if (newComment) {
-        setComments(prev => [newComment, ...prev]);
+        setComments(prev => [...prev, newComment]);
         refreshDiscussions();
       }
       setReplyText('');
@@ -103,19 +104,49 @@ const FundDetail = () => {
     }
   };
 
-  // Yorum içeriğini yanıt etiketiyle ayrıştırıcı
-  const renderCommentContent = (content) => {
-    const match = content.match(/^@([^\s:]+)\s*(.*)/s) || content.match(/^@([^:]+):\s*(.*)/s);
-    if (match && match[1]) {
-      return (
-        <div className="comment-text-with-reply">
-          <span className="reply-target-badge">↳ @{match[1]}</span>
-          <span className="reply-body-text">{match[2]}</span>
-        </div>
-      );
-    }
-    return <div className="comment-text">{content}</div>;
-  };
+  // Yorumları Ana Yorumlar ve İç İçe Yanıtlar Olarak Grupla
+  const { rootComments, replyMap } = React.useMemo(() => {
+    const roots = [];
+    const replies = {};
+
+    // Zaman sırasına göre diz
+    const sorted = [...comments].sort((a, b) => new Date(a.created_at || 0) - new Date(b.created_at || 0));
+
+    sorted.forEach(c => {
+      let pId = null;
+      let cleanText = c.content || '';
+
+      // [reply:ID] etiketini yakala
+      const match = cleanText.match(/^\[reply:(\d+)\]\s*(.*)/s);
+      if (match) {
+        pId = Number(match[1]);
+        cleanText = match[2];
+      } else {
+        // Eski @İsim Soyisim formatını temizle ve ana yoruma bağla
+        const legacyMatch = cleanText.match(/^@([^\n\r]+?)\s+(.*)/s);
+        if (legacyMatch) {
+          cleanText = legacyMatch[2];
+          const rootTarget = sorted.find(rc => !rc.content.startsWith('@') && !rc.content.startsWith('[reply:'));
+          if (rootTarget && rootTarget.id !== c.id) {
+            pId = rootTarget.id;
+          }
+        }
+      }
+
+      const item = { ...c, content: cleanText, parentId: pId };
+
+      if (pId) {
+        if (!replies[pId]) replies[pId] = [];
+        replies[pId].push(item);
+      } else {
+        roots.push(item);
+      }
+    });
+
+    // En yeni ana yorumlar üstte olsun
+    roots.reverse();
+    return { rootComments: roots, replyMap: replies };
+  }, [comments]);
 
   // Bu fona ait tartışmalar
   const fundDiscussions = discussions.filter(d => d.fundCode === fund.code);
@@ -236,71 +267,114 @@ const FundDetail = () => {
           </div>
 
           <div className="comments-list">
-            {comments.length > 0 ? (
-              comments.map((comment) => (
-                <div className="comment-item" key={comment.id}>
-                  {comment.authorAvatar ? (
-                    <img src={comment.authorAvatar} alt="" className="comment-avatar-img" referrerPolicy="no-referrer" />
-                  ) : (
-                    <div className="avatar-base">{(comment.author || 'Y')[0].toUpperCase()}</div>
-                  )}
-                  <div className="comment-content">
-                    <div className="comment-header">
-                      <span className="comment-author">{comment.author || 'Yatırımcı'}</span>
-                      <span className="meta-dot">·</span>
-                      <span className="comment-date">
-                        {comment.formattedDate || (comment.created_at ? formatRelativeTime(comment.created_at) : 'Az önce')}
-                      </span>
-                    </div>
-                    {renderCommentContent(comment.content)}
-                    <div className="comment-actions">
-                      <button 
-                        className={`like-btn ${likedMap[comment.id] ? 'liked' : ''}`}
-                        onClick={() => handleLike(comment.id)}
-                      >
-                        Beğen ({comment.likes_count || 0})
-                      </button>
-                      <button 
-                        className="reply-btn"
-                        onClick={() => handleStartReply(comment)}
-                      >
-                        {replyingToId === comment.id ? 'Vazgeç' : 'Yanıtla'}
-                      </button>
-                    </div>
-
-                    {replyingToId === comment.id && (
-                      <div className="inline-reply-box animate-fade-in">
-                        <div className="inline-reply-header">
-                          <span><strong>@{comment.author}</strong> adlı kullanıcıya yanıt veriyorsunuz</span>
-                        </div>
-                        <textarea 
-                          className="inline-reply-input"
-                          rows="2"
-                          placeholder="Yanıtınızı yazın..."
-                          value={replyText}
-                          onChange={(e) => setReplyText(e.target.value)}
-                          autoFocus
-                        />
-                        <div className="inline-reply-actions">
-                          <button 
-                            type="button" 
-                            className="btn btn-sm btn-outline" 
-                            onClick={() => { setReplyingToId(null); setReplyText(''); }}
-                          >
-                            Vazgeç
-                          </button>
-                          <button 
-                            type="button" 
-                            className="btn btn-sm btn-primary" 
-                            onClick={() => handleSendReply(comment)}
-                            disabled={isSubmittingReply || !replyText.trim()}
-                          >
-                            {isSubmittingReply ? 'Gönderiliyor...' : 'Yanıtla'}
-                          </button>
-                        </div>
-                      </div>
+            {rootComments.length > 0 ? (
+              rootComments.map((comment) => (
+                <div className="comment-thread" key={comment.id}>
+                  {/* Ana Yorum */}
+                  <div className="comment-item">
+                    {comment.authorAvatar ? (
+                      <img src={comment.authorAvatar} alt="" className="comment-avatar-img" referrerPolicy="no-referrer" />
+                    ) : (
+                      <div className="avatar-base">{(comment.author || 'Y')[0].toUpperCase()}</div>
                     )}
+                    <div className="comment-content">
+                      <div className="comment-header">
+                        <span className="comment-author">{comment.author || 'Yatırımcı'}</span>
+                        <span className="meta-dot">·</span>
+                        <span className="comment-date">
+                          {comment.formattedDate || (comment.created_at ? formatRelativeTime(comment.created_at) : 'Az önce')}
+                        </span>
+                      </div>
+                      <div className="comment-text">{comment.content}</div>
+                      <div className="comment-actions">
+                        <button 
+                          className={`like-btn ${likedMap[comment.id] ? 'liked' : ''}`}
+                          onClick={() => handleLike(comment.id)}
+                        >
+                          Beğen ({comment.likes_count || 0})
+                        </button>
+                        <button 
+                          className="reply-btn"
+                          onClick={() => handleStartReply(comment)}
+                        >
+                          {replyingToId === comment.id ? 'Vazgeç' : 'Yanıtla'}
+                        </button>
+                      </div>
+
+                      {/* Satır İçi Yanıt Formu */}
+                      {replyingToId === comment.id && (
+                        <div className="inline-reply-box animate-fade-in">
+                          <div className="inline-reply-header">
+                            <span><strong>@{comment.author}</strong> adlı kullanıcıya yanıt veriyorsunuz</span>
+                          </div>
+                          <textarea 
+                            className="inline-reply-input"
+                            rows="2"
+                            placeholder={`@${comment.author} için yanıtınızı yazın...`}
+                            value={replyText}
+                            onChange={(e) => setReplyText(e.target.value)}
+                            autoFocus
+                          />
+                          <div className="inline-reply-actions">
+                            <button 
+                              type="button" 
+                              className="btn btn-sm btn-outline" 
+                              onClick={() => { setReplyingToId(null); setReplyText(''); }}
+                            >
+                              Vazgeç
+                            </button>
+                            <button 
+                              type="button" 
+                              className="btn btn-sm btn-primary" 
+                              onClick={() => handleSendReply(comment)}
+                              disabled={isSubmittingReply || !replyText.trim()}
+                            >
+                              {isSubmittingReply ? 'Gönderiliyor...' : 'Yanıtla'}
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
+
+                  {/* İç İçe / Girintili Yanıtlar Listesi */}
+                  {replyMap[comment.id] && replyMap[comment.id].length > 0 && (
+                    <div className="nested-replies-list">
+                      {replyMap[comment.id].map((reply) => (
+                        <div className="comment-item reply-item" key={reply.id}>
+                          {reply.authorAvatar ? (
+                            <img src={reply.authorAvatar} alt="" className="comment-avatar-img reply-avatar" referrerPolicy="no-referrer" />
+                          ) : (
+                            <div className="avatar-base reply-avatar">{(reply.author || 'Y')[0].toUpperCase()}</div>
+                          )}
+                          <div className="comment-content">
+                            <div className="comment-header">
+                              <span className="comment-author">{reply.author || 'Yatırımcı'}</span>
+                              <span className="meta-dot">·</span>
+                              <span className="comment-date">
+                                {reply.formattedDate || (reply.created_at ? formatRelativeTime(reply.created_at) : 'Az önce')}
+                              </span>
+                            </div>
+                            <div className="comment-text">{reply.content}</div>
+                            <div className="comment-actions">
+                              <button 
+                                className={`like-btn ${likedMap[reply.id] ? 'liked' : ''}`}
+                                onClick={() => handleLike(reply.id)}
+                              >
+                                Beğen ({reply.likes_count || 0})
+                              </button>
+                              <button 
+                                className="reply-btn"
+                                onClick={() => handleStartReply(comment, reply.author)}
+                              >
+                                Yanıtla
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))
             ) : (

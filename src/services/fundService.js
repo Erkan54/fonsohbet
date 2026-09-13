@@ -305,7 +305,7 @@ export const fetchFundComments = async (fundCode) => {
 };
 
 // 6. Fona Yeni Yorum Ekle (Auth gerektirir)
-export const addFundComment = async ({ fundCode, content }) => {
+export const addFundComment = async ({ fundCode, content, parentId = null }) => {
   if (!isSupabaseConfigured || !supabase) return null;
 
   // Oturumdaki kullanıcıyı sunucu tarafında doğrula
@@ -332,6 +332,8 @@ export const addFundComment = async ({ fundCode, content }) => {
     console.warn('Profil okunamadı:', pErr);
   }
 
+  const finalContent = parentId ? `[reply:${parentId}] ${content.trim()}` : content.trim();
+
   const { data, error } = await supabase
     .from('comments')
     .insert([
@@ -339,7 +341,7 @@ export const addFundComment = async ({ fundCode, content }) => {
         fund_code: fundCode,
         author: authorName,
         user_id: user.id,
-        content,
+        content: finalContent,
       },
     ])
     .select()
