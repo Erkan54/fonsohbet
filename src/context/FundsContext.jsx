@@ -22,14 +22,27 @@ export const FundsProvider = ({ children }) => {
         fetchFunds(),
         fetchDiscussions(),
       ]);
+
+      const discs = discData || [];
+      // Her fon için tartışma ve yorum sayısını hesapla
+      const activityMap = {};
+      discs.forEach(d => {
+        if (d.fundCode) {
+          activityMap[d.fundCode] = (activityMap[d.fundCode] || 0) + 1 + (d.commentsCount || 0);
+        }
+      });
+
       if (fundsData && fundsData.length > 0) {
-        setFunds(fundsData);
-        console.log(`📊 [Fonsohbet] ${fundsData.length} fon yüklendi.`);
+        const enrichedFunds = fundsData.map(f => ({
+          ...f,
+          discussionCount: (activityMap[f.code] || 0) + (f.discussionCount || 0),
+        }));
+        setFunds(enrichedFunds);
+        console.log(`📊 [Fonsohbet] ${enrichedFunds.length} fon yüklendi.`);
       }
-      if (discData && discData.length > 0) {
-        setDiscussions(discData);
-        console.log(`💬 [Fonsohbet] ${discData.length} forum tartışması yüklendi.`);
-      }
+
+      setDiscussions(discs);
+      console.log(`💬 [Fonsohbet] ${discs.length} forum tartışması yüklendi.`);
     } catch (err) {
       console.error('Veri yükleme hatası:', err);
     } finally {
@@ -45,6 +58,12 @@ export const FundsProvider = ({ children }) => {
     try {
       const created = await createDiscussion(newDisc);
       setDiscussions(prev => [created, ...prev]);
+      // İlgili fonun aktivitesini artır
+      if (created.fundCode) {
+        setFunds(prevFunds => prevFunds.map(f => 
+          f.code === created.fundCode ? { ...f, discussionCount: (f.discussionCount || 0) + 1 } : f
+        ));
+      }
       return created;
     } catch (err) {
       console.error('Tartışma eklenemedi:', err);

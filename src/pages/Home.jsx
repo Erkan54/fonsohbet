@@ -7,6 +7,14 @@ const Home = () => {
   const { funds, discussions } = useFunds();
   const navigate = useNavigate();
 
+  // En yüksek getirili ilk 3 fon (Hero görseli için)
+  const topPerformers = React.useMemo(() => {
+    return [...funds]
+      .filter(f => f.returns?.monthly != null)
+      .sort((a, b) => (b.returns?.monthly || 0) - (a.returns?.monthly || 0))
+      .slice(0, 3);
+  }, [funds]);
+
   return (
     <div className="home-page animate-fade-in">
       {/* Hero Alanı */}
@@ -27,9 +35,22 @@ const Home = () => {
           <div className="hero-visual animate-slide-in-right">
             <div className="mock-chart-card">
               <div className="mock-chart-header">
-                <div className="mock-chip"><span className="mc-code">THF</span><span className="mc-perf text-positive">%28.10</span></div>
-                <div className="mock-chip"><span className="mc-code">YIT</span><span className="mc-perf text-positive">%66.34</span></div>
-                <div className="mock-chip"><span className="mc-code">AFA</span><span className="mc-perf text-negative">-%1.00</span></div>
+                {topPerformers.length > 0 ? (
+                  topPerformers.map(f => (
+                    <div className="mock-chip" key={f.code} onClick={() => navigate(`/fon/${f.code}`)} style={{ cursor: 'pointer' }}>
+                      <span className="mc-code">{f.code}</span>
+                      <span className={`mc-perf ${f.returns.monthly >= 0 ? 'text-positive' : 'text-negative'}`}>
+                        {f.returns.monthly >= 0 ? '+' : ''}%{f.returns.monthly.toFixed(2)}
+                      </span>
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    <div className="mock-chip"><span className="mc-code">THF</span><span className="mc-perf text-positive">%28.10</span></div>
+                    <div className="mock-chip"><span className="mc-code">YIT</span><span className="mc-perf text-positive">%66.34</span></div>
+                    <div className="mock-chip"><span className="mc-code">AFA</span><span className="mc-perf text-negative">-%1.00</span></div>
+                  </>
+                )}
               </div>
               <div className="mock-chart-body">
                 <svg viewBox="0 0 400 120" preserveAspectRatio="none" className="mock-chart-svg">
@@ -68,13 +89,17 @@ const Home = () => {
                       return (
                         <div className="discussion-row" key={disc.id}>
                           <div className="discussion-content">
-                            <Link to={`/fon/${disc.fundCode}`} className="discussion-title">{disc.title}</Link>
+                            <Link to={disc.fundCode ? `/fon/${disc.fundCode}` : '/forum'} className="discussion-title">{disc.title}</Link>
                             <div className="discussion-meta">
-                              <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i % badgeColors.length]}`}>{disc.fundCode}</Link>
+                              {disc.fundCode ? (
+                                <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i % badgeColors.length]}`}>{disc.fundCode}</Link>
+                              ) : (
+                                <span className="fund-badge badge-blue">GENEL</span>
+                              )}
                               <span className="meta-dot">·</span>
-                              <span className="meta-item">{disc.commentsCount} yorum</span>
+                              <span className="meta-item">{disc.commentsCount || 0} yorum</span>
                               <span className="meta-dot">·</span>
-                              <span className="meta-item">{disc.lastActivity}</span>
+                              <span className="meta-item">{disc.lastActivity || 'Az önce'}</span>
                               <span className="meta-dot">·</span>
                               <span className="meta-author">{disc.author}</span>
                             </div>
@@ -103,13 +128,17 @@ const Home = () => {
                         return (
                           <div className="discussion-row" key={disc.id}>
                             <div className="discussion-content">
-                              <Link to={`/fon/${disc.fundCode}`} className="discussion-title">{disc.title}</Link>
+                              <Link to={disc.fundCode ? `/fon/${disc.fundCode}` : '/forum'} className="discussion-title">{disc.title}</Link>
                               <div className="discussion-meta">
-                                <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i % badgeColors.length]}`}>{disc.fundCode}</Link>
+                                {disc.fundCode ? (
+                                  <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i % badgeColors.length]}`}>{disc.fundCode}</Link>
+                                ) : (
+                                  <span className="fund-badge badge-blue">GENEL</span>
+                                )}
                                 <span className="meta-dot">·</span>
-                                <span className="meta-item">{disc.commentsCount} yorum</span>
+                                <span className="meta-item">{disc.commentsCount || 0} yorum</span>
                                 <span className="meta-dot">·</span>
-                                <span className="meta-item">{disc.lastActivity}</span>
+                                <span className="meta-item">{disc.lastActivity || 'Az önce'}</span>
                               </div>
                             </div>
                           </div>
@@ -129,7 +158,7 @@ const Home = () => {
                     .sort((a, b) => b.discussionCount - a.discussionCount)
                     .slice(0, 5)
                     .map(f => (
-                      <li className="popular-fund-item" key={f.code}>
+                      <li className="popular-fund-item" key={f.code} onClick={() => navigate(`/fon/${f.code}`)} style={{ cursor: 'pointer' }}>
                         <div className="pf-left">
                           <span className="pf-code">{f.code}</span>
                           <span className="pf-meta">{f.name.length > 20 ? f.name.substring(0, 20) + '...' : f.name}</span>

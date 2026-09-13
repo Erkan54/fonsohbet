@@ -2,18 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
 import { useAuth } from '../context/AuthContext';
-import { fetchFundComments, addFundComment } from '../services/fundService';
+import { fetchFundComments, addFundComment, likeComment, formatRelativeTime } from '../services/fundService';
 import './FundDetail.css';
 
 const FundDetail = () => {
   const { id } = useParams();
-  const { funds, discussions } = useFunds();
+  const { funds, discussions, refreshDiscussions } = useFunds();
   const { isAuthenticated, user, profile, loginWithGoogle } = useAuth();
   const fund = funds.find(f => f.code.toUpperCase() === id?.toUpperCase()) || funds[0];
   const [activeTab, setActiveTab] = useState('Yorumlar');
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
   const [isSubmittingComment, setIsSubmittingComment] = useState(false);
+  const [likedMap, setLikedMap] = useState({});
 
   // Bu fona ait gerçek yorumları çek
   useEffect(() => {
@@ -43,6 +44,7 @@ const FundDetail = () => {
       });
       if (newComment) {
         setComments(prev => [newComment, ...prev]);
+        refreshDiscussions();
       }
       setCommentText('');
     } catch (err) {
@@ -50,6 +52,14 @@ const FundDetail = () => {
     } finally {
       setIsSubmittingComment(false);
     }
+  };
+
+  // Beğeni işlemi
+  const handleLike = async (commentId) => {
+    if (likedMap[commentId]) return;
+    setLikedMap(prev => ({ ...prev, [commentId]: true }));
+    setComments(prev => prev.map(c => c.id === commentId ? { ...c, likes_count: (c.likes_count || 0) + 1 } : c));
+    await likeComment(commentId);
   };
 
   // Bu fona ait tartışmalar
@@ -106,13 +116,17 @@ const FundDetail = () => {
 
       {/* Sekmeler */}
       <div className="common-tabs">
-        {['Yorumlar', 'Tartışmalar', 'Fon Bilgileri'].map(tab => (
+        {[
+          { key: 'Yorumlar', label: `Yorumlar (${comments.length})` },
+          { key: 'Tartışmalar', label: `Tartışmalar (${fundDiscussions.length})` },
+          { key: 'Fon Bilgileri', label: 'Fon Bilgileri' }
+        ].map(tab => (
           <button 
-            key={tab}
-            className={`common-tab ${activeTab === tab ? 'active' : ''}`}
-            onClick={() => setActiveTab(tab)}
+            key={tab.key}
+            className={`common-tab ${activeTab === tab.key ? 'active' : ''}`}
+            onClick={() => setActiveTab(tab.key)}
           >
-            {tab}
+            {tab.label}
           </button>
         ))}
       </div>
@@ -180,12 +194,17 @@ const FundDetail = () => {
                       <span className="comment-author">{comment.author || 'Yatırımcı'}</span>
                       <span className="meta-dot">·</span>
                       <span className="comment-date">
-                        {comment.created_at ? new Date(comment.created_at).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'Yeni'}
+                        {comment.formattedDate || (comment.created_at ? formatRelativeTime(comment.created_at) : 'Az önce')}
                       </span>
                     </div>
                     <div className="comment-text">{comment.content}</div>
                     <div className="comment-actions">
-                      <button className="like-btn">Beğen ({comment.likes_count || 0})</button>
+                      <button 
+                        className={`like-btn ${likedMap[comment.id] ? 'liked' : ''}`}
+                        onClick={() => handleLike(comment.id)}
+                      >
+                        👍 Beğen ({comment.likes_count || 0})
+                      </button>
                     </div>
                   </div>
                 </div>

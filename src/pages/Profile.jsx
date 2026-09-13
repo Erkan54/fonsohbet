@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
 import { useAuth } from '../context/AuthContext';
+import { fetchUserComments } from '../services/fundService';
 import './Profile.css';
 
 const Profile = () => {
   const { discussions } = useFunds();
   const { isAuthenticated, user, profile, loginWithGoogle, logout } = useAuth();
   const [activeTab, setActiveTab] = useState('Tartışmalarım');
+  const [userComments, setUserComments] = useState([]);
   const navigate = useNavigate();
+
+  // Bu kullanıcının yorumlarını çek
+  useEffect(() => {
+    if (user?.id) {
+      fetchUserComments(user.id).then(data => setUserComments(data || []));
+    }
+  }, [user?.id]);
 
   // Giriş yapmamış kullanıcıya giriş sayfası göster
   if (!isAuthenticated) {
@@ -67,7 +76,7 @@ const Profile = () => {
           <div className="profile-stats">
             <span><strong>{userDiscussions.length}</strong> Tartışma</span>
             <span className="meta-dot">·</span>
-            <span><strong>0</strong> Yorum</span>
+            <span><strong>{userComments.length}</strong> Yorum</span>
             <span className="meta-dot">·</span>
             <span><strong>0</strong> Takip Edilen Fon</span>
           </div>
@@ -102,9 +111,9 @@ const Profile = () => {
                     <span className="fund-badge badge-blue">GENEL</span>
                   )}
                   <span className="meta-dot">·</span>
-                  <span>{disc.commentsCount} yorum</span>
+                  <span>{disc.commentsCount || 0} yorum</span>
                   <span className="meta-dot">·</span>
-                  <span>{disc.lastActivity}</span>
+                  <span>{disc.lastActivity || 'Az önce'}</span>
                 </div>
               </div>
             )) : (
@@ -115,7 +124,24 @@ const Profile = () => {
 
         {activeTab === 'Yorumlarım' && (
           <div className="profile-list">
-            <p className="empty-state">Henüz bir yorum yapmadınız.</p>
+            {userComments.length > 0 ? (
+              userComments.map(c => (
+                <div className="profile-list-item" key={c.id}>
+                  <div className="profile-item-meta" style={{ marginBottom: '6px' }}>
+                    {c.fund_code ? (
+                      <Link to={`/fon/${c.fund_code}`} className="fund-badge">{c.fund_code}</Link>
+                    ) : (
+                      <span className="fund-badge badge-blue">GENEL</span>
+                    )}
+                    <span className="meta-dot">·</span>
+                    <span>{c.formattedDate || 'Az önce'}</span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '14px', color: '#1E293B', lineHeight: '1.5' }}>{c.content}</p>
+                </div>
+              ))
+            ) : (
+              <p className="empty-state">Henüz bir yorum yapmadınız.</p>
+            )}
           </div>
         )}
 

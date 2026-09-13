@@ -36,6 +36,7 @@ const Forum = () => {
       await addNewDiscussion({
         title: newTitle.trim(),
         fundCode: fundCodeToSave,
+        content: newContent.trim(),
         userId: user.id,
       });
       setNewTitle('');
@@ -57,6 +58,25 @@ const Forum = () => {
     setIsModalOpen(true);
   };
 
+  // Sekmelere göre filtreleme ve sıralama
+  const displayedDiscussions = React.useMemo(() => {
+    let list = [...discussions];
+    if (activeTab === 'Popüler') {
+      list.sort((a, b) => {
+        const scoreA = (a.commentsCount || 0) * 12 + (a.viewsCount || 0);
+        const scoreB = (b.commentsCount || 0) * 12 + (b.viewsCount || 0);
+        return scoreB - scoreA;
+      });
+    } else if (activeTab === 'Yeni') {
+      list.sort((a, b) => b.id - a.id);
+    } else if (activeTab === 'Takip Ettiklerim') {
+      if (user?.id) {
+        list = list.filter(d => d.user_id === user.id);
+      }
+    }
+    return list;
+  }, [discussions, activeTab, user?.id]);
+
   return (
     <div className="forum-page container animate-fade-in">
       <div className="forum-header">
@@ -77,8 +97,8 @@ const Forum = () => {
       </div>
 
       <div className="forum-list">
-        {discussions.length > 0 ? (
-          discussions.map(disc => (
+        {displayedDiscussions.length > 0 ? (
+          displayedDiscussions.map(disc => (
             <div className="forum-list-item" key={disc.id}>
               <div className="forum-item-main">
                 <Link to={disc.fundCode ? `/fon/${disc.fundCode}` : '/forum'} className="forum-item-title">{disc.title}</Link>
@@ -99,16 +119,16 @@ const Forum = () => {
                     {disc.author}
                   </span>
                   <span className="meta-dot">·</span>
-                  <span className="meta-item">{disc.lastActivity}</span>
+                  <span className="meta-item">{disc.lastActivity || 'Az önce'}</span>
                 </div>
               </div>
               <div className="forum-item-stats">
                 <div className="stat-box">
-                  <span className="stat-num">{disc.commentsCount}</span>
+                  <span className="stat-num">{disc.commentsCount || 0}</span>
                   <span className="stat-label">Yorum</span>
                 </div>
                 <div className="stat-box">
-                  <span className="stat-num">{(disc.commentsCount || 1) * 14}</span>
+                  <span className="stat-num">{disc.viewsCount || ((disc.commentsCount || 0) * 8 + 3)}</span>
                   <span className="stat-label">Görülme</span>
                 </div>
               </div>
@@ -116,7 +136,9 @@ const Forum = () => {
           ))
         ) : (
           <div style={{ textAlign: 'center', padding: '48px 24px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', marginTop: '16px' }}>
-            <p style={{ fontSize: '16px', color: '#64748B', marginBottom: '16px' }}>Henüz hiçbir tartışma konusu açılmamış.</p>
+            <p style={{ fontSize: '16px', color: '#64748B', marginBottom: '16px' }}>
+              {activeTab === 'Takip Ettiklerim' ? 'Henüz takip ettiğiniz veya açtığınız bir konu yok.' : 'Henüz hiçbir tartışma konusu açılmamış.'}
+            </p>
             <button className="btn btn-primary hero-btn" onClick={handleNewDiscussionClick}>+ İlk Tartışmayı Başlat</button>
           </div>
         )}
