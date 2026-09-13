@@ -303,7 +303,7 @@ const Questionnaire = () => {
                   </div>
                   <div className="rec-name">{fund.name}</div>
                   <div className="rec-reason">
-                    <span className="rec-reason-icon">💡</span> {reason}
+                    {reason}
                   </div>
                   <div className="rec-metrics">
                     <div className="rec-metric">

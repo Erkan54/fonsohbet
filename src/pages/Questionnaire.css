@@ -312,10 +312,6 @@
   border-left: 3px solid var(--color-brand);
 }
 
-.rec-reason-icon {
-  margin-right: 4px;
-}
-
 .rec-metrics {
   display: flex;
   gap: 28px;
