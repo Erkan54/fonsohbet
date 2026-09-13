@@ -26,7 +26,7 @@
 }
 
 .corporate-title {
-  font-size: 36px;
+  font-size: clamp(26px, 5vw, 36px);
   font-weight: 800;
   color: var(--color-text-main, #0F172A);
   letter-spacing: -0.8px;
@@ -139,7 +139,8 @@
   font-size: 14.5px;
   font-weight: 600;
   color: var(--color-primary, #315D68);
-  word-break: break-all;
+  overflow-wrap: anywhere;
+  word-break: normal;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -162,6 +163,8 @@
   flex-direction: column;
   align-items: center;
   gap: 14px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .main-email-title {
@@ -182,6 +185,10 @@
   user-select: all;
   text-decoration: none;
   transition: all 0.2s;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .main-email-address:hover {

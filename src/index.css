@@ -90,6 +90,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
+  overflow-x: clip;
+}
+
+body.modal-open,
+body.drawer-open {
+  overflow: hidden !important;
 }
 
 body::before {
@@ -134,7 +140,19 @@ button {
   width: 100%;
   max-width: var(--max-content-width);
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 12px;
+  }
 }
 
 @keyframes fadeInUp {
@@ -205,11 +223,14 @@ button {
   align-items: center;
   justify-content: center;
   padding: 8px 16px;
+  min-height: 40px;
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   font-weight: 500;
   transition: all var(--transition-hover) var(--ease-premium);
   border: 1px solid transparent;
+  box-sizing: border-box;
+  touch-action: manipulation;
 }
 
 /* Primary Button */
@@ -332,6 +353,43 @@ button {
   gap: 32px;
   border-bottom: 1px solid var(--color-border-light);
   margin-bottom: 32px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.common-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .common-tabs {
+    gap: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 2px;
+  }
+
+  .common-tab {
+    padding: 10px 0;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+}
+
+.text-wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+@media (max-width: 768px) {
+  .input-base,
+  input[type="text"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 
 .common-tab {

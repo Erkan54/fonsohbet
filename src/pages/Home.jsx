@@ -149,11 +149,13 @@ const Home = () => {
     return chartCoordinates[chartCoordinates.length - 1];
   }, [chartCoordinates, hoveredPointIndex]);
 
-  // Fare hareketine göre en yakın veri noktasını bulma
-  const handleChartMouseMove = (e) => {
+  // Pointer Events ile fare ve dokunmatik desteği (touch-action: pan-y ile uyumlu)
+  const handleChartPointer = (e) => {
     if (chartCoordinates.length === 0) return;
     const rect = e.currentTarget.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
+    const clientX = e.clientX;
+    if (clientX === undefined) return;
+    const mouseX = clientX - rect.left;
     const ratio = Math.max(0, Math.min(1, mouseX / rect.width));
     const targetX = 10 + ratio * 380;
 
@@ -166,7 +168,7 @@ const Home = () => {
         closestIdx = idx;
       }
     });
-    setHoveredPointIndex(closestIdx);
+    setHoveredPointIndex(prev => (e.type === 'pointerdown' && prev === closestIdx ? null : closestIdx));
   };
 
   return (
@@ -232,8 +234,9 @@ const Home = () => {
 
               <div
                 className={`mock-chart-body ${isFading ? 'fading-out' : 'fading-in'}`}
-                onMouseMove={handleChartMouseMove}
-                onMouseLeave={() => setHoveredPointIndex(null)}
+                onPointerDown={handleChartPointer}
+                onPointerMove={handleChartPointer}
+                onPointerLeave={() => setHoveredPointIndex(null)}
               >
                 {isLoadingSummary ? (
                   <div className="chart-skeleton-container">

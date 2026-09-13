@@ -31,6 +31,25 @@ const Forum = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Modal açıkken body scroll lock ve Escape tuşu
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        setIsModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.classList.remove('modal-open');
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isModalOpen]);
+
   // Modal için filtrelenmiş fonlar
   const filteredModalFunds = React.useMemo(() => {
     const term = fundSearchTerm.trim().toLowerCase();
@@ -199,11 +218,23 @@ const Forum = () => {
 
       {/* Yeni Tartışma Modalı */}
       {isModalOpen && (
-        <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+        <div 
+          className="modal-overlay" 
+          onClick={() => setIsModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-heading"
+        >
           <div className="modal-content animate-slide-in-right" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
-              <h2>Yeni Tartışma Başlat</h2>
-              <button className="modal-close" onClick={() => setIsModalOpen(false)}>&times;</button>
+              <h2 id="modal-heading">Yeni Tartışma Başlat</h2>
+              <button 
+                className="modal-close" 
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Modalı Kapat"
+              >
+                &times;
+              </button>
             </div>
             <p className="modal-desc">Hangi fon hakkında fikirlerinizi veya sorularınızı paylaşmak istiyorsunuz?</p>
             <form className="modal-form" onSubmit={handleCreateDiscussion}>

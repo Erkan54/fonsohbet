@@ -128,6 +128,7 @@
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.5); /* lighter to blend */
   overflow: hidden;
+  touch-action: pan-y;
   transition: border-color 180ms var(--chart-ease), opacity 250ms var(--chart-ease);
 }
 
@@ -140,6 +141,7 @@
   width: calc(100% - 6px);
   margin: 0 3px;
   height: 100%;
+  touch-action: pan-y;
 }
 
 .fund-chart-svg {
@@ -401,13 +403,25 @@
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  .fund-chart-body { height: 320px; }
+  .fund-chart-body { height: 280px; }
   .latest-point-text-html { display: none; }
 }
 
 @media (max-width: 480px) {
-  .fund-chart-body { height: 260px; }
-  .fund-chart-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .fund-chart-controls { width: 100%; border-bottom: 1px solid rgba(49,93,104,0.1); }
+  .fund-chart-body { height: 230px; }
+  .fund-chart-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .fund-chart-controls-wrapper { width: 100%; }
+  .fund-chart-controls {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-bottom: 1px solid rgba(49,93,104,0.1);
+    padding-bottom: 2px;
+  }
+  .period-btn {
+    flex: 1;
+    min-width: 44px;
+    padding: 8px 4px;
+  }
   .fund-chart-period-return { font-size: 16px; }
 }

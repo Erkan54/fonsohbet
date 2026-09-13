@@ -158,9 +158,12 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
   }, [coords]);
 
   const handlePointerMove = useCallback((e) => {
+    // Sadece fare sürükleme/hover veya aktif işaretçi takibinde güncelle
     if (coords.length === 0) return;
+    if (e.pointerType === 'touch' && e.buttons === 0) return; // Dokunmatikte rastgele gezinmeler yerine tap ile seçim
     const rect = e.currentTarget.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientX = e.clientX ?? (e.touches && e.touches[0]?.clientX);
+    if (clientX === undefined) return;
     const mouseX = clientX - rect.left;
     const ratio = Math.max(0, Math.min(1, mouseX / rect.width));
     const targetX = ratio * 400;
@@ -175,6 +178,28 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
       }
     });
     setHoveredPointIndex(closestIdx);
+  }, [coords]);
+
+  const handlePointerDown = useCallback((e) => {
+    if (coords.length === 0) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clientX = e.clientX ?? (e.touches && e.touches[0]?.clientX);
+    if (clientX === undefined) return;
+    const mouseX = clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, mouseX / rect.width));
+    const targetX = ratio * 400;
+
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    coords.forEach((pt, idx) => {
+      const diff = Math.abs(pt.x - targetX);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = idx;
+      }
+    });
+    // Dokunmatik cihazlarda aynı noktaya tekrar tıklandığında tooltip kapanır
+    setHoveredPointIndex(prev => (prev === closestIdx ? null : closestIdx));
   }, [coords]);
 
   const handlePointerLeave = () => {
@@ -292,7 +317,7 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
             className="fund-chart-plot-area"
             onPointerMove={handlePointerMove}
             onPointerLeave={handlePointerLeave}
-            onPointerDown={handlePointerMove}
+            onPointerDown={handlePointerDown}
           >
             <svg 
               viewBox="0 0 400 160" 

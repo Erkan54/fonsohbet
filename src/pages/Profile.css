@@ -34,11 +34,13 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-main);
   margin-bottom: 12px;
+  overflow-wrap: anywhere;
 }
 
 .profile-stats {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
@@ -231,4 +233,45 @@
 .profile-logout-btn:hover {
   background-color: #FEF2F2;
   border-color: #EF4444;
+}
+
+@media (max-width: 640px) {
+  .profile-page {
+    padding: 24px 16px 60px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .profile-avatar,
+  .profile-avatar-img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .profile-logout-btn {
+    width: 100%;
+    margin-left: 0;
+    min-height: 42px;
+    justify-content: center;
+  }
+
+  .profile-list-item {
+    padding: 16px 12px;
+    margin: 0 -12px;
+  }
+
+  .profile-login-prompt {
+    padding: 48px 16px;
+  }
+
+  .btn-google-login-large {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
 }

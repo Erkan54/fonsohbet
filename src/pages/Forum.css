@@ -1,23 +1,21 @@
 .forum-page {
-  padding: 80px 16px 120px; /* Üstten 80px, alttan 120px boşluk ile ekranın tam ortasına dengelendi */
-  flex: 1; /* Main content içinde tüm boşluğu kaplaması için */
+  padding: 40px 16px 100px;
+  flex: 1;
 }
 
 .forum-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
 }
 
 .page-title {
-  font-size: 32px;
+  font-size: clamp(26px, 5vw, 32px);
   font-weight: 800;
   letter-spacing: -0.5px;
   color: var(--color-text-main);
 }
-
-
 
 .forum-list {
   display: flex;
@@ -53,6 +51,7 @@
   color: var(--color-text-main);
   margin-bottom: 8px;
   transition: color 0.2s;
+  overflow-wrap: anywhere;
 }
 
 .forum-item-title:hover {
@@ -100,12 +99,45 @@
 }
 
 @media (max-width: 600px) {
+  .forum-page {
+    padding: 24px 16px 64px;
+  }
+
+  .forum-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .forum-header .hero-btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
   .forum-list-item {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
+    padding: 18px 12px;
+    margin: 0 -12px;
   }
+
+  .forum-item-main {
+    padding-right: 0;
+  }
+
   .forum-item-stats {
     justify-content: flex-start;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+    min-height: 44px;
   }
 }
 
@@ -138,12 +170,17 @@
 
 .modal-content {
   background-color: var(--color-bg-surface);
-  width: 100%;
+  width: min(540px, calc(100vw - 24px));
   max-width: 540px;
+  max-height: 90vh;
+  max-height: 90dvh;
+  overflow-y: auto;
   border-radius: var(--radius-xl);
-  padding: 32px;
+  padding: clamp(20px, 4vw, 32px);
+  padding-bottom: max(clamp(20px, 4vw, 32px), env(safe-area-inset-bottom, 0px));
   box-shadow: 0 24px 48px rgba(13, 27, 42, 0.15);
   border: 1px solid var(--color-border-card);
+  box-sizing: border-box;
 }
 
 .modal-header {

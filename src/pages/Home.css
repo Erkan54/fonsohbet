@@ -73,7 +73,7 @@
 }
 
 .hero-title {
-  font-size: 42px;
+  font-size: clamp(28px, 6vw, 42px);
   font-weight: 800;
   color: var(--color-text-main);
   margin-bottom: 16px;
@@ -321,6 +321,7 @@
   width: 100%;
   cursor: crosshair;
   margin-top: 16px;
+  touch-action: pan-y;
   transition: opacity 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -583,14 +584,91 @@
   text-align: right;
 }
 
-.pf-perf {
-  font-size: 12px;
-  font-weight: 600;
-  display: block;
+@media (max-width: 960px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-visual {
+    display: none;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .forum-layout {
     grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 28px 0 36px;
+  }
+  
+  .hero-title {
+    font-size: clamp(26px, 8vw, 36px);
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .mock-chart-card {
+    padding: 16px 16px 14px;
+    min-height: auto;
+    border-radius: 16px;
+  }
+
+  .mock-chart-body {
+    height: 180px;
+  }
+
+  .hero-active-fund-badge {
+    width: auto;
+    max-width: calc(100% - 90px);
+    padding: 4px 10px;
+    gap: 6px;
+  }
+
+  .hero-badge-name {
+    font-size: 12px;
+  }
+
+  .hero-data-date-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .forum-main-column {
+    padding: 16px 16px 20px;
+    border-radius: var(--radius-lg);
+  }
+
+  .discussion-row {
+    margin: 0 -8px;
+    padding: 12px 8px;
+  }
+
+  .section-title-modern {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 440px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .hero-btn {
+    width: 100%;
   }
 }

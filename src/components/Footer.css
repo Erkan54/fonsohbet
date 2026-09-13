@@ -1,7 +1,7 @@
 .footer-section {
   background-color: #0D1B2A; /* Premium Lacivert (Deep Navy) */
   color: #F8FAFC;
-  padding: 40px 0 16px; /* 80px -> 40px */
+  padding: 40px 0 max(16px, env(safe-area-inset-bottom, 16px));
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: 50px; /* İçerik bittikten tam 50px sonra başlar */
 }
@@ -54,6 +54,8 @@
   color: #94A3B8;
   font-size: 13px; /* 15px -> 13px */
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer-links a:hover {
@@ -73,5 +75,9 @@
   .footer-top {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+  .footer-links a {
+    min-height: 38px;
+    padding: 2px 0;
   }
 }

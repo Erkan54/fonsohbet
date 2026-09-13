@@ -20,7 +20,12 @@ import { FundsProvider } from './context/FundsContext';
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // setTimeout ile React DOM güncellemelerinin bitmesini bekle
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTo(0, 0);
+      document.body.scrollTo(0, 0);
+    }, 0);
   }, [pathname]);
   return null;
 };
