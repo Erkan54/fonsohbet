@@ -345,7 +345,7 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
                       position: 'absolute', 
                       left: `${(minPoint.x / 400) * 100}%`, 
                       top: `${(minPoint.y / 160) * 100}%`, 
-                      transform: 'translate(-50%, 8px)' 
+                      transform: minPoint.x < 45 ? 'translate(4px, 8px)' : minPoint.x > 355 ? 'translate(calc(-100% - 4px), 8px)' : 'translate(-50%, 8px)' 
                     }}
                   >
                     Düşük
@@ -365,7 +365,7 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
                       position: 'absolute', 
                       left: `${(maxPoint.x / 400) * 100}%`, 
                       top: `${(maxPoint.y / 160) * 100}%`, 
-                      transform: 'translate(-50%, -20px)' 
+                      transform: maxPoint.x < 45 ? 'translate(4px, -20px)' : maxPoint.x > 355 ? 'translate(calc(-100% - 4px), -20px)' : 'translate(-50%, -20px)' 
                     }}
                   >
                     Yüksek
@@ -386,7 +386,15 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
                     <div className="latest-point-ring" />
                     <div className="latest-point-dot" />
                   </div>
-                  <div className="latest-point-text-html" style={{ position: 'absolute', left: `${(lastPoint.x / 400) * 100}%`, top: `${(lastPoint.y / 160) * 100}%`, transform: 'translate(calc(-100% - 14px), -50%)' }}>
+                  <div 
+                    className="latest-point-text-html" 
+                    style={{ 
+                      position: 'absolute', 
+                      left: `${(lastPoint.x / 400) * 100}%`, 
+                      top: `${(lastPoint.y / 160) * 100}%`, 
+                      transform: 'translate(calc(-100% - 12px), -50%)' 
+                    }}
+                  >
                     {formatPrice(lastPoint.price, 4).replace(' ₺', '')} ₺
                   </div>
                 </>
