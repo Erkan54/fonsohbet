@@ -21,10 +21,12 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 CACHE_FILE = DATA_DIR / "fund_prices_cache.json"
 SYNC_FILE = DATA_DIR / "fund_sync_runs.json"
 
-FUNDS = ["THF", "ZBP", "BLH"]
+from app.config import TRACKED_FUNDS
+
+FUNDS = TRACKED_FUNDS
 all_extracted = []
 
-print("Extracting real official TEFAS price history for THF, ZBP, BLH...")
+print(f"Extracting real official TEFAS price history for {len(FUNDS)} tracked funds...")
 for code in FUNDS:
     url = f"https://fonasistani.com/fon/{code}"
     try:
