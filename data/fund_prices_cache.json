@@ -1,0 +1,3782 @@
+[
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-11",
+    "price": "41.850553"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-12",
+    "price": "40.765903"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-15",
+    "price": "41.096475"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-16",
+    "price": "43.630553"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-17",
+    "price": "44.428421"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-18",
+    "price": "44.539393"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-19",
+    "price": "43.181933"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-22",
+    "price": "44.578821"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-23",
+    "price": "45.415773"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-24",
+    "price": "44.449147"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-25",
+    "price": "44.078276"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-26",
+    "price": "43.661655"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-29",
+    "price": "42.43593"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-09-30",
+    "price": "42.154485"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-01",
+    "price": "42.451914"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-02",
+    "price": "44.016461"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-03",
+    "price": "42.588103"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-06",
+    "price": "40.696153"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-07",
+    "price": "39.593444"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-08",
+    "price": "39.790478"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-09",
+    "price": "39.272388"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-10",
+    "price": "38.567214"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-13",
+    "price": "38.571921"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-14",
+    "price": "37.786984"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-15",
+    "price": "36.03651"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-16",
+    "price": "36.073838"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-17",
+    "price": "36.30635"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-20",
+    "price": "35.741084"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-21",
+    "price": "37.493296"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-22",
+    "price": "37.832628"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-23",
+    "price": "38.061146"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-24",
+    "price": "38.244272"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-27",
+    "price": "40.43903"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-28",
+    "price": "39.276336"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-30",
+    "price": "39.198472"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-10-31",
+    "price": "39.449222"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-03",
+    "price": "40.579058"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-04",
+    "price": "40.851305"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-05",
+    "price": "40.698832"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-06",
+    "price": "41.178451"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-07",
+    "price": "41.836453"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-10",
+    "price": "40.782545"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-11",
+    "price": "39.934419"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-12",
+    "price": "38.973675"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-13",
+    "price": "39.403463"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-14",
+    "price": "39.434809"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-17",
+    "price": "39.262359"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-18",
+    "price": "39.311791"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-19",
+    "price": "39.534289"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-20",
+    "price": "40.839528"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-21",
+    "price": "41.42757"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-24",
+    "price": "41.017353"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-25",
+    "price": "41.664745"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-26",
+    "price": "42.307279"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-27",
+    "price": "42.478516"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-11-28",
+    "price": "42.944038"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-01",
+    "price": "43.461514"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-02",
+    "price": "45.017489"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-03",
+    "price": "44.834688"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-04",
+    "price": "45.201039"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-05",
+    "price": "43.646493"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-08",
+    "price": "44.790489"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-09",
+    "price": "45.288792"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-10",
+    "price": "45.507607"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-11",
+    "price": "44.865887"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-12",
+    "price": "44.643429"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-15",
+    "price": "45.007307"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-16",
+    "price": "45.611813"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-17",
+    "price": "45.238631"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-18",
+    "price": "45.185634"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-19",
+    "price": "45.802598"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-22",
+    "price": "45.734585"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-23",
+    "price": "46.234494"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-24",
+    "price": "45.772986"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-25",
+    "price": "44.900097"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-26",
+    "price": "44.751238"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-29",
+    "price": "44.331043"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-30",
+    "price": "44.678278"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2025-12-31",
+    "price": "44.796898"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-02",
+    "price": "45.399836"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-05",
+    "price": "47.336497"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-06",
+    "price": "47.39791"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-07",
+    "price": "48.241719"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-08",
+    "price": "47.102886"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-09",
+    "price": "47.219962"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-12",
+    "price": "47.281097"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-13",
+    "price": "47.083871"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-14",
+    "price": "47.53988"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-15",
+    "price": "47.27445"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-16",
+    "price": "46.519368"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-19",
+    "price": "46.710082"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-20",
+    "price": "48.223633"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-21",
+    "price": "48.182456"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-22",
+    "price": "49.416471"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-23",
+    "price": "48.539976"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-26",
+    "price": "49.639302"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-27",
+    "price": "49.795032"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-28",
+    "price": "49.009941"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-29",
+    "price": "50.570768"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-01-30",
+    "price": "53.066906"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-02",
+    "price": "54.425112"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-03",
+    "price": "53.890047"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-04",
+    "price": "54.437897"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-05",
+    "price": "53.120317"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-06",
+    "price": "51.699274"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-09",
+    "price": "51.510737"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-10",
+    "price": "52.860288"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-11",
+    "price": "52.458092"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-12",
+    "price": "52.660669"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-13",
+    "price": "56.324051"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-16",
+    "price": "55.429663"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-17",
+    "price": "55.526306"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-18",
+    "price": "55.013416"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-19",
+    "price": "55.884555"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-20",
+    "price": "53.418135"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-23",
+    "price": "54.434617"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-24",
+    "price": "55.645957"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-25",
+    "price": "55.762792"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-26",
+    "price": "55.497181"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-02-27",
+    "price": "56.348461"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-02",
+    "price": "55.332934"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-03",
+    "price": "51.24413"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-04",
+    "price": "48.222996"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-05",
+    "price": "47.873616"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-06",
+    "price": "48.497132"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-09",
+    "price": "46.079664"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-10",
+    "price": "46.080488"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-11",
+    "price": "48.245986"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-12",
+    "price": "47.817768"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-13",
+    "price": "46.773128"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-16",
+    "price": "45.181876"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-17",
+    "price": "45.200373"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-18",
+    "price": "46.605176"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-19",
+    "price": "46.013273"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-23",
+    "price": "45.191356"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-24",
+    "price": "44.943557"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-25",
+    "price": "43.37624"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-26",
+    "price": "43.811619"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-27",
+    "price": "42.777799"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-30",
+    "price": "42.700625"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-03-31",
+    "price": "41.990835"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-01",
+    "price": "42.327256"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-02",
+    "price": "43.642266"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-03",
+    "price": "44.221868"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-06",
+    "price": "44.07663"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-07",
+    "price": "44.923616"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-08",
+    "price": "44.034377"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-09",
+    "price": "47.764213"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-10",
+    "price": "47.923684"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-13",
+    "price": "49.37752"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-14",
+    "price": "48.799645"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-15",
+    "price": "48.881066"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-16",
+    "price": "48.867997"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-17",
+    "price": "48.462095"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-20",
+    "price": "51.173068"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-21",
+    "price": "50.403978"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-22",
+    "price": "49.852357"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-24",
+    "price": "49.222014"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-27",
+    "price": "48.604589"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-28",
+    "price": "48.29092"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-29",
+    "price": "47.328405"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-04-30",
+    "price": "46.611869"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-04",
+    "price": "47.012664"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-05",
+    "price": "45.628759"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-06",
+    "price": "45.666254"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-07",
+    "price": "47.706149"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-08",
+    "price": "48.431554"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-11",
+    "price": "48.555556"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-12",
+    "price": "49.074551"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-13",
+    "price": "47.321504"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-14",
+    "price": "46.696462"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-15",
+    "price": "47.238507"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-18",
+    "price": "45.971312"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-20",
+    "price": "45.639355"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-21",
+    "price": "45.176996"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-22",
+    "price": "41.325645"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-25",
+    "price": "42.495237"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-05-26",
+    "price": "43.482932"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-01",
+    "price": "42.939369"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-02",
+    "price": "43.051018"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-03",
+    "price": "45.057766"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-04",
+    "price": "44.224491"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-05",
+    "price": "45.219878"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-08",
+    "price": "43.545027"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-09",
+    "price": "45.159116"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-10",
+    "price": "45.52466"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-11",
+    "price": "44.774199"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-12",
+    "price": "45.027594"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-15",
+    "price": "47.868965"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-16",
+    "price": "50.328556"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-17",
+    "price": "50.421528"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-18",
+    "price": "50.704317"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-19",
+    "price": "52.468703"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-22",
+    "price": "52.595403"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-23",
+    "price": "52.762946"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-24",
+    "price": "51.701757"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-25",
+    "price": "51.487014"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-26",
+    "price": "49.515853"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-29",
+    "price": "49.844521"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-06-30",
+    "price": "49.474927"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-01",
+    "price": "49.578283"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-02",
+    "price": "50.098876"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-03",
+    "price": "50.112543"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-06",
+    "price": "47.641676"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-07",
+    "price": "47.549599"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-08",
+    "price": "47.743114"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-09",
+    "price": "46.124102"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-10",
+    "price": "45.742629"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-13",
+    "price": "45.084279"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-14",
+    "price": "44.305852"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-16",
+    "price": "44.807836"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-17",
+    "price": "44.661894"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-20",
+    "price": "43.759842"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-21",
+    "price": "43.096938"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-22",
+    "price": "42.85815"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-23",
+    "price": "43.108387"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-24",
+    "price": "43.066463"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-27",
+    "price": "43.139437"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-28",
+    "price": "42.818692"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-29",
+    "price": "42.694393"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-30",
+    "price": "41.444228"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-07-31",
+    "price": "40.476035"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-03",
+    "price": "41.800087"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-04",
+    "price": "43.100892"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-05",
+    "price": "43.936131"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-06",
+    "price": "43.335749"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-07",
+    "price": "43.029788"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-10",
+    "price": "43.021968"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-11",
+    "price": "42.402792"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-12",
+    "price": "42.133194"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-13",
+    "price": "44.000916"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-14",
+    "price": "43.882442"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-17",
+    "price": "43.8563"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-18",
+    "price": "43.32824"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-19",
+    "price": "43.23324"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-20",
+    "price": "44.242457"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-21",
+    "price": "43.456793"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-24",
+    "price": "43.716017"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-25",
+    "price": "44.865653"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-26",
+    "price": "44.880098"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-27",
+    "price": "45.837403"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-28",
+    "price": "45.832949"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-08-31",
+    "price": "46.435186"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-01",
+    "price": "45.34301"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-02",
+    "price": "45.620544"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-03",
+    "price": "45.650825"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-04",
+    "price": "45.974992"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-07",
+    "price": "46.384441"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-08",
+    "price": "46.535823"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-09",
+    "price": "48.688536"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-10",
+    "price": "47.506273"
+  },
+  {
+    "fund_code": "BLH",
+    "date": "2026-09-11",
+    "price": "46.986633"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-11",
+    "price": "1.304647"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-12",
+    "price": "1.281739"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-15",
+    "price": "1.287352"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-16",
+    "price": "1.356385"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-17",
+    "price": "1.382857"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-18",
+    "price": "1.380273"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-19",
+    "price": "1.376712"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-22",
+    "price": "1.402587"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-23",
+    "price": "1.438626"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-24",
+    "price": "1.437502"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-25",
+    "price": "1.439407"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-26",
+    "price": "1.449035"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-29",
+    "price": "1.421476"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-09-30",
+    "price": "1.405948"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-01",
+    "price": "1.410518"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-02",
+    "price": "1.437701"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-03",
+    "price": "1.427431"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-06",
+    "price": "1.40724"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-07",
+    "price": "1.39236"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-08",
+    "price": "1.395225"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-09",
+    "price": "1.413246"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-10",
+    "price": "1.413623"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-13",
+    "price": "1.409159"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-14",
+    "price": "1.39358"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-15",
+    "price": "1.375755"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-16",
+    "price": "1.401321"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-17",
+    "price": "1.392225"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-20",
+    "price": "1.37412"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-21",
+    "price": "1.417212"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-22",
+    "price": "1.433234"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-23",
+    "price": "1.449472"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-24",
+    "price": "1.466329"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-27",
+    "price": "1.492168"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-28",
+    "price": "1.486751"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-30",
+    "price": "1.483577"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-10-31",
+    "price": "1.499847"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-03",
+    "price": "1.516345"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-04",
+    "price": "1.522672"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-05",
+    "price": "1.508934"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-06",
+    "price": "1.509119"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-07",
+    "price": "1.519472"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-10",
+    "price": "1.490097"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-11",
+    "price": "1.474267"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-12",
+    "price": "1.460072"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-13",
+    "price": "1.476292"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-14",
+    "price": "1.483279"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-17",
+    "price": "1.476881"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-18",
+    "price": "1.513915"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-19",
+    "price": "1.520575"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-20",
+    "price": "1.532205"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-21",
+    "price": "1.541331"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-24",
+    "price": "1.543425"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-25",
+    "price": "1.551621"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-26",
+    "price": "1.560389"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-27",
+    "price": "1.544482"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-11-28",
+    "price": "1.54901"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-01",
+    "price": "1.536743"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-02",
+    "price": "1.57482"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-03",
+    "price": "1.585948"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-04",
+    "price": "1.591486"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-05",
+    "price": "1.590183"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-08",
+    "price": "1.607853"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-09",
+    "price": "1.622843"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-10",
+    "price": "1.627091"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-11",
+    "price": "1.615828"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-12",
+    "price": "1.618756"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-15",
+    "price": "1.618503"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-16",
+    "price": "1.631325"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-17",
+    "price": "1.625524"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-18",
+    "price": "1.626025"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-19",
+    "price": "1.635806"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-22",
+    "price": "1.650498"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-23",
+    "price": "1.6605"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-24",
+    "price": "1.677764"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-25",
+    "price": "1.677079"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-26",
+    "price": "1.680228"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-29",
+    "price": "1.678939"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-30",
+    "price": "1.657539"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2025-12-31",
+    "price": "1.647816"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-02",
+    "price": "1.626682"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-05",
+    "price": "1.649469"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-06",
+    "price": "1.671657"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-07",
+    "price": "1.705405"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-08",
+    "price": "1.676403"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-09",
+    "price": "1.669487"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-12",
+    "price": "1.690976"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-13",
+    "price": "1.710409"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-14",
+    "price": "1.735307"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-15",
+    "price": "1.728153"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-16",
+    "price": "1.72393"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-19",
+    "price": "1.746884"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-20",
+    "price": "1.77642"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-21",
+    "price": "1.788251"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-22",
+    "price": "1.782268"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-23",
+    "price": "1.776097"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-26",
+    "price": "1.787757"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-27",
+    "price": "1.810408"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-28",
+    "price": "1.79703"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-29",
+    "price": "1.8144"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-01-30",
+    "price": "1.864235"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-02",
+    "price": "1.851449"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-03",
+    "price": "1.80958"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-04",
+    "price": "1.822769"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-05",
+    "price": "1.813887"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-06",
+    "price": "1.780766"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-09",
+    "price": "1.782604"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-10",
+    "price": "1.817726"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-11",
+    "price": "1.839696"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-12",
+    "price": "1.847791"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-13",
+    "price": "1.902355"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-16",
+    "price": "1.905767"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-17",
+    "price": "1.906102"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-18",
+    "price": "1.898504"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-19",
+    "price": "1.9138"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-20",
+    "price": "1.883287"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-23",
+    "price": "1.923174"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-24",
+    "price": "1.991434"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-25",
+    "price": "2.003827"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-26",
+    "price": "1.98087"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-02-27",
+    "price": "1.995421"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-02",
+    "price": "1.99239"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-03",
+    "price": "1.940801"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-04",
+    "price": "1.869067"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-05",
+    "price": "1.870204"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-06",
+    "price": "1.888452"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-09",
+    "price": "1.866689"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-10",
+    "price": "1.872208"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-11",
+    "price": "1.951432"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-12",
+    "price": "1.946855"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-13",
+    "price": "1.950356"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-16",
+    "price": "1.91866"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-17",
+    "price": "1.912466"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-18",
+    "price": "1.955292"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-19",
+    "price": "1.932323"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-23",
+    "price": "1.918011"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-24",
+    "price": "1.931324"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-25",
+    "price": "1.909643"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-26",
+    "price": "1.939426"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-27",
+    "price": "1.91463"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-30",
+    "price": "1.904445"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-03-31",
+    "price": "1.8958"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-01",
+    "price": "1.900142"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-02",
+    "price": "1.918272"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-03",
+    "price": "1.948348"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-06",
+    "price": "1.936181"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-07",
+    "price": "1.985131"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-08",
+    "price": "1.959165"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-09",
+    "price": "2.071571"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-10",
+    "price": "2.114426"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-13",
+    "price": "2.153033"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-14",
+    "price": "2.144379"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-15",
+    "price": "2.144928"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-16",
+    "price": "2.161393"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-17",
+    "price": "2.179704"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-20",
+    "price": "2.252808"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-21",
+    "price": "2.231456"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-22",
+    "price": "2.205171"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-24",
+    "price": "2.18189"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-27",
+    "price": "2.180864"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-28",
+    "price": "2.173951"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-29",
+    "price": "2.139821"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-04-30",
+    "price": "2.123635"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-04",
+    "price": "2.138974"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-05",
+    "price": "2.113266"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-06",
+    "price": "2.136407"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-07",
+    "price": "2.167893"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-08",
+    "price": "2.185923"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-11",
+    "price": "2.206904"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-12",
+    "price": "2.272326"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-13",
+    "price": "2.264598"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-14",
+    "price": "2.241512"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-15",
+    "price": "2.278096"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-18",
+    "price": "2.245012"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-20",
+    "price": "2.203088"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-21",
+    "price": "2.172042"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-22",
+    "price": "2.013863"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-25",
+    "price": "2.100514"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-05-26",
+    "price": "2.136227"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-01",
+    "price": "2.121475"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-02",
+    "price": "2.143977"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-03",
+    "price": "2.215908"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-04",
+    "price": "2.214603"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-05",
+    "price": "2.202134"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-08",
+    "price": "2.188515"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-09",
+    "price": "2.244536"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-10",
+    "price": "2.21457"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-11",
+    "price": "2.206825"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-12",
+    "price": "2.189949"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-15",
+    "price": "2.202663"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-16",
+    "price": "2.241687"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-17",
+    "price": "2.248617"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-18",
+    "price": "2.225662"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-19",
+    "price": "2.264664"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-22",
+    "price": "2.234677"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-23",
+    "price": "2.234768"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-24",
+    "price": "2.199364"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-25",
+    "price": "2.178505"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-26",
+    "price": "2.153732"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-29",
+    "price": "2.155629"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-06-30",
+    "price": "2.153888"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-01",
+    "price": "2.14436"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-02",
+    "price": "2.177173"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-03",
+    "price": "2.195113"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-06",
+    "price": "2.178549"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-07",
+    "price": "2.180272"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-08",
+    "price": "2.166321"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-09",
+    "price": "2.114274"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-10",
+    "price": "2.093995"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-13",
+    "price": "2.125019"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-14",
+    "price": "2.095958"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-16",
+    "price": "2.113572"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-17",
+    "price": "2.148572"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-20",
+    "price": "2.138833"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-21",
+    "price": "2.16814"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-22",
+    "price": "2.170468"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-23",
+    "price": "2.179343"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-24",
+    "price": "2.193107"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-27",
+    "price": "2.193955"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-28",
+    "price": "2.130884"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-29",
+    "price": "2.13843"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-30",
+    "price": "2.114949"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-07-31",
+    "price": "2.086789"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-03",
+    "price": "2.135649"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-04",
+    "price": "2.152142"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-05",
+    "price": "2.191221"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-06",
+    "price": "2.191002"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-07",
+    "price": "2.218714"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-10",
+    "price": "2.249372"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-11",
+    "price": "2.276599"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-12",
+    "price": "2.291913"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-13",
+    "price": "2.332622"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-14",
+    "price": "2.370104"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-17",
+    "price": "2.389822"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-18",
+    "price": "2.425087"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-19",
+    "price": "2.445461"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-20",
+    "price": "2.510482"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-21",
+    "price": "2.547894"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-24",
+    "price": "2.562129"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-25",
+    "price": "2.584398"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-26",
+    "price": "2.594235"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-27",
+    "price": "2.631287"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-28",
+    "price": "2.685294"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-08-31",
+    "price": "2.733932"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-01",
+    "price": "2.724426"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-02",
+    "price": "2.740729"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-03",
+    "price": "2.762935"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-04",
+    "price": "2.784402"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-07",
+    "price": "2.809583"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-08",
+    "price": "2.833227"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-09",
+    "price": "2.884176"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-10",
+    "price": "2.912217"
+  },
+  {
+    "fund_code": "THF",
+    "date": "2026-09-11",
+    "price": "2.916338"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-11",
+    "price": "177.268553"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-12",
+    "price": "172.799242"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-15",
+    "price": "174.185627"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-16",
+    "price": "184.96024"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-17",
+    "price": "188.297001"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-18",
+    "price": "188.747334"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-19",
+    "price": "182.982756"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-22",
+    "price": "188.964307"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-23",
+    "price": "192.488284"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-24",
+    "price": "188.399516"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-25",
+    "price": "186.811582"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-26",
+    "price": "185.063228"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-29",
+    "price": "179.926803"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-09-30",
+    "price": "178.756325"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-01",
+    "price": "179.990592"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-02",
+    "price": "186.633473"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-03",
+    "price": "180.569514"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-06",
+    "price": "172.537188"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-07",
+    "price": "167.85546"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-08",
+    "price": "168.692153"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-09",
+    "price": "166.492585"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-10",
+    "price": "163.498789"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-13",
+    "price": "163.519206"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-14",
+    "price": "160.198762"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-15",
+    "price": "152.766978"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-16",
+    "price": "152.925699"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-17",
+    "price": "153.913038"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-20",
+    "price": "151.513401"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-21",
+    "price": "158.953084"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-22",
+    "price": "160.393966"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-23",
+    "price": "161.364314"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-24",
+    "price": "162.141937"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-27",
+    "price": "171.460724"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-28",
+    "price": "166.524308"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-30",
+    "price": "166.193927"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-10-31",
+    "price": "167.258693"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-03",
+    "price": "172.056181"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-04",
+    "price": "173.212095"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-05",
+    "price": "172.564836"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-06",
+    "price": "174.601294"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-07",
+    "price": "177.395058"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-10",
+    "price": "172.920578"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-11",
+    "price": "169.319651"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-12",
+    "price": "165.240627"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-13",
+    "price": "167.065512"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-14",
+    "price": "167.198702"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-17",
+    "price": "166.478105"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-18",
+    "price": "166.688132"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-19",
+    "price": "167.632905"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-20",
+    "price": "173.174734"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-21",
+    "price": "175.671584"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-24",
+    "price": "173.93006"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-25",
+    "price": "176.678813"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-26",
+    "price": "179.406933"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-27",
+    "price": "180.164809"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-11-28",
+    "price": "182.141383"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-01",
+    "price": "184.338581"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-02",
+    "price": "190.944974"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-03",
+    "price": "190.168857"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-04",
+    "price": "191.724312"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-05",
+    "price": "185.124061"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-08",
+    "price": "189.981242"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-09",
+    "price": "192.097092"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-10",
+    "price": "193.027839"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-11",
+    "price": "190.303357"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-12",
+    "price": "189.358908"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-15",
+    "price": "190.915629"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-16",
+    "price": "193.48226"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-17",
+    "price": "191.897798"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-18",
+    "price": "191.672838"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-19",
+    "price": "194.292416"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-22",
+    "price": "194.003627"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-23",
+    "price": "196.126149"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-24",
+    "price": "194.166789"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-25",
+    "price": "190.460776"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-26",
+    "price": "189.828861"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-29",
+    "price": "188.045051"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-30",
+    "price": "189.519505"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2025-12-31",
+    "price": "190.023324"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-02",
+    "price": "192.610392"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-05",
+    "price": "200.777393"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-06",
+    "price": "201.052909"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-07",
+    "price": "204.64146"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-08",
+    "price": "199.825179"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-09",
+    "price": "200.315149"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-12",
+    "price": "200.534854"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-13",
+    "price": "199.70172"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-14",
+    "price": "201.639773"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-15",
+    "price": "200.51858"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-16",
+    "price": "197.28184"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-19",
+    "price": "198.063018"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-20",
+    "price": "204.481093"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-21",
+    "price": "204.264203"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-22",
+    "price": "209.509265"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-23",
+    "price": "205.819704"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-26",
+    "price": "210.512047"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-27",
+    "price": "211.160019"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-28",
+    "price": "207.794664"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-29",
+    "price": "214.309135"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-01-30",
+    "price": "224.878415"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-02",
+    "price": "230.574166"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-03",
+    "price": "228.356463"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-04",
+    "price": "230.831726"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-05",
+    "price": "225.258861"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-06",
+    "price": "219.193473"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-09",
+    "price": "218.40122"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-10",
+    "price": "224.14064"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-11",
+    "price": "222.478813"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-12",
+    "price": "223.337172"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-13",
+    "price": "238.841257"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-16",
+    "price": "235.090079"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-17",
+    "price": "235.469679"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-18",
+    "price": "233.286955"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-19",
+    "price": "236.96387"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-20",
+    "price": "226.48721"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-23",
+    "price": "230.808372"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-24",
+    "price": "235.939459"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-25",
+    "price": "236.398865"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-26",
+    "price": "235.270871"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-02-27",
+    "price": "238.905251"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-02",
+    "price": "234.594202"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-03",
+    "price": "217.2973"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-04",
+    "price": "204.446449"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-05",
+    "price": "202.960202"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-06",
+    "price": "205.597329"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-09",
+    "price": "195.414243"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-10",
+    "price": "195.443719"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-11",
+    "price": "204.619605"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-12",
+    "price": "202.758508"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-13",
+    "price": "198.354649"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-16",
+    "price": "191.628577"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-17",
+    "price": "191.699525"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-18",
+    "price": "197.625157"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-19",
+    "price": "195.082548"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-23",
+    "price": "191.628618"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-24",
+    "price": "190.578247"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-25",
+    "price": "183.950067"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-26",
+    "price": "185.793092"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-27",
+    "price": "181.386454"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-30",
+    "price": "181.065468"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-03-31",
+    "price": "178.036214"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-01",
+    "price": "179.492389"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-02",
+    "price": "185.098057"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-03",
+    "price": "187.58145"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-06",
+    "price": "186.982541"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-07",
+    "price": "190.596383"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-08",
+    "price": "186.742486"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-09",
+    "price": "202.78502"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-10",
+    "price": "203.517115"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-13",
+    "price": "209.742148"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-14",
+    "price": "207.274975"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-15",
+    "price": "207.572921"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-16",
+    "price": "207.488971"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-17",
+    "price": "205.746826"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-20",
+    "price": "217.375671"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-21",
+    "price": "214.086917"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-22",
+    "price": "211.720157"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-24",
+    "price": "209.031693"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-27",
+    "price": "206.39039"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-28",
+    "price": "205.01901"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-29",
+    "price": "200.879889"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-04-30",
+    "price": "197.8555"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-04",
+    "price": "199.652588"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-05",
+    "price": "193.704674"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-06",
+    "price": "193.866394"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-07",
+    "price": "202.640726"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-08",
+    "price": "205.785292"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-11",
+    "price": "206.317286"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-12",
+    "price": "208.566009"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-13",
+    "price": "201.021726"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-14",
+    "price": "198.35532"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-15",
+    "price": "200.69398"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-18",
+    "price": "195.223885"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-20",
+    "price": "193.76411"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-21",
+    "price": "191.78358"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-22",
+    "price": "175.216873"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-25",
+    "price": "180.280965"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-05-26",
+    "price": "184.525624"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-01",
+    "price": "182.197631"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-02",
+    "price": "182.705717"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-03",
+    "price": "191.41267"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-04",
+    "price": "187.805384"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-05",
+    "price": "192.05286"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-08",
+    "price": "184.828792"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-09",
+    "price": "191.796276"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-10",
+    "price": "193.389698"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-11",
+    "price": "190.144977"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-12",
+    "price": "191.218539"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-15",
+    "price": "203.300234"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-16",
+    "price": "213.760701"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-17",
+    "price": "214.154693"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-18",
+    "price": "215.356019"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-19",
+    "price": "222.859248"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-22",
+    "price": "223.39342"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-23",
+    "price": "224.104492"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-24",
+    "price": "219.589494"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-25",
+    "price": "218.674855"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-26",
+    "price": "210.291853"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-29",
+    "price": "211.68551"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-06-30",
+    "price": "210.112626"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-01",
+    "price": "210.552305"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-02",
+    "price": "212.757495"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-03",
+    "price": "212.819762"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-06",
+    "price": "202.399142"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-07",
+    "price": "202.005341"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-08",
+    "price": "202.829044"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-09",
+    "price": "195.936067"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-10",
+    "price": "194.309334"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-13",
+    "price": "191.521395"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-14",
+    "price": "188.201778"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-16",
+    "price": "190.328349"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-17",
+    "price": "189.704463"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-20",
+    "price": "185.8675"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-21",
+    "price": "183.037994"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-22",
+    "price": "182.020203"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-23",
+    "price": "183.088181"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-24",
+    "price": "182.906676"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-27",
+    "price": "183.211812"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-28",
+    "price": "181.846853"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-29",
+    "price": "181.318461"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-30",
+    "price": "175.998297"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-07-31",
+    "price": "171.875325"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-03",
+    "price": "177.51708"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-04",
+    "price": "183.052962"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-05",
+    "price": "186.605191"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-06",
+    "price": "184.044704"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-07",
+    "price": "182.740576"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-10",
+    "price": "182.701633"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-11",
+    "price": "180.066088"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-12",
+    "price": "178.920578"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-13",
+    "price": "186.874481"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-14",
+    "price": "186.384922"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-17",
+    "price": "186.271547"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-18",
+    "price": "184.022155"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-19",
+    "price": "183.618243"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-20",
+    "price": "187.911452"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-21",
+    "price": "184.563107"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-24",
+    "price": "185.664576"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-25",
+    "price": "190.559673"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-26",
+    "price": "190.622516"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-27",
+    "price": "194.693267"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-28",
+    "price": "194.673534"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-08-31",
+    "price": "197.235658"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-01",
+    "price": "192.588321"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-02",
+    "price": "193.771329"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-03",
+    "price": "193.895973"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-04",
+    "price": "195.273522"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-07",
+    "price": "197.012237"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-08",
+    "price": "197.652101"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-09",
+    "price": "206.814044"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-10",
+    "price": "201.784744"
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-09-11",
+    "price": "199.574868"
+  }
+]

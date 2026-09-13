@@ -158,30 +158,78 @@
 
 .mock-chart-header {
   display: flex;
+  align-items: center;
   gap: 12px;
   margin-bottom: auto;
   position: relative;
   z-index: 2;
+  flex-wrap: wrap;
 }
 
-.mock-chip {
-  background: #FFFFFF;
-  border: 1px solid rgba(15, 23, 42, 0.06);
-  padding: 8px 16px;
+.hero-data-date-badge {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background: rgba(15, 23, 42, 0.04);
+  padding: 4px 10px;
   border-radius: 100px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.skeleton-chip {
+  min-width: 90px;
+  height: 35px;
+  background: #F1F5F9;
+  border-color: rgba(15, 23, 42, 0.04);
+}
+
+.skeleton-pulse {
+  display: inline-block;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(90deg, #E2E8F0 25%, #F8FAFC 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  animation: skeletonPulse 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+@keyframes skeletonPulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.chart-skeleton-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(49, 93, 104, 0.03) 0%, transparent 100%);
+  border-radius: 12px;
 }
 
-.mc-code {
-  font-weight: 700;
-  color: var(--color-text-main);
+.chart-skeleton-shimmer {
+  width: 85%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #315D68 50%, transparent 100%);
+  opacity: 0.3;
+  animation: shimmerFlow 2s infinite ease-in-out;
 }
-.mc-perf {
-  font-weight: 700;
+
+@keyframes shimmerFlow {
+  0%, 100% { transform: scaleX(0.7); opacity: 0.2; }
+  50% { transform: scaleX(1); opacity: 0.5; }
+}
+
+.chart-empty-state {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
 }
 
 .mock-chart-body {
@@ -189,6 +237,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
+  cursor: crosshair;
 }
 
 .mock-chart-svg {
@@ -200,8 +249,6 @@
 
 .mock-chart-dot-html {
   position: absolute;
-  left: 98.75%; /* calc(395/400) */
-  top: 12.5%; /* calc(15/120) */
   width: 12px;
   height: 12px;
   background-color: var(--color-brand);
@@ -210,31 +257,53 @@
   box-shadow: 0 4px 12px rgba(49, 93, 104, 0.4);
   transform: translate(-50%, -50%);
   z-index: 3;
+  pointer-events: none;
+  transition: left 0.08s ease-out, top 0.08s ease-out;
 }
 
 .mock-tooltip-modern {
   position: absolute;
-  left: 98.75%;
-  top: 12.5%;
-  transform: translate(-85%, -180%);
+  transform: translate(-50%, -125%);
   background-color: rgba(13, 27, 42, 0.95);
   color: white;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   box-shadow: 0 10px 24px rgba(13, 27, 42, 0.2);
   white-space: nowrap;
   z-index: 4;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: left 0.08s ease-out, top 0.08s ease-out;
+}
+
+.tooltip-header-date {
+  font-size: 10px;
+  color: #94A3B8;
+  letter-spacing: 0.3px;
+}
+
+.tooltip-price-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.tooltip-daily-diff {
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .tooltip-line {
   position: absolute;
-  bottom: -22px;
-  left: 85%;
+  bottom: -10px;
+  left: 50%;
   width: 1px;
-  height: 22px;
-  background-color: rgba(13, 27, 42, 0.4);
+  height: 10px;
+  background-color: rgba(13, 27, 42, 0.5);
   transform: translateX(-50%);
 }
 

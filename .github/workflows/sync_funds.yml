@@ -1,0 +1,36 @@
+name: TEFAS Fon Veri Senkronizasyonu
+
+on:
+  schedule:
+    # Hafta içi her gün 16:00 UTC (19:00 TSI - TEFAS bülten yayımı sonrası)
+    - cron: '0 16 * * 1-5'
+  workflow_dispatch: # GitHub UI üzerinden manuel çalıştırma
+
+jobs:
+  sync:
+    name: Günlük Fon Senkronizasyonu
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodu Çek (Checkout)
+        uses: actions/checkout@v4
+
+      - name: Python 3.10 Kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Bağımlılıkları Yükle
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytefas requests pandas
+
+      - name: TEFAS Senkronizasyonunu Çalıştır
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY || secrets.VITE_SUPABASE_ANON_KEY }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: |
+          python -m app.jobs.sync_funds --days 35

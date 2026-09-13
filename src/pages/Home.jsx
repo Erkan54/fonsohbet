@@ -1,19 +1,122 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
+import { fetchMarketSummary, formatPrice, formatReturn, formatDateTr } from '../services/marketService';
 import './Home.css';
 
 const Home = () => {
   const { funds, discussions } = useFunds();
   const navigate = useNavigate();
 
-  // En yüksek getirili ilk 3 fon (Hero görseli için)
-  const topPerformers = React.useMemo(() => {
-    return [...funds]
-      .filter(f => f.returns?.monthly != null)
-      .sort((a, b) => (b.returns?.monthly || 0) - (a.returns?.monthly || 0))
-      .slice(0, 3);
-  }, [funds]);
+  // Gerçek TEFAS Piyasa Özeti ve Hero Verisi
+  const [marketSummary, setMarketSummary] = React.useState(null);
+  const [isLoadingSummary, setIsLoadingSummary] = React.useState(true);
+  const [hoveredPointIndex, setHoveredPointIndex] = React.useState(null);
+
+  React.useEffect(() => {
+    let isMounted = true;
+    async function loadSummary() {
+      try {
+        const data = await fetchMarketSummary();
+        if (isMounted) {
+          setMarketSummary(data);
+        }
+      } catch (err) {
+        console.error('Piyasa özeti yüklenirken hata:', err);
+      } finally {
+        if (isMounted) {
+          setIsLoadingSummary(false);
+        }
+      }
+    }
+    loadSummary();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // THF 1 Aylık Çizgi Grafik Hesaplaması (Dinamik SVG Koordinatları)
+  const chartCoordinates = React.useMemo(() => {
+    const points = marketSummary?.chart?.points;
+    if (!points || points.length === 0) return [];
+
+    const prices = points.map(p => p.price);
+    const minPrice = Math.min(...prices);
+    const maxPrice = Math.max(...prices);
+    const range = maxPrice - minPrice > 0 ? maxPrice - minPrice : 1;
+
+    return points.map((pt, i) => {
+      const prevPrice = i > 0 ? points[i - 1].price : pt.price;
+      const dailyChange = prevPrice > 0 ? ((pt.price / prevPrice) - 1) * 100 : 0;
+      const x = 10 + (i / Math.max(1, points.length - 1)) * 380;
+      const y = 105 - ((pt.price - minPrice) / range) * 85;
+      return {
+        ...pt,
+        x,
+        y,
+        dailyChange,
+      };
+    });
+  }, [marketSummary?.chart?.points]);
+
+  // Yumuşatılmış Catmull-Rom / Kübik Bezier Eğrisi Üretici
+  const { linePath, areaPath } = React.useMemo(() => {
+    if (chartCoordinates.length === 0) return { linePath: '', areaPath: '' };
+    if (chartCoordinates.length === 1) {
+      const p = chartCoordinates[0];
+      return { linePath: `M ${p.x} ${p.y}`, areaPath: '' };
+    }
+
+    let d = `M ${chartCoordinates[0].x.toFixed(2)} ${chartCoordinates[0].y.toFixed(2)}`;
+    for (let i = 0; i < chartCoordinates.length - 1; i++) {
+      const p0 = chartCoordinates[i === 0 ? i : i - 1];
+      const p1 = chartCoordinates[i];
+      const p2 = chartCoordinates[i + 1];
+      const p3 = chartCoordinates[i + 2 < chartCoordinates.length ? i + 2 : i + 1];
+
+      const cp1x = p1.x + (p2.x - p0.x) / 6;
+      const cp1y = p1.y + (p2.y - p0.y) / 6;
+      const cp2x = p2.x - (p3.x - p1.x) / 6;
+      const cp2y = p2.y - (p3.y - p1.y) / 6;
+
+      d += ` C ${cp1x.toFixed(2)} ${cp1y.toFixed(2)}, ${cp2x.toFixed(2)} ${cp2y.toFixed(2)}, ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`;
+    }
+
+    const firstX = chartCoordinates[0].x;
+    const lastX = chartCoordinates[chartCoordinates.length - 1].x;
+    const a = `${d} L ${lastX.toFixed(2)} 130 L ${firstX.toFixed(2)} 130 Z`;
+
+    return { linePath: d, areaPath: a };
+  }, [chartCoordinates]);
+
+  // Aktif vurgulanan nokta (üzerine gelinmişse o, yoksa son işlem günü noktası)
+  const activePoint = React.useMemo(() => {
+    if (chartCoordinates.length === 0) return null;
+    if (hoveredPointIndex !== null && chartCoordinates[hoveredPointIndex]) {
+      return chartCoordinates[hoveredPointIndex];
+    }
+    return chartCoordinates[chartCoordinates.length - 1];
+  }, [chartCoordinates, hoveredPointIndex]);
+
+  // Fare hareketine göre en yakın veri noktasını bulma
+  const handleChartMouseMove = (e) => {
+    if (chartCoordinates.length === 0) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, mouseX / rect.width));
+    const targetX = 10 + ratio * 380;
+
+    let closestIdx = 0;
+    let minDiff = Infinity;
+    chartCoordinates.forEach((pt, idx) => {
+      const diff = Math.abs(pt.x - targetX);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closestIdx = idx;
+      }
+    });
+    setHoveredPointIndex(closestIdx);
+  };
 
   return (
     <div className="home-page animate-fade-in">
@@ -35,39 +138,109 @@ const Home = () => {
           <div className="hero-visual animate-slide-in-right">
             <div className="mock-chart-card">
               <div className="mock-chart-header">
-                {topPerformers.length > 0 ? (
-                  topPerformers.map(f => (
-                    <div className="mock-chip" key={f.code} onClick={() => navigate(`/fon/${f.code}`)} style={{ cursor: 'pointer' }}>
-                      <span className="mc-code">{f.code}</span>
-                      <span className={`mc-perf ${f.returns.monthly >= 0 ? 'text-positive' : 'text-negative'}`}>
-                        {f.returns.monthly >= 0 ? '+' : ''}%{f.returns.monthly.toFixed(2)}
-                      </span>
-                    </div>
-                  ))
-                ) : (
+                {isLoadingSummary ? (
                   <>
-                    <div className="mock-chip"><span className="mc-code">THF</span><span className="mc-perf text-positive">%28.10</span></div>
-                    <div className="mock-chip"><span className="mc-code">YIT</span><span className="mc-perf text-positive">%66.34</span></div>
-                    <div className="mock-chip"><span className="mc-code">AFA</span><span className="mc-perf text-negative">-%1.00</span></div>
+                    <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
+                    <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
+                    <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
                   </>
+                ) : (
+                  ['THF', 'ZBP', 'BLH'].map(code => {
+                    const item = marketSummary?.highlightFunds?.find(h => h.code === code);
+                    const ret = item?.return1m ?? 0;
+                    const isPositive = ret > 0;
+                    const isNegative = ret < 0;
+                    const colorClass = isPositive ? 'text-positive' : (isNegative ? 'text-negative' : 'text-neutral');
+                    return (
+                      <div
+                        className="mock-chip"
+                        key={code}
+                        onClick={() => navigate(`/fon/${code}`)}
+                        style={{ cursor: 'pointer' }}
+                        title={`${code} 1 Aylık Getiri: ${formatReturn(ret)}`}
+                      >
+                        <span className="mc-code">{code}</span>
+                        <span className={`mc-perf ${colorClass}`}>
+                          {formatReturn(ret)}
+                        </span>
+                      </div>
+                    );
+                  })
+                )}
+                {marketSummary?.dataDate && (
+                  <span className="hero-data-date-badge" title="Resmi TEFAS Veri Tarihi">
+                    TEFAS: {formatDateTr(marketSummary.dataDate)}
+                  </span>
                 )}
               </div>
-              <div className="mock-chart-body">
-                <svg viewBox="0 0 400 120" preserveAspectRatio="none" className="mock-chart-svg">
-                  <defs>
-                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#315D68" stopOpacity="0.15"/>
-                      <stop offset="100%" stopColor="#315D68" stopOpacity="0"/>
-                    </linearGradient>
-                  </defs>
-                  <path d="M -5 100 C 50 100, 80 110, 120 85 C 160 60, 200 80, 250 45 C 300 10, 350 40, 395 15 L 405 15 L 405 130 L -5 130 Z" fill="url(#chartGradient)"/>
-                  <path d="M -5 100 C 50 100, 80 110, 120 85 C 160 60, 200 80, 250 45 C 300 10, 350 40, 395 15" fill="none" stroke="#315D68" strokeWidth="3.5" vectorEffect="non-scaling-stroke" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <div className="mock-chart-dot-html"></div>
-                <div className="mock-tooltip-modern">
-                  Yüksek Getiri
-                  <div className="tooltip-line"></div>
-                </div>
+
+              <div
+                className="mock-chart-body"
+                onMouseMove={handleChartMouseMove}
+                onMouseLeave={() => setHoveredPointIndex(null)}
+              >
+                {isLoadingSummary ? (
+                  <div className="chart-skeleton-container">
+                    <div className="chart-skeleton-shimmer"></div>
+                  </div>
+                ) : chartCoordinates.length > 0 ? (
+                  <>
+                    <svg viewBox="0 0 400 120" preserveAspectRatio="none" className="mock-chart-svg">
+                      <defs>
+                        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#315D68" stopOpacity="0.18" />
+                          <stop offset="100%" stopColor="#315D68" stopOpacity="0.0" />
+                        </linearGradient>
+                      </defs>
+                      {areaPath && <path d={areaPath} fill="url(#chartGradient)" />}
+                      {linePath && (
+                        <path
+                          d={linePath}
+                          fill="none"
+                          stroke="#315D68"
+                          strokeWidth="3.5"
+                          vectorEffect="non-scaling-stroke"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      )}
+                    </svg>
+
+                    {activePoint && (
+                      <>
+                        <div
+                          className="mock-chart-dot-html"
+                          style={{
+                            left: `${((activePoint.x / 400) * 100).toFixed(2)}%`,
+                            top: `${((activePoint.y / 120) * 100).toFixed(2)}%`,
+                          }}
+                        />
+                        <div
+                          className="mock-tooltip-modern"
+                          style={{
+                            left: `${((activePoint.x / 400) * 100).toFixed(2)}%`,
+                            top: `${((activePoint.y / 120) * 100).toFixed(2)}%`,
+                          }}
+                        >
+                          <div className="tooltip-header-date">{formatDateTr(activePoint.date)}</div>
+                          <div className="tooltip-price-value">{formatPrice(activePoint.price)}</div>
+                          <div
+                            className={`tooltip-daily-diff ${
+                              activePoint.dailyChange >= 0 ? 'text-positive' : 'text-negative'
+                            }`}
+                          >
+                            {formatReturn(activePoint.dailyChange)} (Günlük)
+                          </div>
+                          <div className="tooltip-line"></div>
+                        </div>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <div className="chart-empty-state">
+                    <span>Veriler senkronize ediliyor...</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
