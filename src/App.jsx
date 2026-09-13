@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Funds from './pages/Funds';
@@ -7,11 +7,22 @@ import FundDetail from './pages/FundDetail';
 import Forum from './pages/Forum';
 import Questionnaire from './pages/Questionnaire';
 import Profile from './pages/Profile';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 
 import Footer from './components/Footer';
-import { useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { FundsProvider } from './context/FundsContext';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const AppContent = () => {
   const location = useLocation();
@@ -19,6 +30,7 @@ const AppContent = () => {
 
   return (
     <>
+      <ScrollToTop />
       <Header />
       <main className="main-content" style={{ marginTop: isHome ? 0 : '40px' }}>
         <Routes>
@@ -28,6 +40,10 @@ const AppContent = () => {
           <Route path="/forum" element={<Forum />} />
           <Route path="/bul" element={<Questionnaire />} />
           <Route path="/profil" element={<Profile />} />
+          <Route path="/hakkimizda" element={<About />} />
+          <Route path="/iletisim" element={<Contact />} />
+          <Route path="/kullanim-kosullari" element={<Terms />} />
+          <Route path="/gizlilik-politikasi" element={<Privacy />} />
         </Routes>
       </main>
       <Footer />

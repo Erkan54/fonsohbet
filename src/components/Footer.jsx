@@ -26,10 +26,10 @@ const Footer = () => {
           <div className="footer-links-group">
             <h4 className="footer-heading">Kurumsal</h4>
             <ul className="footer-links">
-              <li><Link to="#">Hakkımızda</Link></li>
-              <li><Link to="#">İletişim</Link></li>
-              <li><Link to="#">Kullanım Koşulları</Link></li>
-              <li><Link to="#">Gizlilik Politikası</Link></li>
+              <li><Link to="/hakkimizda">Hakkımızda</Link></li>
+              <li><Link to="/iletisim">İletişim</Link></li>
+              <li><Link to="/kullanim-kosullari">Kullanım Koşulları</Link></li>
+              <li><Link to="/gizlilik-politikasi">Gizlilik Politikası</Link></li>
             </ul>
           </div>
         </div>
