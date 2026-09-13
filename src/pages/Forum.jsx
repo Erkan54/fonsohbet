@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
+import { useAuth } from '../context/AuthContext';
 import './Forum.css';
 
 const Forum = () => {
   const { funds, discussions, addNewDiscussion } = useFunds();
+  const { isAuthenticated, user, profile, loginWithGoogle } = useAuth();
   const [activeTab, setActiveTab] = useState('Popüler');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newFundCode, setNewFundCode] = useState('');
@@ -16,6 +18,15 @@ const Forum = () => {
     e.preventDefault();
     if (!newTitle.trim()) return;
 
+    if (!isAuthenticated) {
+      try {
+        await loginWithGoogle();
+      } catch (err) {
+        console.error('Giriş hatası:', err);
+      }
+      return;
+    }
+
     try {
       setIsSubmitting(true);
       const codeClean = newFundCode.trim().toUpperCase();
@@ -25,24 +36,32 @@ const Forum = () => {
       await addNewDiscussion({
         title: newTitle.trim(),
         fundCode: fundCodeToSave,
-        author: 'Yatırımcı',
+        userId: user.id,
       });
       setNewTitle('');
       setNewFundCode('');
       setNewContent('');
       setIsModalOpen(false);
     } catch (err) {
-      alert('Tartışma eklenirken bir sorun oluştu.');
+      alert('Tartışma eklenirken bir sorun oluştu: ' + err.message);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleNewDiscussionClick = () => {
+    if (!isAuthenticated) {
+      loginWithGoogle();
+      return;
+    }
+    setIsModalOpen(true);
   };
 
   return (
     <div className="forum-page container animate-fade-in">
       <div className="forum-header">
         <h1 className="page-title">Forum Tartışmaları</h1>
-        <button className="btn btn-primary hero-btn" onClick={() => setIsModalOpen(true)}>+ Yeni Tartışma</button>
+        <button className="btn btn-primary hero-btn" onClick={handleNewDiscussionClick}>+ Yeni Tartışma</button>
       </div>
 
       <div className="common-tabs">
@@ -73,7 +92,12 @@ const Forum = () => {
                     <span className="fund-badge badge-blue">GENEL</span>
                   )}
                   <span className="meta-dot">·</span>
-                  <span className="meta-item">Yazan: {disc.author}</span>
+                  <span className="meta-item">
+                    {disc.authorAvatar && (
+                      <img src={disc.authorAvatar} alt="" className="meta-avatar" referrerPolicy="no-referrer" />
+                    )}
+                    {disc.author}
+                  </span>
                   <span className="meta-dot">·</span>
                   <span className="meta-item">{disc.lastActivity}</span>
                 </div>
@@ -93,7 +117,7 @@ const Forum = () => {
         ) : (
           <div style={{ textAlign: 'center', padding: '48px 24px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', marginTop: '16px' }}>
             <p style={{ fontSize: '16px', color: '#64748B', marginBottom: '16px' }}>Henüz hiçbir tartışma konusu açılmamış.</p>
-            <button className="btn btn-primary hero-btn" onClick={() => setIsModalOpen(true)}>+ İlk Tartışmayı Başlat</button>
+            <button className="btn btn-primary hero-btn" onClick={handleNewDiscussionClick}>+ İlk Tartışmayı Başlat</button>
           </div>
         )}
       </div>

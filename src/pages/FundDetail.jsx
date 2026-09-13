@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
+import { useAuth } from '../context/AuthContext';
 import { fetchFundComments, addFundComment } from '../services/fundService';
 import './FundDetail.css';
 
 const FundDetail = () => {
   const { id } = useParams();
   const { funds, discussions } = useFunds();
+  const { isAuthenticated, user, profile, loginWithGoogle } = useAuth();
   const fund = funds.find(f => f.code.toUpperCase() === id?.toUpperCase()) || funds[0];
   const [activeTab, setActiveTab] = useState('Yorumlar');
   const [commentText, setCommentText] = useState('');
@@ -23,11 +25,20 @@ const FundDetail = () => {
   // Yeni yorum gönderme
   const handleAddComment = async () => {
     if (!commentText.trim()) return;
+
+    if (!isAuthenticated) {
+      try {
+        await loginWithGoogle();
+      } catch (err) {
+        console.error('Giriş hatası:', err);
+      }
+      return;
+    }
+
     try {
       setIsSubmittingComment(true);
       const newComment = await addFundComment({
         fundCode: fund.code,
-        author: 'Yatırımcı',
         content: commentText.trim(),
       });
       if (newComment) {
@@ -35,7 +46,7 @@ const FundDetail = () => {
       }
       setCommentText('');
     } catch (err) {
-      alert('Yorum gönderilirken bir hata oluştu.');
+      alert('Yorum gönderilirken bir hata oluştu: ' + err.message);
     } finally {
       setIsSubmittingComment(false);
     }
@@ -111,28 +122,59 @@ const FundDetail = () => {
         <section className="comments-section">
           
           <div className="comment-form">
-            <textarea 
-              className="comment-input" 
-              placeholder={`${fund.code} hakkında ne düşünüyorsunuz?`}
-              value={commentText}
-              onChange={(e) => setCommentText(e.target.value)}
-            />
-            <div className="comment-form-actions">
-              <button 
-                className="btn btn-primary" 
-                onClick={handleAddComment}
-                disabled={isSubmittingComment || !commentText.trim()}
-              >
-                {isSubmittingComment ? 'Gönderiliyor...' : 'Yorum Yap'}
-              </button>
-            </div>
+            {isAuthenticated ? (
+              <>
+                <div className="comment-form-user">
+                  {profile?.avatar_url ? (
+                    <img src={profile.avatar_url} alt="" className="comment-form-avatar" referrerPolicy="no-referrer" />
+                  ) : (
+                    <div className="comment-form-avatar-fallback">
+                      {(profile?.display_name || user?.user_metadata?.full_name || 'Y')[0].toUpperCase()}
+                    </div>
+                  )}
+                  <span className="comment-form-username">{profile?.display_name || user?.user_metadata?.full_name || 'Yatırımcı'}</span>
+                </div>
+                <textarea 
+                  className="comment-input" 
+                  placeholder={`${fund.code} hakkında ne düşünüyorsunuz?`}
+                  value={commentText}
+                  onChange={(e) => setCommentText(e.target.value)}
+                />
+                <div className="comment-form-actions">
+                  <button 
+                    className="btn btn-primary" 
+                    onClick={handleAddComment}
+                    disabled={isSubmittingComment || !commentText.trim()}
+                  >
+                    {isSubmittingComment ? 'Gönderiliyor...' : 'Yorum Yap'}
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="comment-login-prompt">
+                <p>Yorum yapmak için giriş yapın</p>
+                <button className="btn btn-google-comment" onClick={loginWithGoogle}>
+                  <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                  Google ile Giriş Yap
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="comments-list">
             {comments.length > 0 ? (
               comments.map((comment) => (
                 <div className="comment-item" key={comment.id}>
-                  <div className="avatar-base">{(comment.author || 'Y')[0].toUpperCase()}</div>
+                  {comment.authorAvatar ? (
+                    <img src={comment.authorAvatar} alt="" className="comment-avatar-img" referrerPolicy="no-referrer" />
+                  ) : (
+                    <div className="avatar-base">{(comment.author || 'Y')[0].toUpperCase()}</div>
+                  )}
                   <div className="comment-content">
                     <div className="comment-header">
                       <span className="comment-author">{comment.author || 'Yatırımcı'}</span>

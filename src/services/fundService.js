@@ -77,7 +77,7 @@ export const fetchDiscussions = async () => {
   try {
     const { data, error } = await supabase
       .from('discussions')
-      .select('*')
+      .select('*, profiles:user_id(username, display_name, avatar_url)')
       .order('id', { ascending: false });
 
     if (error || !data || data.length === 0) {
@@ -88,7 +88,10 @@ export const fetchDiscussions = async () => {
       id: d.id,
       title: d.title,
       fundCode: d.fund_code,
-      author: d.author,
+      author: d.profiles?.display_name || d.profiles?.username || d.author || 'Anonim',
+      authorUsername: d.profiles?.username || null,
+      authorAvatar: d.profiles?.avatar_url || null,
+      user_id: d.user_id,
       commentsCount: d.comments_count,
       lastActivity: d.last_activity,
     }));
@@ -98,19 +101,25 @@ export const fetchDiscussions = async () => {
   }
 };
 
-// 4. Yeni Tartışma Aç
-export const createDiscussion = async ({ title, fundCode, author }) => {
+// 4. Yeni Tartışma Aç (Auth gerektirir)
+export const createDiscussion = async ({ title, fundCode, userId }) => {
   if (!isSupabaseConfigured || !supabase) {
     const newDisc = {
       id: Date.now(),
       title,
       fundCode,
-      author: author || 'anonim',
+      author: 'Yatırımcı',
       commentsCount: 0,
       lastActivity: 'Şimdi',
     };
     mockDiscussions.unshift(newDisc);
     return newDisc;
+  }
+
+  // Oturumdaki kullanıcıyı sunucu tarafında doğrula
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError || !user) {
+    throw new Error('Bu işlem için giriş yapmanız gerekiyor.');
   }
 
   const { data, error } = await supabase
@@ -119,7 +128,8 @@ export const createDiscussion = async ({ title, fundCode, author }) => {
       {
         title,
         fund_code: fundCode,
-        author: author || 'anonim',
+        author: user.user_metadata?.full_name || 'Yatırımcı',
+        user_id: user.id,
         comments_count: 0,
         last_activity: 'Şimdi',
       },
@@ -128,7 +138,15 @@ export const createDiscussion = async ({ title, fundCode, author }) => {
     .single();
 
   if (error) throw error;
-  return data;
+  return {
+    id: data.id,
+    title: data.title,
+    fundCode: data.fund_code,
+    author: user.user_metadata?.full_name || 'Yatırımcı',
+    user_id: data.user_id,
+    commentsCount: data.comments_count,
+    lastActivity: data.last_activity,
+  };
 };
 
 // 5. Belirli Bir Fona Ait Yorumları Getir
@@ -137,27 +155,40 @@ export const fetchFundComments = async (fundCode) => {
   try {
     const { data, error } = await supabase
       .from('comments')
-      .select('*')
+      .select('*, profiles:user_id(username, display_name, avatar_url)')
       .eq('fund_code', fundCode)
       .order('created_at', { ascending: false });
 
     if (error || !data) return [];
-    return data;
+    return data.map(c => ({
+      ...c,
+      author: c.profiles?.display_name || c.profiles?.username || c.author || 'Yatırımcı',
+      authorUsername: c.profiles?.username || null,
+      authorAvatar: c.profiles?.avatar_url || null,
+    }));
   } catch (err) {
     console.error('fetchFundComments hatası:', err);
     return [];
   }
 };
 
-// 6. Fona Yeni Yorum Ekle
-export const addFundComment = async ({ fundCode, author, content }) => {
+// 6. Fona Yeni Yorum Ekle (Auth gerektirir)
+export const addFundComment = async ({ fundCode, content }) => {
   if (!isSupabaseConfigured || !supabase) return null;
+
+  // Oturumdaki kullanıcıyı sunucu tarafında doğrula
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError || !user) {
+    throw new Error('Bu işlem için giriş yapmanız gerekiyor.');
+  }
+
   const { data, error } = await supabase
     .from('comments')
     .insert([
       {
         fund_code: fundCode,
-        author: author || 'Yatırımcı',
+        author: user.user_metadata?.full_name || 'Yatırımcı',
+        user_id: user.id,
         content,
       },
     ])
@@ -165,6 +196,9 @@ export const addFundComment = async ({ fundCode, author, content }) => {
     .single();
 
   if (error) throw error;
-  return data;
+  return {
+    ...data,
+    author: user.user_metadata?.full_name || 'Yatırımcı',
+    authorAvatar: user.user_metadata?.avatar_url || null,
+  };
 };
-

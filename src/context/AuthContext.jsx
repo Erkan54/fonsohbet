@@ -1,12 +1,23 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { supabase, isSupabaseConfigured, signInWithGoogle, signOutUser, fetchProfile } from '../lib/supabase';
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Profil bilgisini yükle
+  const loadProfile = useCallback(async (userId) => {
+    if (!userId) {
+      setProfile(null);
+      return;
+    }
+    const profileData = await fetchProfile(userId);
+    setProfile(profileData);
+  }, []);
 
   useEffect(() => {
     if (!isSupabaseConfigured || !supabase) {
@@ -18,6 +29,9 @@ export const AuthProvider = ({ children }) => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
+      if (session?.user) {
+        loadProfile(session.user.id);
+      }
       setLoading(false);
     });
 
@@ -25,48 +39,51 @@ export const AuthProvider = ({ children }) => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
+      if (session?.user) {
+        loadProfile(session.user.id);
+      } else {
+        setProfile(null);
+      }
       setLoading(false);
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [loadProfile]);
 
-  const signUp = async ({ email, password, username }) => {
-    if (!isSupabaseConfigured || !supabase) {
-      throw new Error('Supabase henüz yapılandırılmadı.');
-    }
-    return await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          username: username || email.split('@')[0],
-        },
-      },
-    });
+  // Google ile giriş yap
+  const loginWithGoogle = async () => {
+    return await signInWithGoogle();
   };
 
-  const signIn = async ({ email, password }) => {
-    if (!isSupabaseConfigured || !supabase) {
-      throw new Error('Supabase henüz yapılandırılmadı.');
-    }
-    return await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+  // Çıkış yap
+  const logout = async () => {
+    await signOutUser();
+    setUser(null);
+    setSession(null);
+    setProfile(null);
   };
 
-  const signOut = async () => {
-    if (!isSupabaseConfigured || !supabase) {
-      setUser(null);
-      setSession(null);
-      return;
+  // Kullanıcı giriş yapmış mı?
+  const isAuthenticated = Boolean(user && session);
+
+  // Profil bilgilerini yenile
+  const refreshProfile = async () => {
+    if (user?.id) {
+      await loadProfile(user.id);
     }
-    return await supabase.auth.signOut();
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signUp, signIn, signOut }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      profile, 
+      session, 
+      loading, 
+      isAuthenticated,
+      loginWithGoogle, 
+      logout,
+      refreshProfile,
+    }}>
       {children}
     </AuthContext.Provider>
   );

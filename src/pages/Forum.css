@@ -109,6 +109,17 @@
   }
 }
 
+/* Yazar Avatar (küçük, meta satırında) */
+.meta-avatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+
 /* Modal Stilleri */
 .modal-overlay {
   position: fixed;

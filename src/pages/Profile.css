@@ -143,3 +143,92 @@
   font-size: var(--font-size-sm);
   padding: 40px 0;
 }
+
+/* ============================
+   Login Prompt (Giriş yapılmamışsa)
+   ============================ */
+.profile-login-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.login-prompt-icon {
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.login-prompt-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--color-text-main);
+}
+
+.login-prompt-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: 28px;
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+.btn-google-login-large {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-surface);
+  border: 2px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-google-login-large:hover {
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn-google-login-large:active {
+  transform: translateY(0);
+}
+
+/* ============================
+   Avatar Resim + Logout Buton
+   ============================ */
+.profile-avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-border-card);
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-logout-btn {
+  margin-left: auto;
+  font-size: var(--font-size-sm);
+  padding: 8px 18px;
+  color: #EF4444;
+  border-color: #FCA5A5;
+}
+
+.profile-logout-btn:hover {
+  background-color: #FEF2F2;
+  border-color: #EF4444;
+}
