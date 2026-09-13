@@ -12,6 +12,11 @@ const Home = () => {
   const [marketSummary, setMarketSummary] = React.useState(null);
   const [isLoadingSummary, setIsLoadingSummary] = React.useState(true);
   const [hoveredPointIndex, setHoveredPointIndex] = React.useState(null);
+  const [selectedFundCode, setSelectedFundCode] = React.useState('THF');
+  const [isFading, setIsFading] = React.useState(false);
+  const [isHoveredCard, setIsHoveredCard] = React.useState(false);
+
+  const HERO_CODES = React.useMemo(() => ['THF', 'ZBP', 'BLH'], []);
 
   React.useEffect(() => {
     let isMounted = true;
@@ -35,9 +40,55 @@ const Home = () => {
     };
   }, []);
 
-  // THF 1 Aylık Çizgi Grafik Hesaplaması (Dinamik SVG Koordinatları)
+  // Kullanıcı tıklaması veya otomatik geçiş için fon değiştirici
+  const switchFund = React.useCallback((nextCode) => {
+    if (nextCode === selectedFundCode) return;
+    setIsFading(true);
+    setHoveredPointIndex(null);
+    setTimeout(() => {
+      setSelectedFundCode(nextCode);
+      setIsFading(false);
+    }, 220);
+  }, [selectedFundCode]);
+
+  // Otomatik geçişli döngü (Her 5.5 saniyede bir, fare kart üzerindeyken duraklar)
+  React.useEffect(() => {
+    if (isHoveredCard || isLoadingSummary) return;
+    const timer = setInterval(() => {
+      setIsFading(true);
+      setHoveredPointIndex(null);
+      setTimeout(() => {
+        setSelectedFundCode((prev) => {
+          const currentIdx = HERO_CODES.indexOf(prev);
+          const nextIdx = (currentIdx + 1) % HERO_CODES.length;
+          return HERO_CODES[nextIdx];
+        });
+        setIsFading(false);
+      }, 220);
+    }, 5500);
+
+    return () => clearInterval(timer);
+  }, [isHoveredCard, isLoadingSummary, HERO_CODES]);
+
+  // Aktif seçili fonun grafiği ve bilgileri
+  const currentFundChart = React.useMemo(() => {
+    if (!marketSummary) return null;
+    if (marketSummary.charts && marketSummary.charts[selectedFundCode]) {
+      return marketSummary.charts[selectedFundCode];
+    }
+    const hItem = marketSummary.highlightFunds?.find(f => f.code === selectedFundCode);
+    return {
+      fundCode: selectedFundCode,
+      fundName: hItem?.name || marketSummary.chart?.fundName || 'Yatırım Fonu',
+      latestPrice: hItem?.latestPrice || marketSummary.chart?.latestPrice || 0,
+      monthlyReturn: hItem?.return1m ?? (marketSummary.chart?.monthlyReturn || 0),
+      points: marketSummary.chart?.points || [],
+    };
+  }, [marketSummary, selectedFundCode]);
+
+  // 1 Aylık Çizgi Grafik Hesaplaması (Dinamik SVG Koordinatları)
   const chartCoordinates = React.useMemo(() => {
-    const points = marketSummary?.chart?.points;
+    const points = currentFundChart?.points;
     if (!points || points.length === 0) return [];
 
     const prices = points.map(p => p.price);
@@ -57,7 +108,7 @@ const Home = () => {
         dailyChange,
       };
     });
-  }, [marketSummary?.chart?.points]);
+  }, [currentFundChart?.points]);
 
   // Yumuşatılmış Catmull-Rom / Kübik Bezier Eğrisi Üretici
   const { linePath, areaPath } = React.useMemo(() => {
@@ -136,37 +187,50 @@ const Home = () => {
             </div>
           </div>
           <div className="hero-visual animate-slide-in-right">
-            <div className="mock-chart-card">
+            <div
+              className="mock-chart-card"
+              onMouseEnter={() => setIsHoveredCard(true)}
+              onMouseLeave={() => {
+                setIsHoveredCard(false);
+                setHoveredPointIndex(null);
+              }}
+            >
+              <div className="mock-chart-glow" />
+
               <div className="mock-chart-header">
-                {isLoadingSummary ? (
-                  <>
-                    <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
-                    <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
-                    <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
-                  </>
-                ) : (
-                  ['THF', 'ZBP', 'BLH'].map(code => {
-                    const item = marketSummary?.highlightFunds?.find(h => h.code === code);
-                    const ret = item?.return1m ?? 0;
-                    const isPositive = ret > 0;
-                    const isNegative = ret < 0;
-                    const colorClass = isPositive ? 'text-positive' : (isNegative ? 'text-negative' : 'text-neutral');
-                    return (
-                      <div
-                        className="mock-chip"
-                        key={code}
-                        onClick={() => navigate(`/fon/${code}`)}
-                        style={{ cursor: 'pointer' }}
-                        title={`${code} 1 Aylık Getiri: ${formatReturn(ret)}`}
-                      >
-                        <span className="mc-code">{code}</span>
-                        <span className={`mc-perf ${colorClass}`}>
-                          {formatReturn(ret)}
-                        </span>
-                      </div>
-                    );
-                  })
-                )}
+                <div className="mock-chips-group">
+                  {isLoadingSummary ? (
+                    <>
+                      <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
+                      <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
+                      <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
+                    </>
+                  ) : (
+                    HERO_CODES.map(code => {
+                      const item = marketSummary?.highlightFunds?.find(h => h.code === code);
+                      const ret = item?.return1m ?? 0;
+                      const isPositive = ret > 0;
+                      const isNegative = ret < 0;
+                      const colorClass = isPositive ? 'text-positive' : (isNegative ? 'text-negative' : 'text-neutral');
+                      const isActive = code === selectedFundCode;
+                      return (
+                        <button
+                          type="button"
+                          className={`mock-chip ${isActive ? 'active-hero-chip' : ''}`}
+                          key={code}
+                          onClick={() => switchFund(code)}
+                          title={`${code} grafiğini görüntüle (1 Aylık: ${formatReturn(ret)})`}
+                        >
+                          <span className="mc-code">{code}</span>
+                          <span className={`mc-perf ${colorClass}`}>
+                            {formatReturn(ret)}
+                          </span>
+                          {isActive && <span className="mc-active-indicator" />}
+                        </button>
+                      );
+                    })
+                  )}
+                </div>
                 {marketSummary?.dataDate && (
                   <span className="hero-data-date-badge" title="Resmi TEFAS Veri Tarihi">
                     TEFAS: {formatDateTr(marketSummary.dataDate)}
@@ -174,8 +238,32 @@ const Home = () => {
                 )}
               </div>
 
+              {/* Seçili Fon Başlık ve Özet Barı (Fade Animasyonlu) */}
+              <div className={`hero-fund-title-bar ${isFading ? 'fading-out' : 'fading-in'}`}>
+                <div className="hero-fund-title-info">
+                  <span className="hero-fund-title-code">{selectedFundCode}</span>
+                  <span className="hero-fund-title-name" title={currentFundChart?.fundName}>
+                    {currentFundChart?.fundName || 'Yatırım Fonu'}
+                  </span>
+                </div>
+                <div className="hero-fund-title-meta">
+                  {currentFundChart?.latestPrice > 0 && (
+                    <span className="hero-fund-title-price">
+                      {formatPrice(currentFundChart.latestPrice)}
+                    </span>
+                  )}
+                  <Link
+                    to={`/fon/${selectedFundCode}`}
+                    className="hero-fund-detail-btn"
+                    title={`${selectedFundCode} detay ve yorumlarına git`}
+                  >
+                    İncele &rarr;
+                  </Link>
+                </div>
+              </div>
+
               <div
-                className="mock-chart-body"
+                className={`mock-chart-body ${isFading ? 'fading-out' : 'fading-in'}`}
                 onMouseMove={handleChartMouseMove}
                 onMouseLeave={() => setHoveredPointIndex(null)}
               >

@@ -124,21 +124,61 @@ export default async function handler(req, res) {
       syncRun = localRuns.find(r => r.status === 'success') || localRuns[0] || null;
     }
 
-    // THF Fiyatları ve Grafiği
+    // THF, ZBP, BLH Fiyatları ve Grafikleri
     const thfPrices = allPrices.filter(p => p.fund_code === 'THF').sort((a, b) => a.date.localeCompare(b.date));
     const zbpPrices = allPrices.filter(p => p.fund_code === 'ZBP').sort((a, b) => a.date.localeCompare(b.date));
     const blhPrices = allPrices.filter(p => p.fund_code === 'BLH').sort((a, b) => a.date.localeCompare(b.date));
 
-    // THF için son ~1 aylık (yaklaşık son 25 işlem günü) noktalar
-    const thfPoints1M = thfPrices.slice(-25).map(p => ({
+    // Son ~1 aylık (25 işlem günü) noktalar
+    const mapPoints = (prices) => prices.slice(-25).map(p => ({
       date: p.date,
       price: Number(Number(p.price).toFixed(6)),
     }));
 
+    const thfPoints1M = mapPoints(thfPrices);
+    const zbpPoints1M = mapPoints(zbpPrices);
+    const blhPoints1M = mapPoints(blhPrices);
+
     const thfLatestPrice = thfPoints1M.length > 0 ? thfPoints1M[thfPoints1M.length - 1].price : 0;
+    const zbpLatestPrice = zbpPoints1M.length > 0 ? zbpPoints1M[zbpPoints1M.length - 1].price : 0;
+    const blhLatestPrice = blhPoints1M.length > 0 ? blhPoints1M[blhPoints1M.length - 1].price : 0;
+
     const thfReturn1M = calculateMonthlyReturn(thfPrices);
     const zbpReturn1M = calculateMonthlyReturn(zbpPrices);
     const blhReturn1M = calculateMonthlyReturn(blhPrices);
+
+    const FUND_NAMES = {
+      THF: 'Tera Portföy Hisse Senedi (TL) Fonu',
+      ZBP: 'Ziraat Portföy BIST Likit Banka Borsa Yatırım Fonu',
+      BLH: 'Ak Portföy BIST Likit Banka Borsa Yatırım Fonu',
+    };
+
+    const charts = {
+      THF: {
+        fundCode: 'THF',
+        fundName: FUND_NAMES.THF,
+        period: '1M',
+        latestPrice: thfLatestPrice,
+        monthlyReturn: thfReturn1M,
+        points: thfPoints1M,
+      },
+      ZBP: {
+        fundCode: 'ZBP',
+        fundName: FUND_NAMES.ZBP,
+        period: '1M',
+        latestPrice: zbpLatestPrice,
+        monthlyReturn: zbpReturn1M,
+        points: zbpPoints1M,
+      },
+      BLH: {
+        fundCode: 'BLH',
+        fundName: FUND_NAMES.BLH,
+        period: '1M',
+        latestPrice: blhLatestPrice,
+        monthlyReturn: blhReturn1M,
+        points: blhPoints1M,
+      },
+    };
 
     const dataDate = syncRun?.source_max_date || (thfPoints1M.length > 0 ? thfPoints1M[thfPoints1M.length - 1].date : null);
     const lastUpdated = syncRun?.completed_at || syncRun?.started_at || new Date().toISOString();
@@ -148,26 +188,26 @@ export default async function handler(req, res) {
       dataDate: dataDate,
       lastUpdated: lastUpdated,
       isStale: isStale,
-      chart: {
-        fundCode: 'THF',
-        fundName: 'TERA PORTFÖY HİSSE SENEDİ (TL) FONU',
-        period: '1M',
-        latestPrice: thfLatestPrice,
-        monthlyReturn: thfReturn1M,
-        points: thfPoints1M,
-      },
+      chart: charts.THF,
+      charts: charts,
       highlightFunds: [
         {
           code: 'THF',
+          name: FUND_NAMES.THF,
           return1m: thfReturn1M,
+          latestPrice: thfLatestPrice,
         },
         {
           code: 'ZBP',
+          name: FUND_NAMES.ZBP,
           return1m: zbpReturn1M,
+          latestPrice: zbpLatestPrice,
         },
         {
           code: 'BLH',
+          name: FUND_NAMES.BLH,
           return1m: blhReturn1M,
+          latestPrice: blhLatestPrice,
         },
       ],
     };
