@@ -166,148 +166,57 @@
   width: 100%;
 }
 
-.mock-chips-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.mock-chip {
+.hero-active-fund-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 11px;
+  gap: 10px;
+  padding: 6px 14px;
   background: #FFFFFF;
   border: 1px solid rgba(13, 27, 42, 0.12);
   border-radius: 100px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  font-family: inherit;
-  color: var(--color-text-main);
-  outline: none;
-  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(13, 27, 42, 0.04);
+  transition: opacity 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  width: 360px;
+  max-width: calc(100% - 110px);
+  box-sizing: border-box;
 }
 
-.mock-chip:hover {
+.hero-active-fund-badge:hover {
   border-color: var(--color-brand);
-  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(49, 93, 104, 0.12);
 }
 
-.mock-chip.active-hero-chip {
-  border-color: var(--color-brand);
-  background: #FFFFFF;
-  box-shadow: 0 0 0 1.5px var(--color-brand), 0 4px 14px rgba(49, 93, 104, 0.16);
-}
-
-.mc-code {
-  font-weight: 700;
-  font-size: 13px;
-  color: var(--color-text-main);
-  letter-spacing: 0.2px;
-}
-
-.mc-perf {
-  font-size: 12px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-.mc-active-indicator {
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 14px;
-  height: 3px;
-  background-color: var(--color-brand);
-  border-radius: 2px;
-  animation: pulseIndicator 2s infinite ease-in-out;
-}
-
-@keyframes pulseIndicator {
-  0%, 100% { opacity: 0.7; transform: translateX(-50%) scaleX(0.85); }
-  50% { opacity: 1; transform: translateX(-50%) scaleX(1.15); }
-}
-
-/* Hero Fund Title Bar */
-.hero-fund-title-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 14px 0 4px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(8px);
-  border-radius: 10px;
-  border: 1px solid rgba(13, 27, 42, 0.08);
-  position: relative;
-  z-index: 2;
-  transition: opacity 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.hero-fund-title-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0;
-  flex: 1;
-}
-
-.hero-fund-title-code {
-  font-size: 12px;
+.hero-badge-code {
   font-weight: 800;
+  font-size: 13px;
   color: #FFFFFF;
   background: var(--color-brand);
-  padding: 2px 7px;
-  border-radius: 5px;
-  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.4px;
   flex-shrink: 0;
 }
 
-.hero-fund-title-name {
-  font-size: 12.5px;
+.hero-badge-name {
+  font-size: 13px;
   font-weight: 600;
   color: var(--color-text-main);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;
+  flex: 1;
+  min-width: 0;
 }
 
-.hero-fund-title-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.hero-fund-title-price {
-  font-size: 13.5px;
+.hero-badge-perf {
+  font-size: 12.5px;
   font-weight: 700;
-  color: var(--color-text-main);
   font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  padding-left: 2px;
 }
 
-.hero-fund-detail-btn {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--color-brand);
-  text-decoration: none;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: rgba(49, 93, 104, 0.08);
-  transition: all 0.15s ease;
-}
-
-.hero-fund-detail-btn:hover {
-  background: var(--color-brand);
-  color: #FFFFFF;
-}
-
-/* Fade Effects for Chart & Title Bar */
+/* Fade Effects for Chart & Single Fund Badge */
 .fading-out {
   opacity: 0 !important;
   transform: translateY(4px) scale(0.985);
@@ -389,12 +298,12 @@
 }
 
 .mock-chart-body {
-  height: 185px;
+  height: 225px;
   position: relative;
   z-index: 1;
   width: 100%;
   cursor: crosshair;
-  margin-top: 4px;
+  margin-top: 16px;
   transition: opacity 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 

@@ -197,69 +197,37 @@ const Home = () => {
             >
               <div className="mock-chart-glow" />
 
+              {/* Kart Üst Alanı: Sadece Gösterilen Fonun Adı ve Getirisi (Fade Animasyonlu) */}
               <div className="mock-chart-header">
-                <div className="mock-chips-group">
-                  {isLoadingSummary ? (
-                    <>
-                      <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
-                      <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
-                      <div className="mock-chip skeleton-chip"><span className="skeleton-pulse"></span></div>
-                    </>
-                  ) : (
-                    HERO_CODES.map(code => {
-                      const item = marketSummary?.highlightFunds?.find(h => h.code === code);
-                      const ret = item?.return1m ?? 0;
-                      const isPositive = ret > 0;
-                      const isNegative = ret < 0;
-                      const colorClass = isPositive ? 'text-positive' : (isNegative ? 'text-negative' : 'text-neutral');
-                      const isActive = code === selectedFundCode;
-                      return (
-                        <button
-                          type="button"
-                          className={`mock-chip ${isActive ? 'active-hero-chip' : ''}`}
-                          key={code}
-                          onClick={() => switchFund(code)}
-                          title={`${code} grafiğini görüntüle (1 Aylık: ${formatReturn(ret)})`}
-                        >
-                          <span className="mc-code">{code}</span>
-                          <span className={`mc-perf ${colorClass}`}>
-                            {formatReturn(ret)}
-                          </span>
-                          {isActive && <span className="mc-active-indicator" />}
-                        </button>
-                      );
-                    })
-                  )}
-                </div>
+                {isLoadingSummary ? (
+                  <div className="mock-chip skeleton-chip" style={{ minWidth: '220px' }}>
+                    <span className="skeleton-pulse"></span>
+                  </div>
+                ) : (
+                  <div
+                    className={`hero-active-fund-badge ${isFading ? 'fading-out' : 'fading-in'}`}
+                    onClick={() => navigate(`/fon/${selectedFundCode}`)}
+                    style={{ cursor: 'pointer' }}
+                    title={`${selectedFundCode} detay ve yorumlarına git`}
+                  >
+                    <span className="hero-badge-code">{selectedFundCode}</span>
+                    <span className="hero-badge-name" title={currentFundChart?.fundName}>
+                      {currentFundChart?.fundName || 'Yatırım Fonu'}
+                    </span>
+                    <span
+                      className={`hero-badge-perf ${
+                        (currentFundChart?.monthlyReturn ?? 0) >= 0 ? 'text-positive' : 'text-negative'
+                      }`}
+                    >
+                      {formatReturn(currentFundChart?.monthlyReturn ?? 0)}
+                    </span>
+                  </div>
+                )}
                 {marketSummary?.dataDate && (
                   <span className="hero-data-date-badge" title="Resmi TEFAS Veri Tarihi">
                     TEFAS: {formatDateTr(marketSummary.dataDate)}
                   </span>
                 )}
-              </div>
-
-              {/* Seçili Fon Başlık ve Özet Barı (Fade Animasyonlu) */}
-              <div className={`hero-fund-title-bar ${isFading ? 'fading-out' : 'fading-in'}`}>
-                <div className="hero-fund-title-info">
-                  <span className="hero-fund-title-code">{selectedFundCode}</span>
-                  <span className="hero-fund-title-name" title={currentFundChart?.fundName}>
-                    {currentFundChart?.fundName || 'Yatırım Fonu'}
-                  </span>
-                </div>
-                <div className="hero-fund-title-meta">
-                  {currentFundChart?.latestPrice > 0 && (
-                    <span className="hero-fund-title-price">
-                      {formatPrice(currentFundChart.latestPrice)}
-                    </span>
-                  )}
-                  <Link
-                    to={`/fon/${selectedFundCode}`}
-                    className="hero-fund-detail-btn"
-                    title={`${selectedFundCode} detay ve yorumlarına git`}
-                  >
-                    İncele &rarr;
-                  </Link>
-                </div>
               </div>
 
               <div
