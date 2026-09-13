@@ -24,24 +24,23 @@
 }
 
 .header.shrink {
-  border-bottom-color: var(--color-border-light);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .header.shrink::after {
   opacity: 1;
-  background: linear-gradient(to bottom, rgba(49, 93, 104, 0.06), transparent);
 }
 
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
-  transition: height var(--transition-layout) var(--ease-premium);
+  height: 70px;
 }
 
 .header.shrink .header-container {
-  height: 54px;
+  height: 70px; /* Sabit yükseklik: Scroll sırasında layout shift ve titremeyi önler */
 }
 
 .header-left {
@@ -55,23 +54,21 @@
   font-size: var(--font-size-lg);
   color: var(--color-text-main);
   letter-spacing: -0.5px;
-  transition: font-size var(--transition-layout) var(--ease-premium);
 }
 
 .header.shrink .logo {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
 }
 
 .header-logo-img {
-  height: 86px;
+  height: 80px;
   width: auto;
   display: block;
   margin-left: -15px;
-  transition: height var(--transition-layout) var(--ease-premium);
 }
 
 .header.shrink .header-logo-img {
-  height: 65px;
+  height: 80px; /* Logo boyutu sabit: Küçülüp büyüme ve titreme yapmaz */
 }
 
 .main-nav {
