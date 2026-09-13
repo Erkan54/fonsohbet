@@ -4,7 +4,7 @@ import { useFunds } from '../context/FundsContext';
 import './Forum.css';
 
 const Forum = () => {
-  const { discussions, addNewDiscussion } = useFunds();
+  const { funds, discussions, addNewDiscussion } = useFunds();
   const [activeTab, setActiveTab] = useState('Popüler');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newFundCode, setNewFundCode] = useState('');
@@ -18,9 +18,13 @@ const Forum = () => {
 
     try {
       setIsSubmitting(true);
+      const codeClean = newFundCode.trim().toUpperCase();
+      const validFund = funds.find(f => f.code.toUpperCase() === codeClean);
+      const fundCodeToSave = validFund ? validFund.code : null;
+
       await addNewDiscussion({
         title: newTitle.trim(),
-        fundCode: newFundCode.trim().toUpperCase() || 'GENEL',
+        fundCode: fundCodeToSave,
         author: 'Yatırımcı',
       });
       setNewTitle('');
@@ -58,12 +62,16 @@ const Forum = () => {
           discussions.map(disc => (
             <div className="forum-list-item" key={disc.id}>
               <div className="forum-item-main">
-                <Link to={`/fon/${disc.fundCode}`} className="forum-item-title">{disc.title}</Link>
+                <Link to={disc.fundCode ? `/fon/${disc.fundCode}` : '/forum'} className="forum-item-title">{disc.title}</Link>
                 <p className="forum-item-desc">
-                  Bu tartışma {disc.fundCode} fonu hakkında. Gelişmeler ve analizler paylaşılıyor...
+                  {disc.fundCode ? `Bu tartışma ${disc.fundCode} fonu hakkında paylaşıldı.` : 'Genel yatırım ve fon piyasaları tartışması.'}
                 </p>
                 <div className="forum-item-meta">
-                  <Link to={`/fon/${disc.fundCode}`} className="fund-badge">{disc.fundCode}</Link>
+                  {disc.fundCode ? (
+                    <Link to={`/fon/${disc.fundCode}`} className="fund-badge">{disc.fundCode}</Link>
+                  ) : (
+                    <span className="fund-badge badge-blue">GENEL</span>
+                  )}
                   <span className="meta-dot">·</span>
                   <span className="meta-item">Yazan: {disc.author}</span>
                   <span className="meta-dot">·</span>
