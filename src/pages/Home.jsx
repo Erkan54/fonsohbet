@@ -61,51 +61,64 @@ const Home = () => {
             <div className="forum-content-area">
               <h2 className="section-title-modern">Gündemdeki Tartışmalar</h2>
               <div className="forum-main-column">
-                <div className="discussion-list">
-                  {discussions.slice(0, 5).map((disc, i) => {
-                    const badgeColors = ['badge-blue', 'badge-green', 'badge-terracotta', 'badge-brown', 'badge-blue'];
-                    return (
-                      <div className="discussion-row" key={disc.id}>
-                        <div className="discussion-content">
-                          <Link to={`/fon/${disc.fundCode}`} className="discussion-title">{disc.title}</Link>
-                          <div className="discussion-meta">
-                            <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i]}`}>{disc.fundCode}</Link>
-                            <span className="meta-dot">·</span>
-                            <span className="meta-item">{disc.commentsCount} yorum</span>
-                            <span className="meta-dot">·</span>
-                            <span className="meta-item">{disc.lastActivity}</span>
-                            <span className="meta-dot">·</span>
-                            <span className="meta-author">{disc.author}</span>
+                {discussions.length > 0 ? (
+                  <div className="discussion-list">
+                    {discussions.slice(0, 5).map((disc, i) => {
+                      const badgeColors = ['badge-blue', 'badge-green', 'badge-terracotta', 'badge-brown', 'badge-blue'];
+                      return (
+                        <div className="discussion-row" key={disc.id}>
+                          <div className="discussion-content">
+                            <Link to={`/fon/${disc.fundCode}`} className="discussion-title">{disc.title}</Link>
+                            <div className="discussion-meta">
+                              <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i % badgeColors.length]}`}>{disc.fundCode}</Link>
+                              <span className="meta-dot">·</span>
+                              <span className="meta-item">{disc.commentsCount} yorum</span>
+                              <span className="meta-dot">·</span>
+                              <span className="meta-item">{disc.lastActivity}</span>
+                              <span className="meta-dot">·</span>
+                              <span className="meta-author">{disc.author}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div style={{ textAlign: 'center', padding: '36px 20px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', marginTop: '12px' }}>
+                    <p style={{ color: '#64748B', marginBottom: '14px', fontSize: '15px' }}>Henüz topluluk tartışması başlatılmamış.</p>
+                    <Link to="/forum" className="btn btn-primary hero-btn" style={{ display: 'inline-block', fontSize: '14px' }}>
+                      İlk Tartışmayı Sen Başlat
+                    </Link>
+                  </div>
+                )}
               </div>
 
-              <h2 className="section-title-modern mt-48">Son Tartışmalar</h2>
-              <div className="forum-main-column">
-                <div className="discussion-list">
-                  {discussions.slice(5, 10).map((disc, i) => {
-                    const badgeColors = ['badge-brown', 'badge-terracotta', 'badge-blue', 'badge-green', 'badge-brown'];
-                    return (
-                      <div className="discussion-row" key={disc.id}>
-                        <div className="discussion-content">
-                          <Link to={`/fon/${disc.fundCode}`} className="discussion-title">{disc.title}</Link>
-                          <div className="discussion-meta">
-                            <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i]}`}>{disc.fundCode}</Link>
-                            <span className="meta-dot">·</span>
-                            <span className="meta-item">{disc.commentsCount} yorum</span>
-                            <span className="meta-dot">·</span>
-                            <span className="meta-item">{disc.lastActivity}</span>
+              {discussions.length > 5 && (
+                <>
+                  <h2 className="section-title-modern mt-48">Son Tartışmalar</h2>
+                  <div className="forum-main-column">
+                    <div className="discussion-list">
+                      {discussions.slice(5, 10).map((disc, i) => {
+                        const badgeColors = ['badge-brown', 'badge-terracotta', 'badge-blue', 'badge-green', 'badge-brown'];
+                        return (
+                          <div className="discussion-row" key={disc.id}>
+                            <div className="discussion-content">
+                              <Link to={`/fon/${disc.fundCode}`} className="discussion-title">{disc.title}</Link>
+                              <div className="discussion-meta">
+                                <Link to={`/fon/${disc.fundCode}`} className={`fund-badge ${badgeColors[i % badgeColors.length]}`}>{disc.fundCode}</Link>
+                                <span className="meta-dot">·</span>
+                                <span className="meta-item">{disc.commentsCount} yorum</span>
+                                <span className="meta-dot">·</span>
+                                <span className="meta-item">{disc.lastActivity}</span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
 
             <aside className="forum-sidebar">

@@ -54,33 +54,40 @@ const Forum = () => {
       </div>
 
       <div className="forum-list">
-        {discussions.map(disc => (
-          <div className="forum-list-item" key={disc.id}>
-            <div className="forum-item-main">
-              <Link to={`/fon/${disc.fundCode}`} className="forum-item-title">{disc.title}</Link>
-              <p className="forum-item-desc">
-                Bu tartışma {disc.fundCode} fonu hakkında. Gelişmeler ve analizler paylaşılıyor...
-              </p>
-              <div className="forum-item-meta">
-                <Link to={`/fon/${disc.fundCode}`} className="fund-badge">{disc.fundCode}</Link>
-                <span className="meta-dot">·</span>
-                <span className="meta-item">Yazan: {disc.author}</span>
-                <span className="meta-dot">·</span>
-                <span className="meta-item">{disc.lastActivity}</span>
+        {discussions.length > 0 ? (
+          discussions.map(disc => (
+            <div className="forum-list-item" key={disc.id}>
+              <div className="forum-item-main">
+                <Link to={`/fon/${disc.fundCode}`} className="forum-item-title">{disc.title}</Link>
+                <p className="forum-item-desc">
+                  Bu tartışma {disc.fundCode} fonu hakkında. Gelişmeler ve analizler paylaşılıyor...
+                </p>
+                <div className="forum-item-meta">
+                  <Link to={`/fon/${disc.fundCode}`} className="fund-badge">{disc.fundCode}</Link>
+                  <span className="meta-dot">·</span>
+                  <span className="meta-item">Yazan: {disc.author}</span>
+                  <span className="meta-dot">·</span>
+                  <span className="meta-item">{disc.lastActivity}</span>
+                </div>
+              </div>
+              <div className="forum-item-stats">
+                <div className="stat-box">
+                  <span className="stat-num">{disc.commentsCount}</span>
+                  <span className="stat-label">Yorum</span>
+                </div>
+                <div className="stat-box">
+                  <span className="stat-num">{(disc.commentsCount || 1) * 14}</span>
+                  <span className="stat-label">Görülme</span>
+                </div>
               </div>
             </div>
-            <div className="forum-item-stats">
-              <div className="stat-box">
-                <span className="stat-num">{disc.commentsCount}</span>
-                <span className="stat-label">Yorum</span>
-              </div>
-              <div className="stat-box">
-                <span className="stat-num">{(disc.commentsCount || 1) * 14}</span>
-                <span className="stat-label">Görülme</span>
-              </div>
-            </div>
+          ))
+        ) : (
+          <div style={{ textAlign: 'center', padding: '48px 24px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', marginTop: '16px' }}>
+            <p style={{ fontSize: '16px', color: '#64748B', marginBottom: '16px' }}>Henüz hiçbir tartışma konusu açılmamış.</p>
+            <button className="btn btn-primary hero-btn" onClick={() => setIsModalOpen(true)}>+ İlk Tartışmayı Başlat</button>
           </div>
-        ))}
+        )}
       </div>
 
       {/* Yeni Tartışma Modalı */}

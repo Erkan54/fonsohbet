@@ -127,27 +127,7 @@ export const funds = [
 ];
 
 // ===================================================================
-// FORUM TARTIŞMALARI — Gerçek fon kodları, gerçekçi kullanıcı adları
+// FORUM TARTIŞMALARI — Canlı Supabase tablosundan çekilir
 // ===================================================================
-export const discussions = [
-  { id:1,  title:'THF bu ay %28 getiri vermiş, sürdürülebilir mi sizce?',           fundCode:'THF', author:'borsa_kurdu',      commentsCount:142, lastActivity:'5 dk önce' },
-  { id:2,  title:'YIT yarı iletken fonu YBB %66 — çip sektörü balonlaşıyor mu?',   fundCode:'YIT', author:'silikon_vadisi',   commentsCount:98,  lastActivity:'12 dk önce' },
-  { id:3,  title:'IJC Nvidia düşüşünden nasıl etkilenecek?',                        fundCode:'IJC', author:'tekno_foncu',      commentsCount:87,  lastActivity:'23 dk önce' },
-  { id:4,  title:'TTA altın fonu neden YBB sadece %1.8 kaldı?',                     fundCode:'TTA', author:'altinsever42',     commentsCount:76,  lastActivity:'34 dk önce' },
-  { id:5,  title:'AFT yeni teknolojiler fonu Nasdaq rallisini kaçırıyor',            fundCode:'AFT', author:'foncu_mehmet',     commentsCount:63,  lastActivity:'1 saat önce' },
-  { id:6,  title:'TP2 para piyasası fonunda %38 YBB — mevduattan iyi mi?',          fundCode:'TP2', author:'nakit_kral',       commentsCount:124, lastActivity:'1 saat önce' },
-  { id:7,  title:'GBV blockchain fonu uzun vadede portföye eklenmeli mi?',           fundCode:'GBV', author:'kripto_hakim',     commentsCount:89,  lastActivity:'2 saat önce' },
-  { id:8,  title:'KPC katılım hisse fonu konvansiyonel muadillerini geçmiş',        fundCode:'KPC', author:'katilim_yatirimci', commentsCount:56, lastActivity:'2 saat önce' },
-  { id:9,  title:'ZKP BIST Katılım 30 BYF — %52 YBB ile zirvede',                  fundCode:'ZKP', author:'endeks_takipci',   commentsCount:78,  lastActivity:'3 saat önce' },
-  { id:10, title:'AFA Amerika hisse fonu dolar bazlı mı TL bazlı mı bakmalıyız?',   fundCode:'AFA', author:'dolar_analiz',     commentsCount:91,  lastActivity:'3 saat önce' },
-  { id:11, title:'Gümüş fonları (GTZ, YZG) neden ekside? Altından farkı ne?',       fundCode:'GTZ', author:'madenler_gurusu',  commentsCount:67,  lastActivity:'4 saat önce' },
-  { id:12, title:'IPJ elektrikli araç fonu son 1 ayda negatife döndü',              fundCode:'IPJ', author:'ev_yatirimcisi',   commentsCount:45,  lastActivity:'5 saat önce' },
-  { id:13, title:'YAY Yapı Kredi Teknoloji fonu ile GUH karşılaştırması',           fundCode:'YAY', author:'fon_karsilastir',  commentsCount:112, lastActivity:'5 saat önce' },
-  { id:14, title:'TZV Ziraat borçlanma fonu — düşük riskli liman mı?',              fundCode:'TZV', author:'guvenli_liman',    commentsCount:34,  lastActivity:'6 saat önce' },
-  { id:15, title:'ZPP Banka Dışı Likit 10 BYF — YBB %55 ama risk çok yüksek',     fundCode:'ZPP', author:'risk_olcer',       commentsCount:56,  lastActivity:'7 saat önce' },
-  { id:16, title:'ITP İş Portföy Teknoloji Karma Fon uzun vade stratejisi',         fundCode:'ITP', author:'uzun_vade_emre',   commentsCount:43,  lastActivity:'8 saat önce' },
-  { id:17, title:'Para piyasası fonlarında TP2 mi TI1 mi? Hangisi daha güvenli?',   fundCode:'TI1', author:'faiz_takipci',     commentsCount:156, lastActivity:'9 saat önce' },
-  { id:18, title:'OJK altın fonu mu AFO mu? QNB vs Ak Portföy karşılaştırması',     fundCode:'OJK', author:'altin_kartal',     commentsCount:78,  lastActivity:'10 saat önce' },
-  { id:19, title:'GSP kar payı ödeyen hisse fonu — temettü stratejisi tartışması',   fundCode:'GSP', author:'temettu_avcisi',   commentsCount:67,  lastActivity:'11 saat önce' },
-  { id:20, title:'TGE emtia fon sepeti %42 YBB — emtia süper döngüsü mü?',         fundCode:'TGE', author:'emtia_analiz',     commentsCount:89,  lastActivity:'12 saat önce' },
-];
+export const discussions = [];
+

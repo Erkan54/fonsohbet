@@ -6,7 +6,7 @@ import './Profile.css';
 const Profile = () => {
   const { discussions } = useFunds();
   const [activeTab, setActiveTab] = useState('Tartışmalarım');
-  const userDiscussions = discussions.filter(d => d.author === 'yatirimci101') || discussions.slice(0, 2);
+  const userDiscussions = discussions.filter(d => d.author === 'yatirimci101');
 
   return (
     <div className="profile-page container animate-fade-in">
@@ -14,13 +14,13 @@ const Profile = () => {
         <div className="profile-avatar">Y</div>
         <div className="profile-info">
           <h1 className="profile-username">yatirimci101</h1>
-          <p className="profile-bio">Uzun vadeli yatırımcı | Teknoloji ve Altın fonları favorim</p>
+          <p className="profile-bio">Yatırımcı profili</p>
           <div className="profile-stats">
-            <span><strong>12</strong> Tartışma</span>
+            <span><strong>{userDiscussions.length}</strong> Tartışma</span>
             <span className="meta-dot">·</span>
-            <span><strong>45</strong> Yorum</span>
+            <span><strong>0</strong> Yorum</span>
             <span className="meta-dot">·</span>
-            <span><strong>8</strong> Takip Edilen Fon</span>
+            <span><strong>0</strong> Takip Edilen Fon</span>
           </div>
         </div>
       </div>
@@ -59,24 +59,7 @@ const Profile = () => {
 
         {activeTab === 'Yorumlarım' && (
           <div className="profile-list">
-            <div className="profile-list-item">
-              <div className="profile-comment-context">
-                <Link to="/fon/AFT" className="fund-badge">AFT</Link> fonundaki "AFT bu seviyeden hâlâ mantıklı mı?" tartışmasına yorum yaptınız:
-              </div>
-              <p className="profile-comment-text">
-                "Faiz indirim süreci başlarsa teknoloji hisseleri tekrar ivme kazanacaktır. Bence portföyde küçük bir miktar bulundurmak mantıklı."
-              </p>
-              <div className="profile-item-meta">2 gün önce</div>
-            </div>
-            <div className="profile-list-item">
-              <div className="profile-comment-context">
-                <Link to="/fon/TTA" className="fund-badge">TTA</Link> fonuna yorum yaptınız:
-              </div>
-              <p className="profile-comment-text">
-                "Yönetim ücreti diğer altın fonlarına göre biraz avantajlı geldi bana."
-              </p>
-              <div className="profile-item-meta">5 gün önce</div>
-            </div>
+            <p className="empty-state">Henüz bir yorum yapmadınız.</p>
           </div>
         )}
 

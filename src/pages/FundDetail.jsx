@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
+import { fetchFundComments, addFundComment } from '../services/fundService';
 import './FundDetail.css';
 
 const FundDetail = () => {
@@ -9,6 +10,36 @@ const FundDetail = () => {
   const fund = funds.find(f => f.code.toUpperCase() === id?.toUpperCase()) || funds[0];
   const [activeTab, setActiveTab] = useState('Yorumlar');
   const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState([]);
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false);
+
+  // Bu fona ait gerçek yorumları çek
+  useEffect(() => {
+    if (fund?.code) {
+      fetchFundComments(fund.code).then(data => setComments(data || []));
+    }
+  }, [fund?.code]);
+
+  // Yeni yorum gönderme
+  const handleAddComment = async () => {
+    if (!commentText.trim()) return;
+    try {
+      setIsSubmittingComment(true);
+      const newComment = await addFundComment({
+        fundCode: fund.code,
+        author: 'Yatırımcı',
+        content: commentText.trim(),
+      });
+      if (newComment) {
+        setComments(prev => [newComment, ...prev]);
+      }
+      setCommentText('');
+    } catch (err) {
+      alert('Yorum gönderilirken bir hata oluştu.');
+    } finally {
+      setIsSubmittingComment(false);
+    }
+  };
 
   // Bu fona ait tartışmalar
   const fundDiscussions = discussions.filter(d => d.fundCode === fund.code);
@@ -22,15 +53,6 @@ const FundDetail = () => {
       </span>
     );
   };
-
-  // Gerçekçi yorumlar
-  const sampleComments = [
-    { author: 'yatirim_gurusu', time: '2 saat önce', text: `${fund.code} fonu son dönemde sektörel rüzgârları iyi kullanıyor. Portföy yönetiminin aktif takası dikkat çekici. Aylık %${fund.returns.monthly > 0 ? fund.returns.monthly.toFixed(1) : '?'} getiri bu piyasa koşullarında gayet tatminkâr.`, likes: 24 },
-    { author: 'foncu_ali', time: '3 saat önce', text: `Yönetim ücreti biraz yüksek ama getirilerle kıyasladığınızda hak ediyor. Uzun vadede portföyde tutulabilir diye düşünüyorum. Risk/getiri dengesi makul.`, likes: 18 },
-    { author: 'borsa_meraklisi', time: '5 saat önce', text: `Geçen hafta almıştım, şu an haftalık ${fund.returns.weekly > 0 ? '+' : ''}${fund.returns.weekly.toFixed(2)}% ile iyi gidiyor. Stop-loss seviyemi %5 altına koydum, yükseliş devam ederse kademeli ekleme yapacağım.`, likes: 31 },
-    { author: 'analiz_pro', time: '8 saat önce', text: `Bu fonun benchmark endeksine göre performansı pozitif alfa üretiyor. YBB ${fund.returns.ytd != null ? '%' + fund.returns.ytd.toFixed(1) : 'henüz belirsiz'} seviyesinde. Sektör ortalamasının üstünde kalmaya devam ediyor.`, likes: 15 },
-    { author: 'risk_yoneticisi', time: '12 saat önce', text: `Risk seviyesi ${fund.risk}/7. Bu kategoride makul bir seviye. Portföy çeşitlendirmesi yapıyorsanız, toplam ağırlığın %10'unu geçmemesini tavsiye ederim. Özellikle volatilite dönemlerinde dikkatli olun.`, likes: 9 },
-  ];
 
   return (
     <div className="fund-detail-page container animate-fade-in">
@@ -96,31 +118,42 @@ const FundDetail = () => {
               onChange={(e) => setCommentText(e.target.value)}
             />
             <div className="comment-form-actions">
-              <button className="btn btn-primary" onClick={() => setCommentText('')}>Yorum Yap</button>
+              <button 
+                className="btn btn-primary" 
+                onClick={handleAddComment}
+                disabled={isSubmittingComment || !commentText.trim()}
+              >
+                {isSubmittingComment ? 'Gönderiliyor...' : 'Yorum Yap'}
+              </button>
             </div>
           </div>
 
           <div className="comments-list">
-            {sampleComments.map((comment, i) => (
-              <div className="comment-item" key={i}>
-                <div className="avatar-base">{comment.author[0].toUpperCase()}</div>
-                <div className="comment-content">
-                  <div className="comment-header">
-                    <span className="comment-author">{comment.author}</span>
-                    <span className="meta-dot">·</span>
-                    <span className="comment-date">{comment.time}</span>
-                  </div>
-                  <div className="comment-text">{comment.text}</div>
-                  <div className="comment-actions">
-                    <button className="like-btn">Beğen ({comment.likes})</button>
-                    <span className="meta-dot">·</span>
-                    <button className="reply-btn">Yanıtla</button>
-                    <span className="meta-dot">·</span>
-                    <button className="reply-btn">Şikayet Et</button>
+            {comments.length > 0 ? (
+              comments.map((comment) => (
+                <div className="comment-item" key={comment.id}>
+                  <div className="avatar-base">{(comment.author || 'Y')[0].toUpperCase()}</div>
+                  <div className="comment-content">
+                    <div className="comment-header">
+                      <span className="comment-author">{comment.author || 'Yatırımcı'}</span>
+                      <span className="meta-dot">·</span>
+                      <span className="comment-date">
+                        {comment.created_at ? new Date(comment.created_at).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : 'Yeni'}
+                      </span>
+                    </div>
+                    <div className="comment-text">{comment.content}</div>
+                    <div className="comment-actions">
+                      <button className="like-btn">Beğen ({comment.likes_count || 0})</button>
+                    </div>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div style={{ textAlign: 'center', padding: '36px 16px', background: '#F8FAFC', borderRadius: '12px', border: '1px solid #E2E8F0', marginTop: '16px' }}>
+                <p style={{ color: '#64748B', margin: 0, fontSize: '15px' }}>Bu fon hakkında henüz yorum yapılmamış.</p>
+                <p style={{ color: '#94A3B8', marginTop: '6px', fontSize: '13px' }}>İlk yorumu yukarıdaki alandan siz yazabilirsiniz!</p>
               </div>
-            ))}
+            )}
           </div>
         </section>
       )}

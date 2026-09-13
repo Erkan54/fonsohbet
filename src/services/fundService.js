@@ -130,3 +130,41 @@ export const createDiscussion = async ({ title, fundCode, author }) => {
   if (error) throw error;
   return data;
 };
+
+// 5. Belirli Bir Fona Ait Yorumları Getir
+export const fetchFundComments = async (fundCode) => {
+  if (!isSupabaseConfigured || !supabase) return [];
+  try {
+    const { data, error } = await supabase
+      .from('comments')
+      .select('*')
+      .eq('fund_code', fundCode)
+      .order('created_at', { ascending: false });
+
+    if (error || !data) return [];
+    return data;
+  } catch (err) {
+    console.error('fetchFundComments hatası:', err);
+    return [];
+  }
+};
+
+// 6. Fona Yeni Yorum Ekle
+export const addFundComment = async ({ fundCode, author, content }) => {
+  if (!isSupabaseConfigured || !supabase) return null;
+  const { data, error } = await supabase
+    .from('comments')
+    .insert([
+      {
+        fund_code: fundCode,
+        author: author || 'Yatırımcı',
+        content,
+      },
+    ])
+    .select()
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
