@@ -139,7 +139,10 @@ const Header = () => {
         <div className="header-right">
           {/* Arama Barı */}
           <div className="header-search" ref={searchRef}>
-            <div className={`search-input-wrapper ${isFocused ? 'focused' : ''}`}>
+            <div 
+              className={`search-input-wrapper ${isFocused ? 'focused' : ''}`}
+              onClick={() => document.querySelector('.search-bar-input')?.focus()}
+            >
               <svg className="search-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16ZM19 19l-4.35-4.35" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
