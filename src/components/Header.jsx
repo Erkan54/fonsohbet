@@ -113,6 +113,26 @@ const Header = () => {
   const displayName = profile?.display_name || user?.user_metadata?.full_name || 'Yatırımcı';
   const username = profile?.username || 'yatirimci';
 
+  // Arama sonuçlarını filtrele
+  const filteredFunds = React.useMemo(() => {
+    if (!searchTerm.trim()) return [];
+    const term = searchTerm.trim().toLowerCase();
+    return funds
+      .filter(f =>
+        f.code.toLowerCase().includes(term) ||
+        f.name.toLowerCase().includes(term) ||
+        f.category?.toLowerCase().includes(term)
+      )
+      .slice(0, 8);
+  }, [searchTerm, funds]);
+
+  // Fon seçimi
+  const handleSelect = (code) => {
+    setSearchTerm('');
+    setIsFocused(false);
+    navigate(`/fon/${code}`);
+  };
+
   const handleInputKeyDown = (e) => {
     if (e.key === 'Escape') {
       setIsFocused(false);
@@ -296,7 +316,7 @@ const Header = () => {
           {isAuthenticated && (
             <Link to="/profil" className="mobile-nav-link" onClick={() => setIsMobileNavOpen(false)}>
               <span className="mn-icon">👤</span>
-              <span className="mn-text">Profilim (@{username})</span>
+              <span className="mn-text">Profilim (@{profile?.username || user?.user_metadata?.name || 'kullanici'})</span>
             </Link>
           )}
         </nav>
