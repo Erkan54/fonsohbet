@@ -262,7 +262,7 @@ const Home = () => {
                       )}
                     </svg>
 
-                    {activePoint && (
+                    {activePoint && hoveredPointIndex !== null && (
                       <>
                         <div
                           className="mock-chart-dot-html"

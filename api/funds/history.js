@@ -102,7 +102,19 @@ export default async function handler(req, res) {
     
     // Calculate returns based on exactly the start date price
     const eligiblePast = allPrices.filter(p => p.date <= startDate);
-    const baseRecord = eligiblePast.length > 0 ? eligiblePast[eligiblePast.length - 1] : allPrices[0];
+    
+    let baseRecord = null;
+    if (eligiblePast.length > 0) {
+      baseRecord = eligiblePast[eligiblePast.length - 1];
+    } else {
+      const oldestDate = allPrices[0].date;
+      const diffDays = (new Date(oldestDate).getTime() - new Date(startDate).getTime()) / (1000 * 3600 * 24);
+      if (diffDays > 5) {
+        // Yeterli geçmiş veri yok (örneğin 3 aylık istenmiş ama elde 1 aylık var)
+        return res.status(200).json({ points: [], periodReturn: 0 });
+      }
+      baseRecord = allPrices[0];
+    }
     
     const filteredPoints = allPrices.filter(p => p.date >= startDate).map(p => ({
       date: p.date,
