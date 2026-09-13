@@ -77,24 +77,45 @@ export const fetchDiscussions = async () => {
   try {
     const { data, error } = await supabase
       .from('discussions')
-      .select('*, profiles:user_id(username, display_name, avatar_url)')
+      .select('*')
       .order('id', { ascending: false });
 
-    if (error || !data || data.length === 0) {
+    if (error) {
+      console.error('fetchDiscussions Supabase hatası:', error);
       return mockDiscussions;
     }
 
-    return data.map(d => ({
-      id: d.id,
-      title: d.title,
-      fundCode: d.fund_code,
-      author: d.profiles?.display_name || d.profiles?.username || d.author || 'Anonim',
-      authorUsername: d.profiles?.username || null,
-      authorAvatar: d.profiles?.avatar_url || null,
-      user_id: d.user_id,
-      commentsCount: d.comments_count,
-      lastActivity: d.last_activity,
-    }));
+    if (!data || data.length === 0) {
+      return [];
+    }
+
+    // Kullanıcı profillerini eşleştir
+    const userIds = [...new Set(data.map(d => d.user_id).filter(Boolean))];
+    let profileMap = {};
+    if (userIds.length > 0) {
+      const { data: profiles } = await supabase
+        .from('profiles')
+        .select('id, username, display_name, avatar_url')
+        .in('id', userIds);
+      if (profiles) {
+        profiles.forEach(p => { profileMap[p.id] = p; });
+      }
+    }
+
+    return data.map(d => {
+      const prof = profileMap[d.user_id];
+      return {
+        id: d.id,
+        title: d.title,
+        fundCode: d.fund_code,
+        author: prof?.display_name || prof?.username || d.author || 'Anonim',
+        authorUsername: prof?.username || null,
+        authorAvatar: prof?.avatar_url || null,
+        user_id: d.user_id,
+        commentsCount: d.comments_count || 0,
+        lastActivity: d.last_activity || 'Şimdi',
+      };
+    });
   } catch (err) {
     console.error('fetchDiscussions hatası:', err);
     return mockDiscussions;
@@ -122,13 +143,33 @@ export const createDiscussion = async ({ title, fundCode, userId }) => {
     throw new Error('Bu işlem için giriş yapmanız gerekiyor.');
   }
 
+  // Profil bilgisini al (avatar ve display_name için)
+  let authorName = user.user_metadata?.full_name || 'Yatırımcı';
+  let authorAvatar = user.user_metadata?.avatar_url || null;
+  let authorUsername = null;
+
+  try {
+    const { data: prof } = await supabase
+      .from('profiles')
+      .select('display_name, username, avatar_url')
+      .eq('id', user.id)
+      .maybeSingle();
+    if (prof) {
+      authorName = prof.display_name || prof.username || authorName;
+      authorAvatar = prof.avatar_url || authorAvatar;
+      authorUsername = prof.username;
+    }
+  } catch (pErr) {
+    console.warn('Profil okunamadı:', pErr);
+  }
+
   const { data, error } = await supabase
     .from('discussions')
     .insert([
       {
         title,
-        fund_code: fundCode,
-        author: user.user_metadata?.full_name || 'Yatırımcı',
+        fund_code: fundCode || null,
+        author: authorName,
         user_id: user.id,
         comments_count: 0,
         last_activity: 'Şimdi',
@@ -142,10 +183,12 @@ export const createDiscussion = async ({ title, fundCode, userId }) => {
     id: data.id,
     title: data.title,
     fundCode: data.fund_code,
-    author: user.user_metadata?.full_name || 'Yatırımcı',
+    author: authorName,
+    authorUsername,
+    authorAvatar,
     user_id: data.user_id,
-    commentsCount: data.comments_count,
-    lastActivity: data.last_activity,
+    commentsCount: data.comments_count || 0,
+    lastActivity: data.last_activity || 'Şimdi',
   };
 };
 
@@ -155,17 +198,36 @@ export const fetchFundComments = async (fundCode) => {
   try {
     const { data, error } = await supabase
       .from('comments')
-      .select('*, profiles:user_id(username, display_name, avatar_url)')
+      .select('*')
       .eq('fund_code', fundCode)
       .order('created_at', { ascending: false });
 
-    if (error || !data) return [];
-    return data.map(c => ({
-      ...c,
-      author: c.profiles?.display_name || c.profiles?.username || c.author || 'Yatırımcı',
-      authorUsername: c.profiles?.username || null,
-      authorAvatar: c.profiles?.avatar_url || null,
-    }));
+    if (error || !data) {
+      if (error) console.error('fetchFundComments hatası:', error);
+      return [];
+    }
+
+    const userIds = [...new Set(data.map(c => c.user_id).filter(Boolean))];
+    let profileMap = {};
+    if (userIds.length > 0) {
+      const { data: profiles } = await supabase
+        .from('profiles')
+        .select('id, username, display_name, avatar_url')
+        .in('id', userIds);
+      if (profiles) {
+        profiles.forEach(p => { profileMap[p.id] = p; });
+      }
+    }
+
+    return data.map(c => {
+      const prof = profileMap[c.user_id];
+      return {
+        ...c,
+        author: prof?.display_name || prof?.username || c.author || 'Yatırımcı',
+        authorUsername: prof?.username || null,
+        authorAvatar: prof?.avatar_url || null,
+      };
+    });
   } catch (err) {
     console.error('fetchFundComments hatası:', err);
     return [];
