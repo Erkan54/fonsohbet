@@ -14,6 +14,49 @@ const Forum = () => {
   const [newContent, setNewContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Modal Fon Arama (Searchbar ile aynı sistem)
+  const [fundSearchTerm, setFundSearchTerm] = useState('');
+  const [isFundSearchFocused, setIsFundSearchFocused] = useState(false);
+  const [selectedFund, setSelectedFund] = useState(null);
+  const fundSearchRef = useRef(null);
+
+  // Dropdown dışına tıklandığında kapat
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (fundSearchRef.current && !fundSearchRef.current.contains(e.target)) {
+        setIsFundSearchFocused(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Modal için filtrelenmiş fonlar
+  const filteredModalFunds = React.useMemo(() => {
+    const term = fundSearchTerm.trim().toLowerCase();
+    if (!term) {
+      return funds.slice(0, 8); // Arama boşken popüler ilk 8 fon
+    }
+    return funds.filter(f =>
+      f.code.toLowerCase().includes(term) ||
+      f.name.toLowerCase().includes(term)
+    ).slice(0, 8);
+  }, [funds, fundSearchTerm]);
+
+  const handleSelectModalFund = (fund) => {
+    setSelectedFund(fund);
+    setNewFundCode(fund.code);
+    setFundSearchTerm(`${fund.code} - ${fund.name}`);
+    setIsFundSearchFocused(false);
+  };
+
+  const handleClearModalFund = () => {
+    setSelectedFund(null);
+    setNewFundCode('');
+    setFundSearchTerm('');
+    setIsFundSearchFocused(false);
+  };
+
   const handleCreateDiscussion = async (e) => {
     e.preventDefault();
     if (!newTitle.trim()) return;
@@ -29,7 +72,7 @@ const Forum = () => {
 
     try {
       setIsSubmitting(true);
-      const codeClean = newFundCode.trim().toUpperCase();
+      const codeClean = (selectedFund?.code || newFundCode || fundSearchTerm.split(' ')[0]).trim().toUpperCase();
       const validFund = funds.find(f => f.code.toUpperCase() === codeClean);
       const fundCodeToSave = validFund ? validFund.code : null;
 
@@ -41,6 +84,8 @@ const Forum = () => {
       });
       setNewTitle('');
       setNewFundCode('');
+      setFundSearchTerm('');
+      setSelectedFund(null);
       setNewContent('');
       setIsModalOpen(false);
     } catch (err) {
@@ -55,6 +100,9 @@ const Forum = () => {
       loginWithGoogle();
       return;
     }
+    setFundSearchTerm('');
+    setSelectedFund(null);
+    setNewFundCode('');
     setIsModalOpen(true);
   };
 
@@ -143,13 +191,68 @@ const Forum = () => {
             </div>
             <p className="modal-desc">Hangi fon hakkında fikirlerinizi veya sorularınızı paylaşmak istiyorsunuz?</p>
             <form className="modal-form" onSubmit={handleCreateDiscussion}>
-              <input 
-                type="text" 
-                className="input-base" 
-                placeholder="Fon Kodu (Örn: THF)" 
-                value={newFundCode}
-                onChange={e => setNewFundCode(e.target.value)}
-              />
+              {/* Fon Seçim Searchbar (Header searchbar ile aynı sistem) */}
+              <div className="modal-fund-search-wrapper" ref={fundSearchRef}>
+                <div className={`modal-fund-input-box ${isFundSearchFocused ? 'focused' : ''}`}>
+                  <svg className="modal-fund-search-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16ZM19 19l-4.35-4.35" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <input 
+                    type="text" 
+                    className="modal-fund-search-input" 
+                    placeholder="Fon seçin veya arayın... (Örn: THF, Altın)" 
+                    value={fundSearchTerm}
+                    onChange={e => {
+                      setFundSearchTerm(e.target.value);
+                      if (selectedFund && !e.target.value.includes(selectedFund.code)) {
+                        setSelectedFund(null);
+                        setNewFundCode('');
+                      }
+                      setIsFundSearchFocused(true);
+                    }}
+                    onFocus={() => setIsFundSearchFocused(true)}
+                  />
+                  {(fundSearchTerm || selectedFund) && (
+                    <button 
+                      type="button" 
+                      className="modal-fund-clear-btn" 
+                      onClick={handleClearModalFund}
+                      title="Temizle"
+                    >
+                      &times;
+                    </button>
+                  )}
+                </div>
+
+                {/* Dropdown Sonuç Listesi */}
+                {isFundSearchFocused && filteredModalFunds.length > 0 && (
+                  <div className="modal-fund-dropdown">
+                    {filteredModalFunds.map(f => (
+                      <button
+                        key={f.code}
+                        type="button"
+                        className="modal-fund-item"
+                        onClick={() => handleSelectModalFund(f)}
+                      >
+                        <span className="modal-fund-code">{f.code}</span>
+                        <span className="modal-fund-name" title={f.name}>{f.name}</span>
+                        <span className={`modal-fund-perf ${f.returns?.monthly >= 0 ? 'text-positive' : 'text-negative'}`}>
+                          {f.returns?.monthly >= 0 ? '+' : ''}{f.returns?.monthly != null ? f.returns.monthly.toFixed(2) : '0.00'}%
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Sonuç bulunamadı */}
+                {isFundSearchFocused && fundSearchTerm.trim().length > 0 && filteredModalFunds.length === 0 && (
+                  <div className="modal-fund-dropdown">
+                    <div className="modal-fund-no-result">
+                      "{fundSearchTerm}" ile eşleşen fon bulunamadı (Genel konu olarak açılacak)
+                    </div>
+                  </div>
+                )}
+              </div>
               <input 
                 type="text" 
                 className="input-base" 

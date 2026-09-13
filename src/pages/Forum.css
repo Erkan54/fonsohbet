@@ -194,3 +194,137 @@
   gap: 12px;
   margin-top: 16px;
 }
+
+/* Modal Fon Seçim Searchbar */
+.modal-fund-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.modal-fund-input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  padding: 0 14px;
+  min-height: 48px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-fund-input-box.focused {
+  border-color: var(--color-brand, #315D68);
+  box-shadow: 0 0 0 3px rgba(49, 93, 104, 0.12);
+}
+
+.modal-fund-search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.modal-fund-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--color-text-main);
+  width: 100%;
+}
+
+.modal-fund-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.modal-fund-clear-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.modal-fund-clear-btn:hover {
+  color: var(--color-text-main);
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Modal Fon Sonuç Dropdown */
+.modal-fund-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 36px rgba(13, 27, 42, 0.15), 0 4px 12px rgba(13, 27, 42, 0.06);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 100;
+  animation: dropdownFadeIn 0.15s ease forwards;
+}
+
+.modal-fund-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--color-text-main);
+  cursor: pointer;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color 0.15s;
+}
+
+.modal-fund-item:last-child {
+  border-bottom: none;
+}
+
+.modal-fund-item:hover {
+  background-color: var(--color-bg-hover-light);
+}
+
+.modal-fund-code {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--color-brand, #315D68);
+  min-width: 42px;
+}
+
+.modal-fund-name {
+  flex: 1;
+  font-size: 13px;
+  color: var(--color-text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.modal-fund-perf {
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.modal-fund-no-result {
+  padding: 16px 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
