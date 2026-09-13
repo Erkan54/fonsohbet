@@ -78,7 +78,7 @@
 .forum-item-stats {
   display: flex;
   gap: 24px;
-  min-width: 140px;
+  min-width: 60px;
   justify-content: flex-end;
 }
 

@@ -7,7 +7,7 @@ import './Forum.css';
 const Forum = () => {
   const { funds, discussions, addNewDiscussion } = useFunds();
   const { isAuthenticated, user, profile, loginWithGoogle } = useAuth();
-  const [activeTab, setActiveTab] = useState('Popüler');
+  const [activeTab, setActiveTab] = useState('Yeni');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newFundCode, setNewFundCode] = useState('');
   const [newTitle, setNewTitle] = useState('');
@@ -58,24 +58,17 @@ const Forum = () => {
     setIsModalOpen(true);
   };
 
-  // Sekmelere göre filtreleme ve sıralama
+  // Tartışmaları en yeniden eskiye göre sırala
   const displayedDiscussions = React.useMemo(() => {
     let list = [...discussions];
-    if (activeTab === 'Popüler') {
-      list.sort((a, b) => {
-        const scoreA = (a.commentsCount || 0) * 12 + (a.viewsCount || 0);
-        const scoreB = (b.commentsCount || 0) * 12 + (b.viewsCount || 0);
-        return scoreB - scoreA;
-      });
-    } else if (activeTab === 'Yeni') {
-      list.sort((a, b) => b.id - a.id);
-    } else if (activeTab === 'Takip Ettiklerim') {
-      if (user?.id) {
-        list = list.filter(d => d.user_id === user.id);
-      }
-    }
+    list.sort((a, b) => {
+      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+      if (dateB !== dateA) return dateB - dateA;
+      return (b.id || 0) - (a.id || 0);
+    });
     return list;
-  }, [discussions, activeTab, user?.id]);
+  }, [discussions]);
 
   return (
     <div className="forum-page container animate-fade-in">
@@ -85,7 +78,7 @@ const Forum = () => {
       </div>
 
       <div className="common-tabs">
-        {['Popüler', 'Yeni', 'Takip Ettiklerim'].map(tab => (
+        {['Yeni'].map(tab => (
           <button 
             key={tab}
             className={`common-tab ${activeTab === tab ? 'active' : ''}`}
@@ -127,17 +120,13 @@ const Forum = () => {
                   <span className="stat-num">{disc.commentsCount || 0}</span>
                   <span className="stat-label">Yorum</span>
                 </div>
-                <div className="stat-box">
-                  <span className="stat-num">{disc.viewsCount || ((disc.commentsCount || 0) * 8 + 3)}</span>
-                  <span className="stat-label">Görülme</span>
-                </div>
               </div>
             </div>
           ))
         ) : (
           <div style={{ textAlign: 'center', padding: '48px 24px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', marginTop: '16px' }}>
             <p style={{ fontSize: '16px', color: '#64748B', marginBottom: '16px' }}>
-              {activeTab === 'Takip Ettiklerim' ? 'Henüz takip ettiğiniz veya açtığınız bir konu yok.' : 'Henüz hiçbir tartışma konusu açılmamış.'}
+              Henüz hiçbir tartışma konusu açılmamış.
             </p>
             <button className="btn btn-primary hero-btn" onClick={handleNewDiscussionClick}>+ İlk Tartışmayı Başlat</button>
           </div>
