@@ -217,10 +217,10 @@
   border-radius: 8px;
   padding: 10px 14px;
   pointer-events: none;
-  transform: translate(-50%, -120%);
   transition: opacity 140ms var(--chart-ease), transform 140ms var(--chart-ease);
   z-index: 10;
   min-width: 120px;
+  white-space: nowrap;
 }
 
 .tooltip-date {

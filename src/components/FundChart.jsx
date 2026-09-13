@@ -192,6 +192,36 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
     return d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' });
   };
 
+  // Dynamic tooltip positioning to prevent clipping at chart edges (sol/sağ/üst)
+  const tooltipStyle = useMemo(() => {
+    if (!activePoint) return { opacity: 0 };
+    
+    const xPct = (activePoint.x / 400) * 100;
+    const yPct = (activePoint.y / 160) * 100;
+
+    let translateX = '-50%';
+    if (xPct < 18) {
+      // Sol kenara yakın: noktanın sağına doğru aç
+      translateX = '14px';
+    } else if (xPct > 82) {
+      // Sağ kenara yakın: noktanın soluna doğru aç
+      translateX = 'calc(-100% - 14px)';
+    }
+
+    let translateY = '-120%';
+    if (yPct < 40) {
+      // Üst kenara yakın: noktanın altına doğru aç
+      translateY = '16px';
+    }
+
+    return {
+      left: `${xPct.toFixed(2)}%`,
+      top: `${yPct.toFixed(2)}%`,
+      transform: `translate(${translateX}, ${translateY})`,
+      opacity: hoveredPointIndex !== null ? 1 : 0
+    };
+  }, [activePoint, hoveredPointIndex]);
+
   return (
     <div className="fund-chart-container" ref={containerRef}>
       
@@ -345,7 +375,7 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
                       position: 'absolute', 
                       left: `${(minPoint.x / 400) * 100}%`, 
                       top: `${(minPoint.y / 160) * 100}%`, 
-                      transform: minPoint.x < 45 ? 'translate(4px, 8px)' : minPoint.x > 355 ? 'translate(calc(-100% - 4px), 8px)' : 'translate(-50%, 8px)' 
+                      transform: minPoint.x < 55 ? 'translate(6px, 8px)' : minPoint.x > 345 ? 'translate(calc(-100% - 6px), 8px)' : 'translate(-50%, 8px)' 
                     }}
                   >
                     Düşük
@@ -365,7 +395,7 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
                       position: 'absolute', 
                       left: `${(maxPoint.x / 400) * 100}%`, 
                       top: `${(maxPoint.y / 160) * 100}%`, 
-                      transform: maxPoint.x < 45 ? 'translate(4px, -20px)' : maxPoint.x > 355 ? 'translate(calc(-100% - 4px), -20px)' : 'translate(-50%, -20px)' 
+                      transform: maxPoint.x < 55 ? 'translate(6px, -20px)' : maxPoint.x > 345 ? 'translate(calc(-100% - 6px), -20px)' : 'translate(-50%, -20px)' 
                     }}
                   >
                     Yüksek
@@ -422,11 +452,7 @@ const FundChart = ({ fundCode, defaultPeriod = '1m' }) => {
             {activePoint && (
               <div
                 className="fund-chart-tooltip"
-                style={{
-                  left: `${((activePoint.x / 400) * 100).toFixed(2)}%`,
-                  top: `${((activePoint.y / 160) * 100).toFixed(2)}%`,
-                  opacity: hoveredPointIndex !== null ? 1 : 0
-                }}
+                style={tooltipStyle}
               >
                 <div className="tooltip-date">{formatDateTr(activePoint.date)}</div>
                 <div className="tooltip-price">{formatPrice(activePoint.price)}</div>
