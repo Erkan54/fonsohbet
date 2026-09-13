@@ -22,8 +22,14 @@ export const FundsProvider = ({ children }) => {
         fetchFunds(),
         fetchDiscussions(),
       ]);
-      if (fundsData && fundsData.length > 0) setFunds(fundsData);
-      if (discData && discData.length > 0) setDiscussions(discData);
+      if (fundsData && fundsData.length > 0) {
+        setFunds(fundsData);
+        console.log(`📊 [Fonsohbet] ${fundsData.length} fon yüklendi.`);
+      }
+      if (discData && discData.length > 0) {
+        setDiscussions(discData);
+        console.log(`💬 [Fonsohbet] ${discData.length} forum tartışması yüklendi.`);
+      }
     } catch (err) {
       console.error('Veri yükleme hatası:', err);
     } finally {
