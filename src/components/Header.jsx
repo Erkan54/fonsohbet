@@ -12,10 +12,12 @@ const Header = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const searchRef = useRef(null);
   const userMenuRef = useRef(null);
   const mobileNavRef = useRef(null);
   const hamburgerBtnRef = useRef(null);
+  const mobileSearchInputRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -32,6 +34,7 @@ const Header = () => {
     setIsMobileNavOpen(false);
     setIsUserMenuOpen(false);
     setIsFocused(false);
+    setIsMobileSearchOpen(false);
     setSearchTerm('');
   }, [location.pathname]);
 
@@ -52,6 +55,8 @@ const Header = () => {
     const handleClickOutside = (e) => {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
         setIsFocused(false);
+        setIsMobileSearchOpen(false);
+        setSearchTerm('');
       }
       if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
         setIsUserMenuOpen(false);
@@ -157,16 +162,31 @@ const Header = () => {
         </div>
         
         <div className="header-right">
-          {/* Arama Barı */}
-          <div className="header-search" ref={searchRef}>
+          {/* Mobil Arama İkonu (sadece mobilde görünür) */}
+          <button
+            className="mobile-search-toggle"
+            onClick={() => {
+              setIsMobileSearchOpen(true);
+              setTimeout(() => mobileSearchInputRef.current?.focus(), 50);
+            }}
+            aria-label="Ara"
+          >
+            <svg viewBox="0 0 20 20" fill="none" width="20" height="20">
+              <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16ZM19 19l-4.35-4.35" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          {/* Arama Barı (masaüstünde her zaman görünür, mobilde isMobileSearchOpen ile açılır) */}
+          <div className={`header-search ${isMobileSearchOpen ? 'mobile-expanded' : ''}`} ref={searchRef}>
             <div 
               className={`search-input-wrapper ${isFocused ? 'focused' : ''}`}
-              onClick={() => document.querySelector('.search-bar-input')?.focus()}
+              onClick={() => mobileSearchInputRef.current?.focus()}
             >
               <svg className="search-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16ZM19 19l-4.35-4.35" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <input
+                ref={mobileSearchInputRef}
                 type="text"
                 className="search-bar-input"
                 placeholder="Fon ara... (Örn: THF, Altın)"
@@ -175,6 +195,21 @@ const Header = () => {
                 onFocus={() => setIsFocused(true)}
                 onKeyDown={handleInputKeyDown}
               />
+              {/* Mobilde açıkken kapatma X butonu */}
+              {isMobileSearchOpen && (
+                <button
+                  className="mobile-search-close"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsMobileSearchOpen(false);
+                    setIsFocused(false);
+                    setSearchTerm('');
+                  }}
+                  aria-label="Aramayı Kapat"
+                >
+                  &times;
+                </button>
+              )}
             </div>
 
             {/* Sonuç Dropdown */}
