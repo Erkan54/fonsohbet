@@ -1,0 +1,329 @@
+/* Admin Paneli Stilleri */
+.admin-page {
+  padding-bottom: 80px;
+}
+
+.admin-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.admin-badge-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(217, 119, 6, 0.12);
+  color: #D97706;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* İstatistik Kartları Grid */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.admin-stat-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.admin-stat-card:hover {
+  border-color: var(--color-brand);
+  transform: translateY(-2px);
+}
+
+.stat-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon-comments { background: rgba(49, 93, 104, 0.12); color: var(--color-brand); }
+.stat-icon-discussions { background: rgba(23, 107, 77, 0.12); color: var(--color-positive); }
+.stat-icon-users { background: rgba(138, 114, 92, 0.12); color: var(--color-premium); }
+.stat-icon-banned { background: rgba(163, 67, 62, 0.12); color: var(--color-negative); }
+
+.stat-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-text-main);
+  line-height: 1.1;
+  font-feature-settings: "tnum";
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+/* Sekmeler */
+.admin-tabs-nav {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid var(--color-border-light);
+  margin-bottom: 24px;
+}
+
+.admin-tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-tab-btn:hover {
+  color: var(--color-text-main);
+}
+
+.admin-tab-btn.active {
+  color: var(--color-brand);
+}
+
+.admin-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-brand);
+}
+
+.tab-badge {
+  background: var(--color-border-light);
+  color: var(--color-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+}
+
+.admin-tab-btn.active .tab-badge {
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+}
+
+/* Filtre ve Arama Alanı */
+.admin-filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.admin-search-input {
+  flex: 1;
+  min-width: 240px;
+}
+
+.admin-select-filter {
+  min-width: 140px;
+}
+
+/* Tablo Görünümü */
+.admin-table-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.admin-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin-data-table th {
+  background: #FAFBFD;
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.admin-data-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border-light);
+  color: var(--color-text-main);
+  vertical-align: middle;
+}
+
+.admin-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-data-table tr:hover td {
+  background: rgba(243, 245, 248, 0.6);
+}
+
+/* İçerik ve Yorum Hücresi */
+.comment-cell-text {
+  max-width: 380px;
+  line-height: 1.45;
+  color: var(--color-text-main);
+  word-break: break-word;
+}
+
+.reply-badge-inline {
+  display: inline-block;
+  background: var(--color-brand-light);
+  color: var(--color-brand);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+.user-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.status-active {
+  background: rgba(23, 107, 77, 0.1);
+  color: var(--color-positive);
+}
+
+.status-banned {
+  background: rgba(163, 67, 62, 0.12);
+  color: var(--color-negative);
+}
+
+.role-badge-admin {
+  background: rgba(217, 119, 6, 0.12);
+  color: #D97706;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Aksiyon Butonları */
+.admin-actions-cell {
+  white-space: nowrap;
+}
+
+.btn-admin-delete {
+  background: none;
+  border: 1px solid rgba(163, 67, 62, 0.3);
+  color: var(--color-negative);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-admin-delete:hover {
+  background: var(--color-negative);
+  color: #fff;
+  border-color: var(--color-negative);
+}
+
+.btn-admin-ban {
+  background: none;
+  border: 1px solid rgba(163, 67, 62, 0.3);
+  color: var(--color-negative);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-admin-ban:hover {
+  background: var(--color-negative);
+  color: #fff;
+}
+
+.btn-admin-unban {
+  background: none;
+  border: 1px solid rgba(23, 107, 77, 0.3);
+  color: var(--color-positive);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-admin-unban:hover {
+  background: var(--color-positive);
+  color: #fff;
+}
+
+/* Bildirim Banner'ı */
+.admin-toast {
+  background: var(--color-brand);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  font-size: 14px;
+  font-weight: 600;
+  animation: slideDown 250ms ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.admin-empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-muted);
+}

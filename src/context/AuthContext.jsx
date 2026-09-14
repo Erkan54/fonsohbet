@@ -66,6 +66,9 @@ export const AuthProvider = ({ children }) => {
   // Kullanıcı giriş yapmış mı?
   const isAuthenticated = Boolean(user && session);
 
+  // Kullanıcı yönetici (admin / moderatör) mi?
+  const isAdmin = Boolean(profile && profile.role === 'admin');
+
   // Profil bilgilerini yenile
   const refreshProfile = async () => {
     if (user?.id) {
@@ -80,6 +83,7 @@ export const AuthProvider = ({ children }) => {
       session, 
       loading, 
       isAuthenticated,
+      isAdmin,
       loginWithGoogle, 
       logout,
       refreshProfile,

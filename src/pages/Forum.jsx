@@ -2,11 +2,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
 import { useAuth } from '../context/AuthContext';
+import { deleteDiscussionAsAdmin } from '../services/adminService';
+import { updatePageSeo } from '../lib/seo';
 import './Forum.css';
 
 const Forum = () => {
-  const { funds, discussions, addNewDiscussion, loading: isLoadingDiscussions } = useFunds();
-  const { isAuthenticated, user, profile, loginWithGoogle } = useAuth();
+  const { funds, discussions, addNewDiscussion, refreshDiscussions, loading: isLoadingDiscussions } = useFunds();
+  const { isAuthenticated, isAdmin, user, loginWithGoogle } = useAuth();
+
+  useEffect(() => {
+    updatePageSeo({
+      title: 'TEFAS Fon Yatırımcı Topluluğu ve Forum Tartışmaları | FonSohbet',
+      description: 'Yatırım fonları hakkında en son yatırımcı yorumları, fon stratejileri, portföy paylaşımları ve piyasa tartışmaları.',
+      canonical: 'https://www.fonsohbet.com/forum',
+    });
+  }, []);
+
   const [activeTab, setActiveTab] = useState('Yeni');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newFundCode, setNewFundCode] = useState('');
@@ -125,6 +136,18 @@ const Forum = () => {
     setIsModalOpen(true);
   };
 
+  const handleDeleteInlineDiscussion = async (e, discussionId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!window.confirm('Bu tartışma konusunu moderatör olarak kalıcı silmek istediğinize emin misiniz?')) return;
+    try {
+      await deleteDiscussionAsAdmin(discussionId);
+      refreshDiscussions();
+    } catch (err) {
+      alert('Tartışma silinemedi: ' + err.message);
+    }
+  };
+
   // Tartışmaları en yeniden eskiye göre sırala
   const displayedDiscussions = React.useMemo(() => {
     let list = [...discussions];
@@ -198,11 +221,20 @@ const Forum = () => {
                   <span className="meta-item">{disc.lastActivity || 'Az önce'}</span>
                 </div>
               </div>
-              <div className="forum-item-stats">
+              <div className="forum-item-stats" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div className="stat-box">
                   <span className="stat-num">{disc.commentsCount || 0}</span>
                   <span className="stat-label">Yorum</span>
                 </div>
+                {isAdmin && (
+                  <button 
+                    className="btn-admin-delete"
+                    onClick={(e) => handleDeleteInlineDiscussion(e, disc.id)}
+                    title="Moderatör: Tartışmayı Sil"
+                  >
+                    🗑️ Sil
+                  </button>
+                )}
               </div>
             </div>
           ))

@@ -1,16 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
 import { useAuth } from '../context/AuthContext';
 import { fetchFundComments, addFundComment, likeComment, formatRelativeTime } from '../services/fundService';
+import { deleteCommentAsAdmin } from '../services/adminService';
 import FundChart from '../components/FundChart';
+import NotFound from './NotFound';
+import { updatePageSeo } from '../lib/seo';
 import './FundDetail.css';
 
 const FundDetail = () => {
   const { id } = useParams();
   const { funds, discussions, refreshDiscussions } = useFunds();
-  const { isAuthenticated, user, profile, loginWithGoogle } = useAuth();
-  const fund = funds.find(f => f.code.toUpperCase() === id?.toUpperCase()) || funds[0];
+  const { isAuthenticated, user, profile, isAdmin, loginWithGoogle } = useAuth();
+  const fund = funds.find(f => f.code.toUpperCase() === id?.toUpperCase());
+
+  // Dinamik SEO ve Başlık Güncellemesi
+  useEffect(() => {
+    if (fund) {
+      const ytdStr = fund.returns?.ytd != null ? ` (YBB %${fund.returns.ytd.toFixed(2)})` : '';
+      updatePageSeo({
+        title: `${fund.code} - ${fund.name} Analiz ve Yorumları | FonSohbet`,
+        description: `${fund.code} kodlu ${fund.name} TEFAS fonu güncel fiyatı (₺${fund.price.toFixed(4)}), getirileri${ytdStr}, risk derecesi (${fund.risk}/7) ve yatırımcı topluluk yorumları FonSohbet'te.`,
+        canonical: `https://www.fonsohbet.com/fon/${fund.code}`,
+        keywords: `${fund.code}, ${fund.name}, tefas fon analiz, ${fund.category}, fon getirileri, fon yorumları`,
+      });
+    }
+  }, [fund]);
+
   const [activeTab, setActiveTab] = useState('Yorumlar');
   const [commentText, setCommentText] = useState('');
   const [comments, setComments] = useState([]);
@@ -109,6 +126,18 @@ const FundDetail = () => {
     }
   };
 
+  // Moderatör inline yorum silme
+  const handleDeleteInlineComment = async (commentId) => {
+    if (!window.confirm('Bu yorumu moderatör olarak kalıcı silmek istediğinize emin misiniz?')) return;
+    try {
+      await deleteCommentAsAdmin(commentId);
+      setComments(prev => prev.filter(c => c.id !== commentId));
+      refreshDiscussions();
+    } catch (err) {
+      alert('Yorum silinirken hata oluştu: ' + err.message);
+    }
+  };
+
   // Yorumları Ana Yorumlar ve İç İçe Yanıtlar Olarak Grupla
   const { rootComments, replyMap } = React.useMemo(() => {
     const roots = [];
@@ -154,7 +183,7 @@ const FundDetail = () => {
   }, [comments]);
 
   // Bu fona ait tartışmalar
-  const fundDiscussions = discussions.filter(d => d.fundCode === fund.code);
+  const fundDiscussions = fund ? discussions.filter(d => d.fundCode === fund.code) : [];
 
   const renderReturn = (val) => {
     if (val == null) return <span className="text-muted">—</span>;
@@ -165,6 +194,10 @@ const FundDetail = () => {
       </span>
     );
   };
+
+  if (!fund) {
+    return funds.length > 0 ? <NotFound /> : null;
+  }
 
   return (
     <div className="fund-detail-page container animate-fade-in">
@@ -321,6 +354,16 @@ const FundDetail = () => {
                         >
                           {replyingToId === comment.id ? 'Vazgeç' : 'Yanıtla'}
                         </button>
+                        {isAdmin && (
+                          <button 
+                            className="reply-btn"
+                            style={{ color: 'var(--color-negative)', marginLeft: 'auto', fontWeight: 600 }}
+                            onClick={() => handleDeleteInlineComment(comment.id)}
+                            title="Moderatör: Yorumu Sil"
+                          >
+                            🗑️ Sil
+                          </button>
+                        )}
                       </div>
 
                       {/* Satır İçi Yanıt Formu */}
@@ -391,6 +434,16 @@ const FundDetail = () => {
                               >
                                 Yanıtla
                               </button>
+                              {isAdmin && (
+                                <button 
+                                  className="reply-btn"
+                                  style={{ color: 'var(--color-negative)', marginLeft: 'auto', fontWeight: 600 }}
+                                  onClick={() => handleDeleteInlineComment(reply.id)}
+                                  title="Moderatör: Yanıtı Sil"
+                                >
+                                  🗑️ Sil
+                                </button>
+                              )}
                             </div>
                           </div>
                         </div>

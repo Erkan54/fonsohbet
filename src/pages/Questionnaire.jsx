@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
+import { updatePageSeo } from '../lib/seo';
 import './Questionnaire.css';
 
 const questions = [
@@ -117,6 +118,14 @@ const Questionnaire = () => {
   const [answers, setAnswers] = useState([]);
   const [showResults, setShowResults] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    updatePageSeo({
+      title: 'Bana Uygun Fonu Bul - Yatırımcı Risk Profili Testi | FonSohbet',
+      description: 'Yatırım vadenize, risk toleransınıza ve birikim hedefinize en uygun TEFAS fonlarını 10 soruluk interaktif test ile keşfedin.',
+      canonical: 'https://www.fonsohbet.com/bul',
+    });
+  }, []);
 
   const handleAnswer = (option) => {
     const newAnswers = [...answers, option];

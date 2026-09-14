@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import NotFound from './pages/NotFound';
+import Admin from './pages/Admin';
 
 import Footer from './components/Footer';
 import { AuthProvider } from './context/AuthContext';
@@ -50,6 +51,7 @@ const AppContent = () => {
           <Route path="/iletisim" element={<Contact />} />
           <Route path="/kullanim-kosullari" element={<Terms />} />
           <Route path="/gizlilik-politikasi" element={<Privacy />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Ana Statik Sayfalar -->
   <url>
     <loc>https://www.fonsohbet.com/</loc>
     <changefreq>daily</changefreq>
@@ -40,4 +41,106 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+
+  <!-- 100 Adet TEFAS Fon Detay Sayfaları (Google Arama İndeksi İçin) -->
+  <url><loc>https://www.fonsohbet.com/fon/THF</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZBP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/BLH</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/AFT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YAY</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/AK3</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YAS</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/AFA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TMG</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KPC</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GUH</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GSP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TP2</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TI1</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GTL</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GAL</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/FI5</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YLB</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ALE</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TZL</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/VK6</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TKM</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/OJK</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YKT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TTA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GTA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/AFO</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TUA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/DBA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/HBF</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/FIB</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GGK</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/FNO</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TNI</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/IJC</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/HSA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GMA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/SUA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TE4</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GBV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YIT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/HOA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TZV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TIV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TSI</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TGT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/VKT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YBE</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GUB</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/AVT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/HKV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TRJ</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TPC</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YPV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YAC</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/OJT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ARL</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GZP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZPC</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TCF</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/OTJ</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/TGE</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KLU</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KHP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/EP1</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/AIS</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/VPA</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KUT</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/PPK</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/HPH</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KPI</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GPN</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/IPJ</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YAK</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ITP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/IKP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/IJP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/IKL</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/IJB</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KRR</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KTV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZPK</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/HPV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/RBV</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/VFK</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/VTL</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GTZ</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/YZG</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GUM</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/GMC</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/DMG</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/KGM</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/FGS</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZBB</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZKP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZTR</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZKE</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/BOE</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/ZPP</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.fonsohbet.com/fon/BND</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
 </urlset>

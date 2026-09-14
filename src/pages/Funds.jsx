@@ -1,15 +1,24 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
+import { updatePageSeo } from '../lib/seo';
 import './Funds.css';
 
 const Funds = () => {
-  const { funds, loading } = useFunds();
+  const { funds } = useFunds();
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('Tümü');
   const [riskFilter, setRiskFilter] = useState('Tümü');
   const [sortBy, setSortBy] = useState('ytd'); 
   const [sortOrder, setSortOrder] = useState('desc');
+
+  useEffect(() => {
+    updatePageSeo({
+      title: 'Tüm TEFAS Yatırım Fonları, Getirileri ve Risk Seviyeleri | FonSohbet',
+      description: "Türkiye'nin en çok takip edilen 100 TEFAS yatırım fonunun güncel fiyatları, haftalık/aylık/yıllık getirileri ve risk analizleri.",
+      canonical: 'https://www.fonsohbet.com/fonlar',
+    });
+  }, []);
 
   // Benzersiz kategorileri listele
   const categories = useMemo(() => ['Tümü', ...new Set(funds.map(f => f.category))], [funds]);
@@ -73,7 +82,7 @@ const Funds = () => {
     });
 
     return result;
-  }, [searchTerm, categoryFilter, riskFilter, sortBy, sortOrder]);
+  }, [funds, searchTerm, categoryFilter, riskFilter, sortBy, sortOrder]);
 
   const clearFilters = () => {
     setSearchTerm('');
@@ -88,7 +97,7 @@ const Funds = () => {
       <div className="container">
         <div className="page-header">
           <h1 className="page-title">Yatırım Fonları</h1>
-          <p className="page-subtitle">Türkiye'deki en popüler 50 yatırım fonu</p>
+          <p className="page-subtitle">Türkiye'deki en popüler 100 TEFAS yatırım fonu</p>
         </div>
 
         {/* --- Detaylı Filtreleme Paneli --- */}

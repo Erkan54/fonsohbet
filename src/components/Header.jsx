@@ -7,7 +7,7 @@ import './Header.css';
 
 const Header = () => {
   const { funds } = useFunds();
-  const { isAuthenticated, profile, user, loginWithGoogle, logout } = useAuth();
+  const { isAuthenticated, isAdmin, profile, user, loginWithGoogle, logout } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -274,6 +274,17 @@ const Header = () => {
                     <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 01.41-1.068A6.97 6.97 0 0110 11a6.97 6.97 0 016.126 2.425 1.23 1.23 0 01.41 1.068A1.5 1.5 0 0115.055 16H4.945a1.5 1.5 0 01-1.48-1.507z" /></svg>
                     Profilim
                   </Link>
+                  {isAdmin && (
+                    <Link 
+                      to="/admin" 
+                      className="user-dropdown-item"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      style={{ color: '#D97706', fontWeight: 600 }}
+                    >
+                      <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" /></svg>
+                      Yönetim Paneli
+                    </Link>
+                  )}
                   <button className="user-dropdown-item logout-item" onClick={handleLogout}>
                     <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fillRule="evenodd" d="M3 4.25A2.25 2.25 0 015.25 2h5.5A2.25 2.25 0 0113 4.25v2a.75.75 0 01-1.5 0v-2a.75.75 0 00-.75-.75h-5.5a.75.75 0 00-.75.75v11.5c0 .414.336.75.75.75h5.5a.75.75 0 00.75-.75v-2a.75.75 0 011.5 0v2A2.25 2.25 0 0110.75 18h-5.5A2.25 2.25 0 013 15.75V4.25z" clipRule="evenodd" /><path fillRule="evenodd" d="M19 10a.75.75 0 00-.75-.75H8.704l1.048-.943a.75.75 0 10-1.004-1.114l-2.5 2.25a.75.75 0 000 1.114l2.5 2.25a.75.75 0 101.004-1.114l-1.048-.943h9.546A.75.75 0 0019 10z" clipRule="evenodd" /></svg>
                     Çıkış Yap
@@ -454,6 +465,28 @@ const Header = () => {
                   <div className="mn-text-wrapper">
                     <span className="mn-text">Profilim</span>
                     <span className="mn-desc">Yorumlar ve kaydedilen içerikler</span>
+                  </div>
+                  <svg className="mn-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </Link>
+              )}
+
+              {isAdmin && (
+                <Link 
+                  to="/admin" 
+                  className={`mobile-nav-link ${location.pathname === '/admin' ? 'active' : ''}`} 
+                  onClick={() => setIsMobileNavOpen(false)}
+                >
+                  <div className="mn-icon-wrapper" style={{ background: 'rgba(217, 119, 6, 0.12)', color: '#D97706' }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+                      <circle cx="12" cy="12" r="3"/>
+                      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                  </div>
+                  <div className="mn-text-wrapper">
+                    <span className="mn-text" style={{ color: '#D97706', fontWeight: 600 }}>Yönetim Paneli</span>
+                    <span className="mn-desc">Spam temizleme ve moderatör araçları</span>
                   </div>
                   <svg className="mn-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
                     <polyline points="9 18 15 12 9 6"/>

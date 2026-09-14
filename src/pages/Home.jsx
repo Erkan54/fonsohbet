@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFunds } from '../context/FundsContext';
 import { fetchMarketSummary, formatPrice, formatReturn, formatDateTr } from '../services/marketService';
+import { updatePageSeo } from '../lib/seo';
 import './Home.css';
 
 const Home = () => {
@@ -19,6 +20,12 @@ const Home = () => {
   const HERO_CODES = React.useMemo(() => ['THF', 'ZBP', 'BLH'], []);
 
   React.useEffect(() => {
+    updatePageSeo({
+      title: 'FonSohbet - TEFAS Fon Analiz, Getiri Karşılaştırma ve Topluluk',
+      description: "Türkiye'nin en modern TEFAS fon analiz ve yatırımcı topluluk platformu. Yatırım fonlarının getirilerini, grafiklerini ve yorumlarını inceleyin.",
+      canonical: 'https://www.fonsohbet.com/',
+    });
+
     let isMounted = true;
     async function loadSummary() {
       try {
@@ -39,17 +46,6 @@ const Home = () => {
       isMounted = false;
     };
   }, []);
-
-  // Kullanıcı tıklaması veya otomatik geçiş için fon değiştirici
-  const switchFund = React.useCallback((nextCode) => {
-    if (nextCode === selectedFundCode) return;
-    setIsFading(true);
-    setHoveredPointIndex(null);
-    setTimeout(() => {
-      setSelectedFundCode(nextCode);
-      setIsFading(false);
-    }, 220);
-  }, [selectedFundCode]);
 
   // Otomatik geçişli döngü (Her 5.5 saniyede bir, fare kart üzerindeyken duraklar)
   React.useEffect(() => {
