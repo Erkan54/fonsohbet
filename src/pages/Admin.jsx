@@ -282,6 +282,11 @@ const Admin = () => {
         )}
       </div>
 
+      {/* Mobilde Yatay Kaydırma İpucu */}
+      <div className="admin-table-scroll-hint">
+        <span>↔️ Tabloyu parmağınızla sağa-sola kaydırarak tüm sütunları ve butonları görebilirsiniz.</span>
+      </div>
+
       {/* Tablo İçerikleri */}
       <div className="admin-table-card table-responsive">
         {isLoadingData ? (

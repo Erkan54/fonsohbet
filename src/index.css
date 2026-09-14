@@ -509,6 +509,13 @@ button {
   border-radius: 50%;
 }
 
+/* Global Responsive Table Container */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   * {
