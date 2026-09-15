@@ -1,21 +1,27 @@
-name: TEFAS Fon Veri Senkronizasyonu
+name: FonSohbet Cift Dikis Fon Senkronizasyonu
 
 on:
   schedule:
-    # Hafta içi her gün 16:00 UTC (19:00 TSI - TEFAS bülten yayımı sonrası)
-    - cron: '0 16 * * 1-5'
-  workflow_dispatch: # GitHub UI üzerinden manuel çalıştırma
+    # 1. DİKİŞ: Akşam 19:45 TSİ (16:45 UTC) -> İlk açıklanan yerli fonları erkenden yakala!
+    - cron: '45 16 * * *'
+    
+    # 2. DİKİŞ: Sabah 09:45 TSİ (06:45 UTC) -> Takasbank resmi bülteniyle %100 kesinleştir!
+    - cron: '45 6 * * *'
+    
+  workflow_dispatch: # GitHub UI üzerinden manuel tetikleme
 
 jobs:
-  sync:
-    name: Günlük Fon Senkronizasyonu
+  scrape_and_sync:
+    name: Çift Dikiş Fon Senkronizasyonu
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Kodu Çek (Checkout)
         uses: actions/checkout@v4
 
-      - name: Python 3.10 Kur
+      - name: Python 3.10 Kurulumu
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
@@ -34,3 +40,10 @@ jobs:
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: |
           python -m app.jobs.sync_funds --days 35
+
+      - name: Değişiklikleri Kaydet ve Gönder (Commit & Push)
+        run: |
+          git config --global user.name "FonSohbet Bot"
+          git config --global user.email "bot@fonsohbet.com"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Fon Verileri Güncellendi (Çift Dikiş)" && git push)

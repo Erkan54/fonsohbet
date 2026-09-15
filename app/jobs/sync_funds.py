@@ -22,7 +22,7 @@ import argparse
 import json
 import logging
 import sys
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -70,7 +70,7 @@ def get_supabase_headers() -> Dict[str, str]:
 
 def record_sync_start() -> Optional[int]:
     """fund_sync_runs tablosuna yeni bir çalışma kaydı ekler."""
-    started_at = datetime.now().isoformat()
+    started_at = datetime.now(timezone.utc).isoformat()
     payload = {
         "started_at": started_at,
         "status": "running",
@@ -87,7 +87,7 @@ def record_sync_start() -> Optional[int]:
         except Exception:
             local_runs = []
 
-    run_id = int(datetime.now().timestamp() * 1000)
+    run_id = int(datetime.now(timezone.utc).timestamp() * 1000)
     payload_local = {**payload, "id": run_id}
     local_runs.insert(0, payload_local)
     with open(LOCAL_SYNC_CACHE, "w", encoding="utf-8") as f:
@@ -118,7 +118,7 @@ def record_sync_complete(
     error_message: Optional[str] = None,
 ) -> None:
     """fund_sync_runs kaydını sonuçla günceller."""
-    completed_at = datetime.now().isoformat()
+    completed_at = datetime.now(timezone.utc).isoformat()
     patch_data = {
         "completed_at": completed_at,
         "status": status,

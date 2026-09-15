@@ -225,13 +225,70 @@
   margin-left: auto;
   font-size: 11px;
   font-weight: 600;
-  color: var(--color-text-muted);
-  background: rgba(15, 23, 42, 0.04);
-  padding: 4px 9px;
+  padding: 4px 10px;
   border-radius: 100px;
-  border: 1px solid rgba(15, 23, 42, 0.06);
   white-space: nowrap;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  cursor: help;
+  user-select: none;
+}
+
+.hero-data-date-badge.phase-official {
+  color: #065f46;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.hero-data-date-badge.phase-preview {
+  color: #92400e;
+  background: rgba(245, 158, 11, 0.09);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+}
+
+.hero-phase-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.phase-official .hero-phase-dot {
+  background-color: #10B981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+
+.phase-preview .hero-phase-dot {
+  background-color: #F59E0B;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
+  animation: hero-pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes hero-pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+.hero-phase-tag {
+  font-weight: 700;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.2px;
+}
+
+.phase-official .hero-phase-tag {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.16);
+}
+
+.phase-preview .hero-phase-tag {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.18);
 }
 
 .skeleton-chip {

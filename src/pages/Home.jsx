@@ -222,8 +222,15 @@ const Home = () => {
                   </div>
                 )}
                 {marketSummary?.dataDate && (
-                  <span className="hero-data-date-badge" title="Resmi TEFAS Veri Tarihi">
-                    TEFAS: {formatDateTr(marketSummary.dataDate)}
+                  <span
+                    className={`hero-data-date-badge phase-${marketSummary.syncPhase || 'official'}`}
+                    title={marketSummary.syncPhaseDesc || 'Resmi TEFAS Veri Tarihi'}
+                  >
+                    <span className="hero-phase-dot" aria-hidden="true" />
+                    <span className="hero-phase-date">TEFAS: {formatDateTr(marketSummary.dataDate)}</span>
+                    <span className="hero-phase-tag">
+                      {marketSummary.syncPhaseLabel || 'Kesinleşti'}
+                    </span>
                   </span>
                 )}
               </div>
