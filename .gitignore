@@ -10,10 +10,14 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+# Environment & Secrets
 *.local
 .env
 .env.*
 !.env.example
+
+# SQL Migrations & Database Scripts
+*.sql
 
 # Python
 __pycache__/
