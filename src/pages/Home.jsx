@@ -221,18 +221,31 @@ const Home = () => {
                     </span>
                   </div>
                 )}
-                {marketSummary?.dataDate && (
-                  <span
-                    className={`hero-data-date-badge phase-${marketSummary.syncPhase || 'official'}`}
-                    title={marketSummary.syncPhaseDesc || 'Resmi TEFAS Veri Tarihi'}
-                  >
-                    <span className="hero-phase-dot" aria-hidden="true" />
-                    <span className="hero-phase-date">TEFAS: {formatDateTr(marketSummary.dataDate)}</span>
-                    <span className="hero-phase-tag">
-                      {marketSummary.syncPhaseLabel || 'Kesinleşti'}
+                {marketSummary?.dataDate && (() => {
+                  // Anlık Türkiye Saati (TSİ = UTC+3) kontrolü
+                  // 09:45 - 19:45 arası kesinleşmiş gündüz seansı, 19:45 - 09:45 arası erken ön izleme
+                  const now = new Date();
+                  const tsiHour = (now.getUTCHours() + 3) % 24;
+                  const currentMinute = tsiHour * 60 + now.getUTCMinutes();
+                  const isPreviewTime = currentMinute >= (19 * 60 + 45) || currentMinute < (9 * 60 + 45);
+
+                  const effectivePhase = !isPreviewTime ? 'official' : (marketSummary.syncPhase || 'preview');
+                  const label = effectivePhase === 'preview' ? 'Ön İzleme' : 'Kesinleşti';
+                  const desc = effectivePhase === 'preview'
+                    ? 'Erken açıklanan yerli hisse fonları güncellendi. Yabancı fonlar ve revizeler 09:45 Takasbank bülteniyle kesinleşir.'
+                    : 'Takasbank resmi bülteniyle tüm fonlar %100 kesinleştirildi.';
+
+                  return (
+                    <span
+                      className={`hero-data-date-badge phase-${effectivePhase}`}
+                      title={desc}
+                    >
+                      <span className="hero-phase-dot" aria-hidden="true" />
+                      <span className="hero-phase-date">TEFAS: {formatDateTr(marketSummary.dataDate)}</span>
+                      <span className="hero-phase-tag">{label}</span>
                     </span>
-                  </span>
-                )}
+                  );
+                })()}
               </div>
 
               <div

@@ -189,16 +189,25 @@ export default async function handler(req, res) {
     const lastUpdated = syncRun?.completed_at || syncRun?.started_at || new Date().toISOString();
     const isStale = !syncRun || syncRun.status !== 'success';
 
-    // Çift Dikiş Senkronizasyon Fazı (Akşam Ön İzleme vs Sabah Kesinleşen)
+    // Çift Dikiş Senkronizasyon Fazı
+    // TSİ (UTC+3) bazında saat penceresi:
+    // - 09:45 - 19:45 arası: Gündüz seansı, Takasbank sabah bülteniyle veriler %100 "Kesinleşti"
+    // - 19:45 - 09:45 arası: Akşam borsa kapanışı sonrası erken açıklanan yerli fonlar "Ön İzleme"
     let syncPhase = 'official';
     let syncPhaseLabel = 'Kesinleşti';
     let syncPhaseDesc = 'Takasbank resmi bülteniyle tüm fonlar %100 kesinleştirildi.';
 
     try {
-      const updatedDate = new Date(lastUpdated);
-      const tsiHour = (updatedDate.getUTCHours() + 3) % 24;
-      // 17:00 - 05:00 TSİ arası yapılan güncellemeler Akşam Ön İzleme fazıdır
-      if (tsiHour >= 17 || tsiHour < 5) {
+      const now = new Date();
+      const tsiHour = (now.getUTCHours() + 3) % 24;
+      const tsiMinute = now.getUTCMinutes();
+      const currentMinuteOfDay = tsiHour * 60 + tsiMinute;
+
+      const morningFinalizedMinute = 9 * 60 + 45; // 09:45 TSİ (585)
+      const eveningPreviewMinute = 19 * 60 + 45;   // 19:45 TSİ (1185)
+
+      // 19:45 ile ertesi sabah 09:45 arası Akşam Ön İzleme penceresidir
+      if (currentMinuteOfDay >= eveningPreviewMinute || currentMinuteOfDay < morningFinalizedMinute) {
         syncPhase = 'preview';
         syncPhaseLabel = 'Ön İzleme';
         syncPhaseDesc = 'Erken açıklanan yerli hisse fonları güncellendi. Yabancı fonlar ve revizeler 09:45 Takasbank bülteniyle kesinleşir.';
