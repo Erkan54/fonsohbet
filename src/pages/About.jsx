@@ -6,7 +6,7 @@ const About = () => {
   return (
     <div className="corporate-page animate-fade-in">
       <div className="container corporate-container">
-        
+
         <div className="corporate-header">
           <span className="corporate-badge">Hakkımızda</span>
           <h1 className="corporate-title">Yatırım Fonlarını Herkes İçin Şeffaf ve Erişilebilir Kılıyoruz</h1>
@@ -17,7 +17,7 @@ const About = () => {
 
         <div className="corporate-card">
           <div className="corporate-content">
-            
+
             <section className="corporate-section">
               <h2>🌱 FonSohbet'in Hikayesi</h2>
               <p>

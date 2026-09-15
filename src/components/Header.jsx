@@ -153,7 +153,7 @@ const Header = () => {
       <div className="container header-container">
         <div className="header-left">
           <Link to="/" className="logo">
-            <img src="/logo.png" alt="FonSohbet Logo" className="header-logo-img" />
+            <img src="/logo.webp" alt="FonSohbet Logo" className="header-logo-img" width="160" height="40" />
           </Link>
           <nav className="main-nav">
             <Link to="/fonlar" className="nav-link">Fonlar</Link>
@@ -338,7 +338,7 @@ const Header = () => {
           >
             <div className="mobile-drawer-header">
               <Link to="/" className="mobile-drawer-logo" onClick={() => setIsMobileNavOpen(false)}>
-                <img src="/logo.png" alt="FonSohbet Logo" />
+                <img src="/logo.webp" alt="FonSohbet Logo" width="140" height="35" />
               </Link>
               <button
                 className="mobile-drawer-close"

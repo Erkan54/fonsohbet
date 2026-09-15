@@ -14,7 +14,7 @@ const Contact = () => {
   return (
     <div className="corporate-page animate-fade-in">
       <div className="container corporate-container">
-        
+
         <div className="corporate-header">
           <span className="corporate-badge">İletişim</span>
           <h1 className="corporate-title">Bizimle İletişime Geçin</h1>
@@ -28,7 +28,7 @@ const Contact = () => {
 
             {/* İletişim Kategorileri Kartları */}
             <div className="contact-cards-grid">
-              
+
               <div className="contact-card">
                 <div className="contact-card-icon">🤝</div>
                 <h3 className="contact-card-title">Reklam & İş Birlikleri</h3>
@@ -70,12 +70,12 @@ const Contact = () => {
               <p className="corporate-subtitle" style={{ fontSize: '14px', margin: 0 }}>
                 Öğrenci olarak tek başıma geliştirdiğim bu projede gelen tüm mesajları bizzat okuyor ve genellikle 24 saat içinde yanıtlıyorum.
               </p>
-              
+
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}>
                 <a href={`mailto:${email}`} className="main-email-address">
                   {email}
                 </a>
-                <button 
+                <button
                   onClick={handleCopy}
                   className="btn btn-outline"
                   style={{ height: '44px', padding: '0 16px', fontSize: '13px', borderRadius: '8px', cursor: 'pointer' }}

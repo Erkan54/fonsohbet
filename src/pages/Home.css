@@ -8,7 +8,7 @@
   /* Alt boşluk 20px uzatıldı (32px -> 52px) */
   border-bottom: none;
   background-color: #F8FAFC;
-  background-image: url('/hero-bg2.png');
+  background-image: url('/hero-bg2.webp');
   background-size: cover;
   background-position: center calc(50% - 20px);
   background-repeat: no-repeat;
@@ -675,7 +675,7 @@
   /* 1. Hero Dikey Yerleşimi & Arka Plan Görseli */
   .hero-section {
     background-color: #0B1924;
-    background-image: url('/hero-mobile-bg.png');
+    background-image: url('/hero-mobile-bg.webp');
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -819,7 +819,7 @@
   /* Gündemdeki Tartışmalar (Hero Olmayan Bölüm) Arka Planı */
   .forum-feed-section {
     background-color: #0B1924;
-    background-image: url('/content-mobile-bg.png');
+    background-image: url('/content-mobile-bg.webp');
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;

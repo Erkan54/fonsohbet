@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { updatePageSeo } from '../lib/seo';
 import './Corporate.css';
 
 const NotFound = () => {
+  useEffect(() => {
+    updatePageSeo({
+      title: 'Sayfa Bulunamadı (404) | FonSohbet',
+      description: 'Aradığınız sayfa bulunamadı veya taşınmış olabilir. FonSohbet anasayfasından TEFAS fon analizlerine ulaşabilirsiniz.',
+      robots: 'noindex, follow',
+    });
+  }, []);
   return (
     <div className="corp-page container animate-fade-in">
       <div className="corp-container text-center" style={{ textAlign: 'center', padding: '64px 24px' }}>

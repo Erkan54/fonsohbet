@@ -5,7 +5,7 @@ const Terms = () => {
   return (
     <div className="corporate-page animate-fade-in">
       <div className="container corporate-container">
-        
+
         <div className="corporate-header">
           <span className="corporate-badge">Hukuki</span>
           <h1 className="corporate-title">Kullanım Koşulları</h1>

@@ -5,7 +5,7 @@ const Privacy = () => {
   return (
     <div className="corporate-page animate-fade-in">
       <div className="container corporate-container">
-        
+
         <div className="corporate-header">
           <span className="corporate-badge">Gizlilik</span>
           <h1 className="corporate-title">Gizlilik Politikası</h1>

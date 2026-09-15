@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="footer-top">
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
-              <img src="/logo.png" alt="FonSohbet Logo" />
+              <img src="/logo.webp" alt="FonSohbet Logo" width="140" height="35" />
             </Link>
             <p className="footer-description">
               Türkiye'nin en modern fon analiz ve topluluk platformu. Yatırımlarınızı daha akıllı yönetin, diğer yatırımcılarla fikir alışverişi yapın.

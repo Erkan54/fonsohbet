@@ -7,10 +7,10 @@ export function updatePageSeo({ title, description, canonical, keywords }) {
   // 1. Title Güncelle
   if (title) {
     document.title = title;
-    
+
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) ogTitle.setAttribute('content', title);
-    
+
     const twTitle = document.querySelector('meta[name="twitter:title"]');
     if (twTitle) twTitle.setAttribute('content', title);
   }
