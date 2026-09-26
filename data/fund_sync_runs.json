@@ -1,5 +1,12 @@
 [
   {
+    "started_at": "2026-09-26T11:49:47.443516+00:00",
+    "status": "running",
+    "funds_updated": 0,
+    "error_count": 0,
+    "id": 1790423387443
+  },
+  {
     "started_at": "2026-09-25T20:07:38.091322+00:00",
     "status": "running",
     "funds_updated": 0,
