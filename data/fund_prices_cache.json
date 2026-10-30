@@ -1596,6 +1596,14 @@
     "portfolio_size": 4808398596.87
   },
   {
+    "fund_code": "AFA",
+    "date": "2026-10-30",
+    "price": "1.322454",
+    "shares_outstanding": 3635965065.0,
+    "investor_count": 44609,
+    "portfolio_size": 4808395574.2
+  },
+  {
     "fund_code": "AFO",
     "date": "2025-09-11",
     "price": "0.982097"
@@ -3190,6 +3198,14 @@
     "shares_outstanding": 13787479676.0,
     "investor_count": 77390,
     "portfolio_size": 17310558919.11
+  },
+  {
+    "fund_code": "AFO",
+    "date": "2026-10-30",
+    "price": "1.255202",
+    "shares_outstanding": 13781104266.0,
+    "investor_count": 77279,
+    "portfolio_size": 17298069062.64
   },
   {
     "fund_code": "AFT",
@@ -4788,6 +4804,14 @@
     "portfolio_size": 15934697211.28
   },
   {
+    "fund_code": "AFT",
+    "date": "2026-10-30",
+    "price": "0.959756",
+    "shares_outstanding": 16666283447.0,
+    "investor_count": 127406,
+    "portfolio_size": 15995571364.17
+  },
+  {
     "fund_code": "AIS",
     "date": "2025-09-11",
     "price": "0.07464"
@@ -6382,6 +6406,14 @@
     "shares_outstanding": 78689697855.0,
     "investor_count": 27677,
     "portfolio_size": 9042959125.21
+  },
+  {
+    "fund_code": "AIS",
+    "date": "2026-10-30",
+    "price": "0.115154",
+    "shares_outstanding": 78989196691.0,
+    "investor_count": 27724,
+    "portfolio_size": 9095950573.33
   },
   {
     "fund_code": "AK3",
@@ -7980,6 +8012,14 @@
     "portfolio_size": 7203473238.35
   },
   {
+    "fund_code": "AK3",
+    "date": "2026-10-30",
+    "price": "46.871359",
+    "shares_outstanding": 154033523.0,
+    "investor_count": 18711,
+    "portfolio_size": 7219760553.19
+  },
+  {
     "fund_code": "ALE",
     "date": "2025-09-11",
     "price": "9.460263"
@@ -9574,6 +9614,14 @@
     "shares_outstanding": 5394981606.0,
     "investor_count": 139260,
     "portfolio_size": 77853309603.57
+  },
+  {
+    "fund_code": "ALE",
+    "date": "2026-10-30",
+    "price": "14.457793",
+    "shares_outstanding": 5395790867.0,
+    "investor_count": 139316,
+    "portfolio_size": 78011229624.03
   },
   {
     "fund_code": "ARL",
@@ -11172,6 +11220,14 @@
     "portfolio_size": 3979724226.32
   },
   {
+    "fund_code": "ARL",
+    "date": "2026-10-30",
+    "price": "17.086328",
+    "shares_outstanding": 233033035.0,
+    "investor_count": 7082,
+    "portfolio_size": 3981678921.65
+  },
+  {
     "fund_code": "AVT",
     "date": "2025-09-11",
     "price": "158.360431"
@@ -12766,6 +12822,14 @@
     "shares_outstanding": 15611503.0,
     "investor_count": 19704,
     "portfolio_size": 3778051693.08
+  },
+  {
+    "fund_code": "AVT",
+    "date": "2026-10-30",
+    "price": "242.455755",
+    "shares_outstanding": 15988539.0,
+    "investor_count": 19743,
+    "portfolio_size": 3876513298.73
   },
   {
     "fund_code": "BLH",
@@ -14364,6 +14428,14 @@
     "portfolio_size": 2691794277.0
   },
   {
+    "fund_code": "BLH",
+    "date": "2026-10-30",
+    "price": "42.5934",
+    "shares_outstanding": 62200000,
+    "investor_count": 0,
+    "portfolio_size": 2649309470.22
+  },
+  {
     "fund_code": "BND",
     "date": "2025-09-11",
     "price": "26.183929"
@@ -15958,6 +16030,14 @@
     "shares_outstanding": 13700000,
     "investor_count": 0,
     "portfolio_size": 455323476.2
+  },
+  {
+    "fund_code": "BND",
+    "date": "2026-10-30",
+    "price": "33.575582",
+    "shares_outstanding": 13700000,
+    "investor_count": 0,
+    "portfolio_size": 459985476.89
   },
   {
     "fund_code": "BOE",
@@ -17556,6 +17636,14 @@
     "portfolio_size": 1122268446.37
   },
   {
+    "fund_code": "BOE",
+    "date": "2026-10-30",
+    "price": "34.476445",
+    "shares_outstanding": 32600000,
+    "investor_count": 0,
+    "portfolio_size": 1123932110.62
+  },
+  {
     "fund_code": "DBA",
     "date": "2025-09-11",
     "price": "0.541525"
@@ -19150,6 +19238,14 @@
     "shares_outstanding": 12569177889.0,
     "investor_count": 23919,
     "portfolio_size": 8904660851.07
+  },
+  {
+    "fund_code": "DBA",
+    "date": "2026-10-30",
+    "price": "0.708425",
+    "shares_outstanding": 12562172289.0,
+    "investor_count": 23892,
+    "portfolio_size": 8899362059.51
   },
   {
     "fund_code": "DMG",
@@ -20748,6 +20844,14 @@
     "portfolio_size": 2385308863.61
   },
   {
+    "fund_code": "DMG",
+    "date": "2026-10-30",
+    "price": "5.900331",
+    "shares_outstanding": 403779638.0,
+    "investor_count": 13592,
+    "portfolio_size": 2382433645.97
+  },
+  {
     "fund_code": "EP1",
     "date": "2026-06-22",
     "price": "1.003148"
@@ -21377,6 +21481,14 @@
     "shares_outstanding": 13917661774.0,
     "investor_count": 3066,
     "portfolio_size": 15905977421.56
+  },
+  {
+    "fund_code": "EP1",
+    "date": "2026-10-30",
+    "price": "1.145048",
+    "shares_outstanding": 13872145867.0,
+    "investor_count": 3078,
+    "portfolio_size": 15884270927.67
   },
   {
     "fund_code": "FGS",
@@ -22975,6 +23087,14 @@
     "portfolio_size": 36496180420.61
   },
   {
+    "fund_code": "FGS",
+    "date": "2026-10-30",
+    "price": "531.01887",
+    "shares_outstanding": 68050000,
+    "investor_count": 0,
+    "portfolio_size": 36135834093.9
+  },
+  {
     "fund_code": "FI5",
     "date": "2025-09-11",
     "price": "517.948378"
@@ -24569,6 +24689,14 @@
     "shares_outstanding": 142170449.0,
     "investor_count": 52097,
     "portfolio_size": 112813903611.27
+  },
+  {
+    "fund_code": "FI5",
+    "date": "2026-10-30",
+    "price": "795.045188",
+    "shares_outstanding": 142760034.0,
+    "investor_count": 52192,
+    "portfolio_size": 113500678021.21
   },
   {
     "fund_code": "FIB",
@@ -26167,6 +26295,14 @@
     "portfolio_size": 4314969442.53
   },
   {
+    "fund_code": "FIB",
+    "date": "2026-10-30",
+    "price": "0.477163",
+    "shares_outstanding": 9030277819.58,
+    "investor_count": 11349,
+    "portfolio_size": 4308910049.04
+  },
+  {
     "fund_code": "FNO",
     "date": "2025-09-11",
     "price": "0.152775"
@@ -27761,6 +27897,14 @@
     "shares_outstanding": 45240387122.035,
     "investor_count": 5891,
     "portfolio_size": 9363359876.43
+  },
+  {
+    "fund_code": "FNO",
+    "date": "2026-10-30",
+    "price": "0.207349",
+    "shares_outstanding": 45078023491.035,
+    "investor_count": 5867,
+    "portfolio_size": 9346905618.99
   },
   {
     "fund_code": "GAL",
@@ -29359,6 +29503,14 @@
     "portfolio_size": 97137526058.71
   },
   {
+    "fund_code": "GAL",
+    "date": "2026-10-30",
+    "price": "437.578352",
+    "shares_outstanding": 222167797.0,
+    "investor_count": 58773,
+    "portfolio_size": 97215818428.54
+  },
+  {
     "fund_code": "GBV",
     "date": "2025-09-11",
     "price": "8.583215"
@@ -30953,6 +31105,14 @@
     "shares_outstanding": 144196789.0,
     "investor_count": 19572,
     "portfolio_size": 1804296273.33
+  },
+  {
+    "fund_code": "GBV",
+    "date": "2026-10-30",
+    "price": "12.622153",
+    "shares_outstanding": 143935543.0,
+    "investor_count": 19540,
+    "portfolio_size": 1816776487.11
   },
   {
     "fund_code": "GGK",
@@ -32551,6 +32711,14 @@
     "portfolio_size": 1751690883.9
   },
   {
+    "fund_code": "GGK",
+    "date": "2026-10-30",
+    "price": "13.230507",
+    "shares_outstanding": 132327014.0,
+    "investor_count": 9627,
+    "portfolio_size": 1750753459.03
+  },
+  {
     "fund_code": "GMA",
     "date": "2025-09-11",
     "price": "1.470634"
@@ -34145,6 +34313,14 @@
     "shares_outstanding": 931453985.556,
     "investor_count": 1314,
     "portfolio_size": 2002921837.48
+  },
+  {
+    "fund_code": "GMA",
+    "date": "2026-10-30",
+    "price": "2.153851",
+    "shares_outstanding": 938568807.556,
+    "investor_count": 1314,
+    "portfolio_size": 2021537344.68
   },
   {
     "fund_code": "GMC",
@@ -35743,6 +35919,14 @@
     "portfolio_size": 3105253156.05
   },
   {
+    "fund_code": "GMC",
+    "date": "2026-10-30",
+    "price": "6.605499",
+    "shares_outstanding": 469197907.0,
+    "investor_count": 18395,
+    "portfolio_size": 3099286454.81
+  },
+  {
     "fund_code": "GPN",
     "date": "2025-10-09",
     "price": "1.000976"
@@ -37237,6 +37421,14 @@
     "shares_outstanding": 3903815809.0,
     "investor_count": 7176,
     "portfolio_size": 5808447162.32
+  },
+  {
+    "fund_code": "GPN",
+    "date": "2026-10-30",
+    "price": "1.490757",
+    "shares_outstanding": 3910825649.0,
+    "investor_count": 7205,
+    "portfolio_size": 5830089202.35
   },
   {
     "fund_code": "GSP",
@@ -38835,6 +39027,14 @@
     "portfolio_size": 3508101728.13
   },
   {
+    "fund_code": "GSP",
+    "date": "2026-10-30",
+    "price": "0.513598",
+    "shares_outstanding": 6854594731.0,
+    "investor_count": 12467,
+    "portfolio_size": 3520503648.39
+  },
+  {
     "fund_code": "GTA",
     "date": "2025-09-11",
     "price": "1.186663"
@@ -40429,6 +40629,14 @@
     "shares_outstanding": 14692046895.0,
     "investor_count": 71164,
     "portfolio_size": 22225318684.45
+  },
+  {
+    "fund_code": "GTA",
+    "date": "2026-10-30",
+    "price": "1.5126",
+    "shares_outstanding": 14683851304.0,
+    "investor_count": 71050,
+    "portfolio_size": 22210794498.16
   },
   {
     "fund_code": "GTL",
@@ -42027,6 +42235,14 @@
     "portfolio_size": 172923192529.88
   },
   {
+    "fund_code": "GTL",
+    "date": "2026-10-30",
+    "price": "0.144095",
+    "shares_outstanding": 1200846554194.0,
+    "investor_count": 350710,
+    "portfolio_size": 173036098502.71
+  },
+  {
     "fund_code": "GTZ",
     "date": "2025-09-11",
     "price": "6.873635"
@@ -43621,6 +43837,14 @@
     "shares_outstanding": 1015899352.0,
     "investor_count": 56633,
     "portfolio_size": 10177610452.4
+  },
+  {
+    "fund_code": "GTZ",
+    "date": "2026-10-30",
+    "price": "10.107598",
+    "shares_outstanding": 1012762244.0,
+    "investor_count": 56551,
+    "portfolio_size": 10236593695.86
   },
   {
     "fund_code": "GUB",
@@ -45219,6 +45443,14 @@
     "portfolio_size": 5017152561.57
   },
   {
+    "fund_code": "GUB",
+    "date": "2026-10-30",
+    "price": "2.749739",
+    "shares_outstanding": 1847649532.0,
+    "investor_count": 11910,
+    "portfolio_size": 5080553148.55
+  },
+  {
     "fund_code": "GUH",
     "date": "2025-09-11",
     "price": "0.26961"
@@ -46813,6 +47045,14 @@
     "shares_outstanding": 10142384029.0,
     "investor_count": 38082,
     "portfolio_size": 4658428197.01
+  },
+  {
+    "fund_code": "GUH",
+    "date": "2026-10-30",
+    "price": "0.463909",
+    "shares_outstanding": 10112928640.0,
+    "investor_count": 37959,
+    "portfolio_size": 4691480954.79
   },
   {
     "fund_code": "GUM",
@@ -48411,6 +48651,14 @@
     "portfolio_size": 5276971295.13
   },
   {
+    "fund_code": "GUM",
+    "date": "2026-10-30",
+    "price": "10.762184",
+    "shares_outstanding": 490548072.0,
+    "investor_count": 48684,
+    "portfolio_size": 5279368824.66
+  },
+  {
     "fund_code": "GZP",
     "date": "2025-09-11",
     "price": "5.594025"
@@ -50005,6 +50253,14 @@
     "shares_outstanding": 463350571.0,
     "investor_count": 9218,
     "portfolio_size": 3565597664.5
+  },
+  {
+    "fund_code": "GZP",
+    "date": "2026-10-30",
+    "price": "7.704378",
+    "shares_outstanding": 462289241.0,
+    "investor_count": 9158,
+    "portfolio_size": 3561651048.14
   },
   {
     "fund_code": "HBF",
@@ -51603,6 +51859,14 @@
     "portfolio_size": 5729811068.89
   },
   {
+    "fund_code": "HBF",
+    "date": "2026-10-30",
+    "price": "48.475966",
+    "shares_outstanding": 118197925.0,
+    "investor_count": 9842,
+    "portfolio_size": 5729758619.13
+  },
+  {
     "fund_code": "HKV",
     "date": "2025-09-11",
     "price": "416.979133"
@@ -53197,6 +53461,14 @@
     "shares_outstanding": 7868243.0,
     "investor_count": 36485,
     "portfolio_size": 4960686759.09
+  },
+  {
+    "fund_code": "HKV",
+    "date": "2026-10-30",
+    "price": "631.60617",
+    "shares_outstanding": 7858009.0,
+    "investor_count": 36400,
+    "portfolio_size": 4963166968.74
   },
   {
     "fund_code": "HOA",
@@ -54795,6 +55067,14 @@
     "portfolio_size": 1673067708.16
   },
   {
+    "fund_code": "HOA",
+    "date": "2026-10-30",
+    "price": "0.241745",
+    "shares_outstanding": 7007903370.0,
+    "investor_count": 3058,
+    "portfolio_size": 1694128709.49
+  },
+  {
     "fund_code": "HPH",
     "date": "2025-09-11",
     "price": "1.670557"
@@ -56389,6 +56669,14 @@
     "shares_outstanding": 1650591181.0,
     "investor_count": 6593,
     "portfolio_size": 1019897625.67
+  },
+  {
+    "fund_code": "HPH",
+    "date": "2026-10-30",
+    "price": "0.618304",
+    "shares_outstanding": 1650591181.0,
+    "investor_count": 6593,
+    "portfolio_size": 1020567382.27
   },
   {
     "fund_code": "HPV",
@@ -57987,6 +58275,14 @@
     "portfolio_size": 9879774159.62
   },
   {
+    "fund_code": "HPV",
+    "date": "2026-10-30",
+    "price": "8.321781",
+    "shares_outstanding": 1203966787.001,
+    "investor_count": 337685,
+    "portfolio_size": 10019147664.46
+  },
+  {
     "fund_code": "HSA",
     "date": "2025-09-11",
     "price": "1283.952522"
@@ -59581,6 +59877,14 @@
     "shares_outstanding": 2365258.0,
     "investor_count": 2155,
     "portfolio_size": 3758445440.18
+  },
+  {
+    "fund_code": "HSA",
+    "date": "2026-10-30",
+    "price": "1591.860343",
+    "shares_outstanding": 2360373.0,
+    "investor_count": 2146,
+    "portfolio_size": 3757384173.42
   },
   {
     "fund_code": "IJB",
@@ -61179,6 +61483,14 @@
     "portfolio_size": 184588552.09
   },
   {
+    "fund_code": "IJB",
+    "date": "2026-10-30",
+    "price": "6.621876",
+    "shares_outstanding": 27562684.0,
+    "investor_count": 6210,
+    "portfolio_size": 182516687.4
+  },
+  {
     "fund_code": "IJC",
     "date": "2025-09-11",
     "price": "8.992822"
@@ -62773,6 +63085,14 @@
     "shares_outstanding": 253076578.0,
     "investor_count": 36415,
     "portfolio_size": 3544699285.83
+  },
+  {
+    "fund_code": "IJC",
+    "date": "2026-10-30",
+    "price": "14.327946",
+    "shares_outstanding": 252777343.0,
+    "investor_count": 36415,
+    "portfolio_size": 3621780122.1
   },
   {
     "fund_code": "IJP",
@@ -64371,6 +64691,14 @@
     "portfolio_size": 554239958.69
   },
   {
+    "fund_code": "IJP",
+    "date": "2026-10-30",
+    "price": "9.170222",
+    "shares_outstanding": 60779790.0,
+    "investor_count": 11630,
+    "portfolio_size": 557364186.92
+  },
+  {
     "fund_code": "IKL",
     "date": "2025-09-11",
     "price": "7.364368"
@@ -65965,6 +66293,14 @@
     "shares_outstanding": 24976800.0,
     "investor_count": 4996,
     "portfolio_size": 262690015.98
+  },
+  {
+    "fund_code": "IKL",
+    "date": "2026-10-30",
+    "price": "10.543468",
+    "shares_outstanding": 24910092.0,
+    "investor_count": 4996,
+    "portfolio_size": 262638761.96
   },
   {
     "fund_code": "IKP",
@@ -67563,6 +67899,14 @@
     "portfolio_size": 900467000.01
   },
   {
+    "fund_code": "IKP",
+    "date": "2026-10-30",
+    "price": "8.729838",
+    "shares_outstanding": 103769050.0,
+    "investor_count": 11092,
+    "portfolio_size": 905887006.48
+  },
+  {
     "fund_code": "IPJ",
     "date": "2025-09-11",
     "price": "12.947665"
@@ -69157,6 +69501,14 @@
     "shares_outstanding": 58106796.0,
     "investor_count": 16666,
     "portfolio_size": 1089968656.47
+  },
+  {
+    "fund_code": "IPJ",
+    "date": "2026-10-30",
+    "price": "19.006402",
+    "shares_outstanding": 57951889.0,
+    "investor_count": 16666,
+    "portfolio_size": 1101456910.96
   },
   {
     "fund_code": "ITP",
@@ -70755,6 +71107,14 @@
     "portfolio_size": 1010992649.93
   },
   {
+    "fund_code": "ITP",
+    "date": "2026-10-30",
+    "price": "13.437539",
+    "shares_outstanding": 75543558.0,
+    "investor_count": 10503,
+    "portfolio_size": 1015119510.63
+  },
+  {
     "fund_code": "KGM",
     "date": "2025-09-11",
     "price": "1.68287"
@@ -72351,6 +72711,14 @@
     "portfolio_size": 2317449091.41
   },
   {
+    "fund_code": "KGM",
+    "date": "2026-10-30",
+    "price": "2.547932",
+    "shares_outstanding": 913758330.0,
+    "investor_count": 27800,
+    "portfolio_size": 2328194475.9
+  },
+  {
     "fund_code": "KHP",
     "date": "2026-04-15",
     "price": "1.001356"
@@ -73190,6 +73558,14 @@
     "shares_outstanding": 6486532460.0,
     "investor_count": 458,
     "portfolio_size": 8485540230.69
+  },
+  {
+    "fund_code": "KHP",
+    "date": "2026-10-30",
+    "price": "1.311172",
+    "shares_outstanding": 6479997926.0,
+    "investor_count": 456,
+    "portfolio_size": 8496389868.43
   },
   {
     "fund_code": "KLU",
@@ -74788,6 +75164,14 @@
     "portfolio_size": 80534595172.29
   },
   {
+    "fund_code": "KLU",
+    "date": "2026-10-30",
+    "price": "5.178374",
+    "shares_outstanding": 15781095714.0,
+    "investor_count": 111013,
+    "portfolio_size": 81720410069.54
+  },
+  {
     "fund_code": "KPC",
     "date": "2025-09-11",
     "price": "13.932048"
@@ -76382,6 +76766,14 @@
     "shares_outstanding": 197993009.0,
     "investor_count": 22959,
     "portfolio_size": 3620542296.24
+  },
+  {
+    "fund_code": "KPC",
+    "date": "2026-10-30",
+    "price": "18.341606",
+    "shares_outstanding": 197572139.0,
+    "investor_count": 22959,
+    "portfolio_size": 3623790369.11
   },
   {
     "fund_code": "KPI",
@@ -77980,6 +78372,14 @@
     "portfolio_size": 6177830178.43
   },
   {
+    "fund_code": "KPI",
+    "date": "2026-10-30",
+    "price": "1.576179",
+    "shares_outstanding": 3930450153.0,
+    "investor_count": 8473,
+    "portfolio_size": 6195093112.76
+  },
+  {
     "fund_code": "KRR",
     "date": "2026-03-11",
     "price": "1.039936"
@@ -78939,6 +79339,14 @@
     "shares_outstanding": 16949168.0,
     "investor_count": 525,
     "portfolio_size": 18468864.65
+  },
+  {
+    "fund_code": "KRR",
+    "date": "2026-10-30",
+    "price": "1.091401",
+    "shares_outstanding": 16911300.0,
+    "investor_count": 525,
+    "portfolio_size": 18457010.04
   },
   {
     "fund_code": "KTV",
@@ -80537,6 +80945,14 @@
     "portfolio_size": 35211414529.91
   },
   {
+    "fund_code": "KTV",
+    "date": "2026-10-30",
+    "price": "8.218885",
+    "shares_outstanding": 4370433086.0,
+    "investor_count": 48216,
+    "portfolio_size": 35920088505.22
+  },
+  {
     "fund_code": "KUT",
     "date": "2025-09-11",
     "price": "7.711849"
@@ -82131,6 +82547,14 @@
     "shares_outstanding": 575616470.0,
     "investor_count": 36352,
     "portfolio_size": 6340388348.58
+  },
+  {
+    "fund_code": "KUT",
+    "date": "2026-10-30",
+    "price": "11.01173",
+    "shares_outstanding": 574524365.0,
+    "investor_count": 36352,
+    "portfolio_size": 6326507111.7
   },
   {
     "fund_code": "OJK",
@@ -83729,6 +84153,14 @@
     "portfolio_size": 42852000826.49
   },
   {
+    "fund_code": "OJK",
+    "date": "2026-10-30",
+    "price": "12.800719",
+    "shares_outstanding": 3341240206.0,
+    "investor_count": 26154,
+    "portfolio_size": 42770275582.37
+  },
+  {
     "fund_code": "OJT",
     "date": "2025-09-11",
     "price": "8.391581"
@@ -85323,6 +85755,14 @@
     "shares_outstanding": 301793309.0,
     "investor_count": 9886,
     "portfolio_size": 3847343235.12
+  },
+  {
+    "fund_code": "OJT",
+    "date": "2026-10-30",
+    "price": "12.882273",
+    "shares_outstanding": 301793309.0,
+    "investor_count": 9886,
+    "portfolio_size": 3887783686.2
   },
   {
     "fund_code": "OTJ",
@@ -86921,6 +87361,14 @@
     "portfolio_size": 2586082504.3
   },
   {
+    "fund_code": "OTJ",
+    "date": "2026-10-30",
+    "price": "6.493986",
+    "shares_outstanding": 398449510.0,
+    "investor_count": 18390,
+    "portfolio_size": 2587525433.85
+  },
+  {
     "fund_code": "PPK",
     "date": "2025-09-11",
     "price": "1.57592"
@@ -88515,6 +88963,14 @@
     "shares_outstanding": 2269684993.0,
     "investor_count": 3155,
     "portfolio_size": 5461362143.7
+  },
+  {
+    "fund_code": "PPK",
+    "date": "2026-10-30",
+    "price": "2.411028",
+    "shares_outstanding": 2262734900.0,
+    "investor_count": 3164,
+    "portfolio_size": 5455516977.64
   },
   {
     "fund_code": "RBV",
@@ -90113,6 +90569,14 @@
     "portfolio_size": 9719346898.93
   },
   {
+    "fund_code": "RBV",
+    "date": "2026-10-30",
+    "price": "7.395829",
+    "shares_outstanding": 1357457745.0,
+    "investor_count": 19082,
+    "portfolio_size": 10039525908.76
+  },
+  {
     "fund_code": "SUA",
     "date": "2025-09-11",
     "price": "0.404906"
@@ -91707,6 +92171,14 @@
     "shares_outstanding": 2410872084.0,
     "investor_count": 880,
     "portfolio_size": 1470027074.64
+  },
+  {
+    "fund_code": "SUA",
+    "date": "2026-10-30",
+    "price": "0.610414",
+    "shares_outstanding": 2410872084.0,
+    "investor_count": 880,
+    "portfolio_size": 1471629715.24
   },
   {
     "fund_code": "TCF",
@@ -93305,6 +93777,14 @@
     "portfolio_size": 2934453487.67
   },
   {
+    "fund_code": "TCF",
+    "date": "2026-10-30",
+    "price": "4.818036",
+    "shares_outstanding": 607482858.0,
+    "investor_count": 2400,
+    "portfolio_size": 2926874199.53
+  },
+  {
     "fund_code": "TE4",
     "date": "2025-09-11",
     "price": "4.509623"
@@ -94899,6 +95379,14 @@
     "shares_outstanding": 271851566.0,
     "investor_count": 1323,
     "portfolio_size": 1882865490.89
+  },
+  {
+    "fund_code": "TE4",
+    "date": "2026-10-30",
+    "price": "6.940461",
+    "shares_outstanding": 269434925.0,
+    "investor_count": 1315,
+    "portfolio_size": 1870002586.54
   },
   {
     "fund_code": "TGE",
@@ -96497,6 +96985,14 @@
     "portfolio_size": 3037997174.79
   },
   {
+    "fund_code": "TGE",
+    "date": "2026-10-30",
+    "price": "0.318652",
+    "shares_outstanding": 9550054151.0,
+    "investor_count": 35005,
+    "portfolio_size": 3043147189.89
+  },
+  {
     "fund_code": "TGT",
     "date": "2025-09-11",
     "price": "0.08492"
@@ -98091,6 +98587,14 @@
     "shares_outstanding": 38261705080.0,
     "investor_count": 63171,
     "portfolio_size": 4892216224.66
+  },
+  {
+    "fund_code": "TGT",
+    "date": "2026-10-30",
+    "price": "0.128104",
+    "shares_outstanding": 38128598713.0,
+    "investor_count": 63226,
+    "portfolio_size": 4884432981.87
   },
   {
     "fund_code": "THF",
@@ -101093,6 +101597,14 @@
     "portfolio_size": 210322272842.05
   },
   {
+    "fund_code": "TI1",
+    "date": "2026-10-30",
+    "price": "1784.708985",
+    "shares_outstanding": 117512231.65,
+    "investor_count": 236195,
+    "portfolio_size": 209725135721.89
+  },
+  {
     "fund_code": "TIV",
     "date": "2025-09-11",
     "price": "37.816574"
@@ -102687,6 +103199,14 @@
     "shares_outstanding": 620656103.112,
     "investor_count": 118104,
     "portfolio_size": 35092238945.27
+  },
+  {
+    "fund_code": "TIV",
+    "date": "2026-10-30",
+    "price": "56.643168",
+    "shares_outstanding": 615421700.112,
+    "investor_count": 118013,
+    "portfolio_size": 34859434563.29
   },
   {
     "fund_code": "TKM",
@@ -104285,6 +104805,14 @@
     "portfolio_size": 70746291034.14
   },
   {
+    "fund_code": "TKM",
+    "date": "2026-10-30",
+    "price": "0.230497",
+    "shares_outstanding": 307337493923.0,
+    "investor_count": 506527,
+    "portfolio_size": 70840292189.26
+  },
+  {
     "fund_code": "TMG",
     "date": "2025-09-11",
     "price": "1.015211"
@@ -105881,6 +106409,14 @@
     "portfolio_size": 5047153259.8
   },
   {
+    "fund_code": "TMG",
+    "date": "2026-10-30",
+    "price": "1.501783",
+    "shares_outstanding": 3375060194.0,
+    "investor_count": 33957,
+    "portfolio_size": 5068606403.38
+  },
+  {
     "fund_code": "TNI",
     "date": "2025-09-11",
     "price": "7.747301"
@@ -107475,6 +108011,14 @@
     "shares_outstanding": 598698478.0,
     "investor_count": 2423,
     "portfolio_size": 7198646922.69
+  },
+  {
+    "fund_code": "TNI",
+    "date": "2026-10-30",
+    "price": "12.04763",
+    "shares_outstanding": 594912421.0,
+    "investor_count": 2401,
+    "portfolio_size": 7167284479.68
   },
   {
     "fund_code": "TP2",
@@ -110429,6 +110973,14 @@
     "portfolio_size": 4421607812.61
   },
   {
+    "fund_code": "TPC",
+    "date": "2026-10-30",
+    "price": "11.509455",
+    "shares_outstanding": 385507971.0,
+    "investor_count": 10350,
+    "portfolio_size": 4436986516.07
+  },
+  {
     "fund_code": "TRJ",
     "date": "2025-09-11",
     "price": "1.351811"
@@ -112023,6 +112575,14 @@
     "shares_outstanding": 823573812.0,
     "investor_count": 4206,
     "portfolio_size": 1899687970.06
+  },
+  {
+    "fund_code": "TRJ",
+    "date": "2026-10-30",
+    "price": "2.309517",
+    "shares_outstanding": 823573812.0,
+    "investor_count": 4206,
+    "portfolio_size": 1902057591.02
   },
   {
     "fund_code": "TSI",
@@ -113621,6 +114181,14 @@
     "portfolio_size": 23758918518.14
   },
   {
+    "fund_code": "TSI",
+    "date": "2026-10-30",
+    "price": "0.221237",
+    "shares_outstanding": 106947366394.0,
+    "investor_count": 75960,
+    "portfolio_size": 23660737320.76
+  },
+  {
     "fund_code": "TTA",
     "date": "2025-09-11",
     "price": "0.493536"
@@ -115215,6 +115783,14 @@
     "shares_outstanding": 40167922675.0,
     "investor_count": 224321,
     "portfolio_size": 23840842203.79
+  },
+  {
+    "fund_code": "TTA",
+    "date": "2026-10-30",
+    "price": "0.593563",
+    "shares_outstanding": 40140776555.0,
+    "investor_count": 224175,
+    "portfolio_size": 23826068581.25
   },
   {
     "fund_code": "TUA",
@@ -116813,6 +117389,14 @@
     "portfolio_size": 13417361481.96
   },
   {
+    "fund_code": "TUA",
+    "date": "2026-10-30",
+    "price": "1.382797",
+    "shares_outstanding": 9697350427.209,
+    "investor_count": 28977,
+    "portfolio_size": 13409466380.59
+  },
+  {
     "fund_code": "TZL",
     "date": "2025-09-11",
     "price": "0.096488"
@@ -118407,6 +118991,14 @@
     "shares_outstanding": 626961823921.17,
     "investor_count": 185012,
     "portfolio_size": 92574338226.09
+  },
+  {
+    "fund_code": "TZL",
+    "date": "2026-10-30",
+    "price": "0.147941",
+    "shares_outstanding": 623395585921.17,
+    "investor_count": 184977,
+    "portfolio_size": 92225523097.67
   },
   {
     "fund_code": "TZV",
@@ -120005,6 +120597,14 @@
     "portfolio_size": 31639420224.24
   },
   {
+    "fund_code": "TZV",
+    "date": "2026-10-30",
+    "price": "1011.512745",
+    "shares_outstanding": 31263760.0,
+    "investor_count": 131373,
+    "portfolio_size": 31623691686.49
+  },
+  {
     "fund_code": "VFK",
     "date": "2025-09-11",
     "price": "3.888367"
@@ -121599,6 +122199,14 @@
     "shares_outstanding": 676337298.0,
     "investor_count": 6085,
     "portfolio_size": 3942812349.9
+  },
+  {
+    "fund_code": "VFK",
+    "date": "2026-10-30",
+    "price": "5.84038",
+    "shares_outstanding": 677030714.0,
+    "investor_count": 6098,
+    "portfolio_size": 3954116733.65
   },
   {
     "fund_code": "VK6",
@@ -123197,6 +123805,14 @@
     "portfolio_size": 74176750896.63
   },
   {
+    "fund_code": "VK6",
+    "date": "2026-10-30",
+    "price": "4.451209",
+    "shares_outstanding": 16671096557.988,
+    "investor_count": 159348,
+    "portfolio_size": 74206536613.65
+  },
+  {
     "fund_code": "VKT",
     "date": "2025-09-11",
     "price": "0.086036"
@@ -124793,6 +125409,14 @@
     "portfolio_size": 4848693669.66
   },
   {
+    "fund_code": "VKT",
+    "date": "2026-10-30",
+    "price": "0.130087",
+    "shares_outstanding": 36248245784.964,
+    "investor_count": 39684,
+    "portfolio_size": 4715409054.09
+  },
+  {
     "fund_code": "VPA",
     "date": "2026-05-18",
     "price": "1.003352"
@@ -125527,6 +126151,14 @@
     "shares_outstanding": 4091205884.0,
     "investor_count": 3628,
     "portfolio_size": 4854489504.51
+  },
+  {
+    "fund_code": "VPA",
+    "date": "2026-10-30",
+    "price": "1.188796",
+    "shares_outstanding": 4087275823.0,
+    "investor_count": 3635,
+    "portfolio_size": 4858935824.42
   },
   {
     "fund_code": "VTL",
@@ -126268,6 +126900,14 @@
     "shares_outstanding": 5650590077.0,
     "investor_count": 7942,
     "portfolio_size": 6687629402.2
+  },
+  {
+    "fund_code": "VTL",
+    "date": "2026-10-30",
+    "price": "1.185743",
+    "shares_outstanding": 5643387101.0,
+    "investor_count": 7956,
+    "portfolio_size": 6691606122.47
   },
   {
     "fund_code": "YAC",
@@ -127866,6 +128506,14 @@
     "portfolio_size": 5105355254.94
   },
   {
+    "fund_code": "YAC",
+    "date": "2026-10-30",
+    "price": "14.292007",
+    "shares_outstanding": 357242231.0,
+    "investor_count": 9416,
+    "portfolio_size": 5105708441.81
+  },
+  {
     "fund_code": "YAK",
     "date": "2025-09-11",
     "price": "3.793701"
@@ -129460,6 +130108,14 @@
     "shares_outstanding": 210567243.414,
     "investor_count": 107028,
     "portfolio_size": 1074651706.02
+  },
+  {
+    "fund_code": "YAK",
+    "date": "2026-10-30",
+    "price": "5.112799",
+    "shares_outstanding": 210172380.414,
+    "investor_count": 106992,
+    "portfolio_size": 1074569234.98
   },
   {
     "fund_code": "YAS",
@@ -131058,6 +131714,14 @@
     "portfolio_size": 5387997204.9
   },
   {
+    "fund_code": "YAS",
+    "date": "2026-10-30",
+    "price": "13.405496",
+    "shares_outstanding": 400155371.0,
+    "investor_count": 57303,
+    "portfolio_size": 5364281375.43
+  },
+  {
     "fund_code": "YAY",
     "date": "2025-09-11",
     "price": "1101.609784"
@@ -132652,6 +133316,14 @@
     "shares_outstanding": 6718931.0,
     "investor_count": 40533,
     "portfolio_size": 12219618639.18
+  },
+  {
+    "fund_code": "YAY",
+    "date": "2026-10-30",
+    "price": "1822.069575",
+    "shares_outstanding": 6714553.0,
+    "investor_count": 40533,
+    "portfolio_size": 12234382728.09
   },
   {
     "fund_code": "YBE",
@@ -134250,6 +134922,14 @@
     "portfolio_size": 4972984128.1
   },
   {
+    "fund_code": "YBE",
+    "date": "2026-10-30",
+    "price": "1.893486",
+    "shares_outstanding": 2635796421.0,
+    "investor_count": 13338,
+    "portfolio_size": 4990843337.52
+  },
+  {
     "fund_code": "YIT",
     "date": "2025-09-11",
     "price": "1.318486"
@@ -135844,6 +136524,14 @@
     "shares_outstanding": 647264146.0,
     "investor_count": 13376,
     "portfolio_size": 1633326574.82
+  },
+  {
+    "fund_code": "YIT",
+    "date": "2026-10-30",
+    "price": "2.560143",
+    "shares_outstanding": 639940000.0,
+    "investor_count": 13313,
+    "portfolio_size": 1638337658.02
   },
   {
     "fund_code": "YKT",
@@ -137442,6 +138130,14 @@
     "portfolio_size": 29443334355.46
   },
   {
+    "fund_code": "YKT",
+    "date": "2026-10-30",
+    "price": "0.835356",
+    "shares_outstanding": 35245047474.0,
+    "investor_count": 81823,
+    "portfolio_size": 29442164482.05
+  },
+  {
     "fund_code": "YLB",
     "date": "2025-09-11",
     "price": "1.272446"
@@ -139036,6 +139732,14 @@
     "shares_outstanding": 52536290651.0,
     "investor_count": 363142,
     "portfolio_size": 102084853784.52
+  },
+  {
+    "fund_code": "YLB",
+    "date": "2026-10-30",
+    "price": "1.946866",
+    "shares_outstanding": 52506190074.0,
+    "investor_count": 363330,
+    "portfolio_size": 102222508313.43
   },
   {
     "fund_code": "YPV",
@@ -140634,6 +141338,14 @@
     "portfolio_size": 5018616019.37
   },
   {
+    "fund_code": "YPV",
+    "date": "2026-10-30",
+    "price": "7.483434",
+    "shares_outstanding": 670809376.0,
+    "investor_count": 3176,
+    "portfolio_size": 5019957456.07
+  },
+  {
     "fund_code": "YZG",
     "date": "2025-09-11",
     "price": "7.501937"
@@ -142228,6 +142940,14 @@
     "shares_outstanding": 768156578.0,
     "investor_count": 54994,
     "portfolio_size": 8572819555.08
+  },
+  {
+    "fund_code": "YZG",
+    "date": "2026-10-30",
+    "price": "11.23543",
+    "shares_outstanding": 766576158.0,
+    "investor_count": 54994,
+    "portfolio_size": 8612813073.99
   },
   {
     "fund_code": "ZBB",
@@ -143826,6 +144546,14 @@
     "portfolio_size": 43855606278.14
   },
   {
+    "fund_code": "ZBB",
+    "date": "2026-10-30",
+    "price": "189.053116",
+    "shares_outstanding": 231720000,
+    "investor_count": 0,
+    "portfolio_size": 43807388037.01
+  },
+  {
     "fund_code": "ZBP",
     "date": "2025-09-11",
     "price": "177.268553"
@@ -145420,6 +146148,14 @@
     "shares_outstanding": 260920000,
     "investor_count": 0,
     "portfolio_size": 47964325909.26
+  },
+  {
+    "fund_code": "ZBP",
+    "date": "2026-10-30",
+    "price": "180.899098",
+    "shares_outstanding": 261040000,
+    "investor_count": 0,
+    "portfolio_size": 47221900473.54
   },
   {
     "fund_code": "ZKE",
@@ -147018,6 +147754,14 @@
     "portfolio_size": 615599627.92
   },
   {
+    "fund_code": "ZKE",
+    "date": "2026-10-30",
+    "price": "121.851706",
+    "shares_outstanding": 5080000,
+    "investor_count": 0,
+    "portfolio_size": 619006666.4
+  },
+  {
     "fund_code": "ZKP",
     "date": "2025-09-11",
     "price": "163.470862"
@@ -148612,6 +149356,14 @@
     "shares_outstanding": 35920000,
     "investor_count": 0,
     "portfolio_size": 7408843861.76
+  },
+  {
+    "fund_code": "ZKP",
+    "date": "2026-10-30",
+    "price": "207.342418",
+    "shares_outstanding": 35920000,
+    "investor_count": 0,
+    "portfolio_size": 7447739662.38
   },
   {
     "fund_code": "ZPC",
@@ -150210,6 +150962,14 @@
     "portfolio_size": 2846379630.75
   },
   {
+    "fund_code": "ZPC",
+    "date": "2026-10-30",
+    "price": "17.385418",
+    "shares_outstanding": 163389211.0,
+    "investor_count": 2573,
+    "portfolio_size": 2840589766.59
+  },
+  {
     "fund_code": "ZPK",
     "date": "2025-09-11",
     "price": "5.986483"
@@ -151804,6 +152564,14 @@
     "shares_outstanding": 3323117069.001,
     "investor_count": 31389,
     "portfolio_size": 29845542304.66
+  },
+  {
+    "fund_code": "ZPK",
+    "date": "2026-10-30",
+    "price": "8.997988",
+    "shares_outstanding": 3324872790.001,
+    "investor_count": 31414,
+    "portfolio_size": 29917167021.9
   },
   {
     "fund_code": "ZPP",
@@ -153402,6 +154170,14 @@
     "portfolio_size": 2959586463.52
   },
   {
+    "fund_code": "ZPP",
+    "date": "2026-10-30",
+    "price": "231.53899",
+    "shares_outstanding": 12920000,
+    "investor_count": 0,
+    "portfolio_size": 2991483745.07
+  },
+  {
     "fund_code": "ZTR",
     "date": "2025-10-28",
     "price": "1001.033993"
@@ -154831,5 +155607,13 @@
     "shares_outstanding": 19160000,
     "investor_count": 0,
     "portfolio_size": 27991729599.45
+  },
+  {
+    "fund_code": "ZTR",
+    "date": "2026-10-30",
+    "price": "1463.758158",
+    "shares_outstanding": 19160000,
+    "investor_count": 0,
+    "portfolio_size": 28045606310.7
   }
 ]
