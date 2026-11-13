@@ -1,5 +1,12 @@
 [
   {
+    "started_at": "2026-11-13T14:55:56.944147+00:00",
+    "status": "running",
+    "funds_updated": 0,
+    "error_count": 0,
+    "id": 1794581756944
+  },
+  {
     "started_at": "2026-11-12T22:26:35.477668+00:00",
     "status": "running",
     "funds_updated": 0,
@@ -341,15 +348,5 @@
     "funds_updated": 0,
     "error_count": 0,
     "id": 1792444464507
-  },
-  {
-    "started_at": "2026-10-19T14:00:05.082807+00:00",
-    "status": "success",
-    "funds_updated": 100,
-    "error_count": 0,
-    "id": 1792418405083,
-    "completed_at": "2026-10-19T14:01:10.692089+00:00",
-    "source_max_date": "2026-10-19",
-    "error_message": null
   }
 ]
